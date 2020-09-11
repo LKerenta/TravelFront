@@ -67,4 +67,32 @@
 		</plugins>
 	</build>
 
+	<repositories>
+		<repository>
+			<id>spring-snapshots</id>
+			<url>http://repo.spring.io/libs-snapshot</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<url>http://repo.spring.io/libs-snapshot</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<distributionManagement>
+		<repository>
+			<id>maven-release</id>
+			<name>Ali Release Repository</name>
+			<url>https://maven.aliyun.com/repository/releases/</url>
+		</repository>
+
+		<snapshotRepository>
+			<id>maven-snapshots</id>
+			<name>Ali Release Repository</name>
+			<url>https://maven.aliyun.com/repository/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 </project>

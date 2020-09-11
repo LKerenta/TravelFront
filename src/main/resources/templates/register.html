@@ -8,15 +8,15 @@
 
     <title>注册</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 
     <style type="text/css">
         html,body{
-            background: url(img/bg1.jpg) no-repeat center top;
+            background: url(/img/bg1.jpg) no-repeat center top;
             background-size: cover;
         }
         .form {
@@ -38,20 +38,20 @@
     <div class="middle-box text-center loginscreen   animated fadeInDown">
         <div class="form">
             <h3>注册抱团旅游网站</h3>
-            <form class="m-t" role="form" action="login.html">
+            <form class="m-t" role="form" action="index.html" id="form">
                 
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="姓名" required="">
+                    <input type="text" class="form-control" name="user_name" placeholder="姓名" required="">
                 </div>
                 
                 <div class="form-group">
-                    <input type="tel" class="form-control" placeholder="手机号" required="">
+                    <input type="tel" class="form-control" name="phone" placeholder="手机号" required="">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="密码" required="">
+                    <input type="password" class="form-control" name="password" placeholder="密码" required="">
                 </div>
                 <div class="form-group">
-                    <select class="form-control">
+                    <select class="form-control" name="select">
                         <option value="0">---请选择您的身份---</option>
                         <option value="1">游客</option>
                         <option value="2">经销商</option>
@@ -61,7 +61,7 @@
                 <button type="submit" class="btn btn-primary block full-width m-b">注册</button>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="checkbox" value="" name="check">
                       同意条款和政策
                     </label>
                   </div>
@@ -73,8 +73,50 @@
     </div>
 
     <!-- Mainly scripts -->
-    <script src="js/jquery-2.1.1.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/jquery-2.1.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="/js/inspinia.js"></script>
+    <script src="/js/plugins/pace/pace.min.js"></script>
+
+    <script src="/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- Jquery Validate -->
+    <script src="/js/plugins/validate/jquery.validate.min.js"></script>
+
+    <script>
+         $(document).ready(function(){
+
+             $("#form").validate({
+                 rules: {
+                     password: {
+                         required: true,
+                         rangelength: [8,20]
+                     },
+                     user_name: {
+                         required: true,
+                         rangelength:[5,20]
+                     },
+                     phone: {
+                         required: true,
+                         digits:true,
+                         rangelength:[11,11]
+                     },
+                     check:{
+                        required:true
+                     },
+                     select:{
+                         min:1,
+                         max:2
+                     }
+                 }
+             });
+        });
+    </script>
+
     
 </body>
 

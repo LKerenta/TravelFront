@@ -8,14 +8,14 @@
 
     <title>商品审核</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <!-- FooTable -->
-    <link href="css/plugins/footable/footable.core.css" rel="stylesheet">
+    <link href="/css/plugins/footable/footable.core.css" rel="stylesheet">
 
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -28,7 +28,7 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                        <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                        <img alt="image" class="img-circle" src="/img/profile_small.jpg" />
                          </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Admin</strong>
@@ -46,10 +46,10 @@
                     </div>
                 </li>
                 <li>
-                    <a href="index.html"><i class="fa fa-globe"></i> <span class="nav-label">首页</span></a>
+                    <a href="index.html"><i class="fa fa-home"></i> <span class="nav-label">首页</span></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-database"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-users"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="user_list.html">游客用户管理</a></li>
                         <li><a href="seller_list.html">经销商用户管理</a></li>
@@ -57,22 +57,22 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="order_list.html"><i class="fa fa-shopping-cart"></i> <span class="nav-label">订单管理</span></a>
+                    <a href="order_list.html"><i class="fa fa-archive"></i> <span class="nav-label">订单管理</span></a>
                 </li>
                 <li>
-                    <a href="item_list.html"><i class="fa fa-bars"></i> <span class="nav-label">商品管理</span></a>
+                    <a href="item_list.html"><i class="fa fa-shopping-cart"></i> <span class="nav-label">商品管理</span></a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="item_examine.html"><i class="fa fa-upload"></i> <span class="nav-label">商品审核</span></a>
                 </li>
                 <li>
-                    <a href="comment_list.html"><i class="fa fa-bell"></i> <span class="nav-label">评论管理</span></a>
+                    <a href="comment_list.html"><i class="fa fa-comments"></i> <span class="nav-label">评论管理</span></a>
                 </li>
                 <li>
                     <a href="statistics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">数据统计</span></a>
                 </li>
                 <li>
-                    <a href="asset_manage.html"><i class="fa fa-diamond"></i> <span class="nav-label">资产管理</span></a>
+                    <a href="asset_manage.html"><i class="fa fa-money"></i> <span class="nav-label">资产管理</span></a>
                 </li>
             </ul>
 
@@ -102,7 +102,7 @@
                         <li>
                             <div class="dropdown-messages-box">
                                 <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/a7.jpg">
+                                    <img alt="image" class="img-circle" src="/img/a7.jpg">
                                 </a>
                                 <div class="media-body">
                                     <small class="pull-right">46小时前</small>
@@ -115,7 +115,7 @@
                         <li>
                             <div class="dropdown-messages-box">
                                 <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/a4.jpg">
+                                    <img alt="image" class="img-circle" src="/img/a4.jpg">
                                 </a>
                                 <div class="media-body ">
                                     <small class="pull-right text-navy">5小时前</small>
@@ -128,7 +128,7 @@
                         <li>
                             <div class="dropdown-messages-box">
                                 <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/profile.jpg">
+                                    <img alt="image" class="img-circle" src="/img/profile.jpg">
                                 </a>
                                 <div class="media-body ">
                                     <small class="pull-right">23小时前</small>
@@ -209,16 +209,16 @@
 
             <div class="ibox-content m-b-sm border-bottom">
                 <div class="row">
-                    <form>
+                    <form class="form-inline">
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="product_name">商品名</label>
+                            <label for="product_name">商品名</label>
                             <input type="text" id="product_name" name="product_name" value="" placeholder="Product Name" class="form-control">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="seller">经销商</label>
+                            <label for="seller">经销商</label>
                             <input type="text" id="seller" name="seller" value="" placeholder="Seller" class="form-control">
                         </div>
                     </div>
@@ -238,28 +238,46 @@
                         <div class="ibox-content">
 
                             <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="5">
-                                <thead>
+                            <thead>
                                 <tr>
 
-                                    <th data-hide="true">商品ID</th>
-                                    <th data-toggle="phone">商品名</th>
-                                    <th data-hide="phone">经销商</th>
-                                    <th data-hide="phone">价格</th>
-                                    <th data-hide="phone">计划开团人数</th>
-                                    <th data-hide="phone">计划开团日期</th>
-                                    <th data-hide="phone">目的地</th>
+                                    <th data-toggle="true">商品ID</th>
+                                    <th>商品名</th>
+                                    <th>经销商</th>
+                                    <th data-hide="all">介绍</th>
+                                    <th>价格</th>
+                                    <th>计划开团人数</th>
+                                    <th>计划开团日期</th>
                                     <th class="text-right" data-sort-ignore="true">动作</th>
+
                                 </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>001</td>
-                                        <td>武汉一日游</td>
-                                        <td>青年旅行社</td>
-                                        <td>$30</td>
-                                        <td>30</td>
-                                        <td>2020-09-01</td>
-                                        <td>武汉</td>
+                                        <td>
+                                          001
+                                        </td>
+                                        <td>
+                                            武汉一日游
+                                        </td>
+                                        <td>
+                                            Seller example
+                                        </td>
+                                        <td>
+                                          这是一个长期公认的事实，一个读者会被可读的
+                                          一页的内容，当看它的布局。使用Lorem存有点
+                                          它有一个更多或更少的正常分布的信件，而不是使用
+                                          内容在这里，内容在这里，使它看起来像可读的英语。
+                                        </td>
+                                        <td>
+                                            $50.00
+                                        </td>
+                                        <td>
+                                            30
+                                        </td>
+                                        <td>
+                                            2020-09-01
+                                        </td>
                                         <td class="text-right">
                                             <div class="btn-group">
                                                 <button class="btn-white btn btn-xs">详情</button>
@@ -269,121 +287,209 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>001</td>
-                                        <td>武汉一日游</td>
-                                        <td>青年旅行社</td>
-                                        <td>$30</td>
-                                        <td>30</td>
-                                        <td>2020-09-01</td>
-                                        <td>武汉</td>
-                                        <td class="text-right">
-                                            <div class="btn-group">
-                                                <button class="btn-white btn btn-xs">详情</button>
-                                                <button class="btn-white btn btn-xs">通过</button>
-                                                <button class="btn-white btn btn-xs">拒绝</button>
-                                            </div>
-                                        </td>
+                                        <td>
+                                            001
+                                          </td>
+                                          <td>
+                                              武汉一日游
+                                          </td>
+                                          <td>
+                                              Seller example
+                                          </td>
+                                          <td>
+                                            这是一个长期公认的事实，一个读者会被可读的
+                                            一页的内容，当看它的布局。使用Lorem存有点
+                                            它有一个更多或更少的正常分布的信件，而不是使用
+                                            内容在这里，内容在这里，使它看起来像可读的英语。
+                                          </td>
+                                          <td>
+                                              $50.00
+                                          </td>
+                                          <td>
+                                              30
+                                          </td>
+                                          <td>
+                                              2020-09-01
+                                          </td>
+                                          <td class="text-right">
+                                              <div class="btn-group">
+                                                  <button class="btn-white btn btn-xs">详情</button>
+                                                  <button class="btn-white btn btn-xs">通过</button>
+                                                  <button class="btn-white btn btn-xs">拒绝</button>
+                                              </div>
+                                          </td>
                                     </tr>
                                     <tr>
-                                        <td>001</td>
-                                        <td>武汉一日游</td>
-                                        <td>青年旅行社</td>
-                                        <td>$30</td>
-                                        <td>30</td>
-                                        <td>2020-09-01</td>
-                                        <td>武汉</td>
-                                        <td class="text-right">
-                                            <div class="btn-group">
-                                                <button class="btn-white btn btn-xs">详情</button>
-                                                <button class="btn-white btn btn-xs">通过</button>
-                                                <button class="btn-white btn btn-xs">拒绝</button>
-                                            </div>
-                                        </td>
+                                        <td>
+                                            001
+                                          </td>
+                                          <td>
+                                              武汉一日游
+                                          </td>
+                                          <td>
+                                              Seller example
+                                          </td>
+                                          <td>
+                                            这是一个长期公认的事实，一个读者会被可读的
+                                            一页的内容，当看它的布局。使用Lorem存有点
+                                            它有一个更多或更少的正常分布的信件，而不是使用
+                                            内容在这里，内容在这里，使它看起来像可读的英语。
+                                          </td>
+                                          <td>
+                                              $50.00
+                                          </td>
+                                          <td>
+                                              30
+                                          </td>
+                                          <td>
+                                              2020-09-01
+                                          </td>
+                                          <td class="text-right">
+                                              <div class="btn-group">
+                                                  <button class="btn-white btn btn-xs">详情</button>
+                                                  <button class="btn-white btn btn-xs">通过</button>
+                                                  <button class="btn-white btn btn-xs">拒绝</button>
+                                              </div>
+                                          </td>
                                     </tr>
                                     <tr>
-                                        <td>001</td>
-                                        <td>武汉一日游</td>
-                                        <td>青年旅行社</td>
-                                        <td>$30</td>
-                                        <td>30</td>
-                                        <td>2020-09-01</td>
-                                        <td>武汉</td>
-                                        <td class="text-right">
-                                            <div class="btn-group">
-                                                <button class="btn-white btn btn-xs">详情</button>
-                                                <button class="btn-white btn btn-xs">通过</button>
-                                                <button class="btn-white btn btn-xs">拒绝</button>
-                                            </div>
-                                        </td>
+                                        <td>
+                                            001
+                                          </td>
+                                          <td>
+                                              武汉一日游
+                                          </td>
+                                          <td>
+                                              Seller example
+                                          </td>
+                                          <td>
+                                            这是一个长期公认的事实，一个读者会被可读的
+                                            一页的内容，当看它的布局。使用Lorem存有点
+                                            它有一个更多或更少的正常分布的信件，而不是使用
+                                            内容在这里，内容在这里，使它看起来像可读的英语。
+                                          </td>
+                                          <td>
+                                              $50.00
+                                          </td>
+                                          <td>
+                                              30
+                                          </td>
+                                          <td>
+                                              2020-09-01
+                                          </td>
+                                          <td class="text-right">
+                                              <div class="btn-group">
+                                                  <button class="btn-white btn btn-xs">详情</button>
+                                                  <button class="btn-white btn btn-xs">通过</button>
+                                                  <button class="btn-white btn btn-xs">拒绝</button>
+                                              </div>
+                                          </td>
                                     </tr>
                                     <tr>
-                                        <td>001</td>
-                                        <td>武汉一日游</td>
-                                        <td>青年旅行社</td>
-                                        <td>$30</td>
-                                        <td>30</td>
-                                        <td>2020-09-01</td>
-                                        <td>武汉</td>
-                                        <td class="text-right">
-                                            <div class="btn-group">
-                                                <button class="btn-white btn btn-xs">详情</button>
-                                                <button class="btn-white btn btn-xs">通过</button>
-                                                <button class="btn-white btn btn-xs">拒绝</button>
-                                            </div>
-                                        </td>
+                                        <td>
+                                            001
+                                          </td>
+                                          <td>
+                                              武汉一日游
+                                          </td>
+                                          <td>
+                                              Seller example
+                                          </td>
+                                          <td>
+                                            这是一个长期公认的事实，一个读者会被可读的
+                                            一页的内容，当看它的布局。使用Lorem存有点
+                                            它有一个更多或更少的正常分布的信件，而不是使用
+                                            内容在这里，内容在这里，使它看起来像可读的英语。
+                                          </td>
+                                          <td>
+                                              $50.00
+                                          </td>
+                                          <td>
+                                              30
+                                          </td>
+                                          <td>
+                                              2020-09-01
+                                          </td>
+                                          <td class="text-right">
+                                              <div class="btn-group">
+                                                  <button class="btn-white btn btn-xs">详情</button>
+                                                  <button class="btn-white btn btn-xs">通过</button>
+                                                  <button class="btn-white btn btn-xs">拒绝</button>
+                                              </div>
+                                          </td>
                                     </tr>
                                     <tr>
-                                        <td>001</td>
-                                        <td>武汉一日游</td>
-                                        <td>青年旅行社</td>
-                                        <td>$30</td>
-                                        <td>30</td>
-                                        <td>2020-09-01</td>
-                                        <td>武汉</td>
-                                        <td class="text-right">
-                                            <div class="btn-group">
-                                                <button class="btn-white btn btn-xs">详情</button>
-                                                <button class="btn-white btn btn-xs">通过</button>
-                                                <button class="btn-white btn btn-xs">拒绝</button>
-                                            </div>
-                                        </td>
+                                        <td>
+                                            001
+                                          </td>
+                                          <td>
+                                              武汉一日游
+                                          </td>
+                                          <td>
+                                              Seller example
+                                          </td>
+                                          <td>
+                                            这是一个长期公认的事实，一个读者会被可读的
+                                            一页的内容，当看它的布局。使用Lorem存有点
+                                            它有一个更多或更少的正常分布的信件，而不是使用
+                                            内容在这里，内容在这里，使它看起来像可读的英语。
+                                          </td>
+                                          <td>
+                                              $50.00
+                                          </td>
+                                          <td>
+                                              30
+                                          </td>
+                                          <td>
+                                              2020-09-01
+                                          </td>
+                                          <td class="text-right">
+                                              <div class="btn-group">
+                                                  <button class="btn-white btn btn-xs">详情</button>
+                                                  <button class="btn-white btn btn-xs">通过</button>
+                                                  <button class="btn-white btn btn-xs">拒绝</button>
+                                              </div>
+                                          </td>
                                     </tr>
                                     <tr>
-                                        <td>001</td>
-                                        <td>武汉一日游</td>
-                                        <td>青年旅行社</td>
-                                        <td>$30</td>
-                                        <td>30</td>
-                                        <td>2020-09-01</td>
-                                        <td>武汉</td>
-                                        <td class="text-right">
-                                            <div class="btn-group">
-                                                <button class="btn-white btn btn-xs">详情</button>
-                                                <button class="btn-white btn btn-xs">通过</button>
-                                                <button class="btn-white btn btn-xs">拒绝</button>
-                                            </div>
-                                        </td>
+                                        <td>
+                                            001
+                                          </td>
+                                          <td>
+                                              武汉一日游
+                                          </td>
+                                          <td>
+                                              Seller example
+                                          </td>
+                                          <td>
+                                            这是一个长期公认的事实，一个读者会被可读的
+                                            一页的内容，当看它的布局。使用Lorem存有点
+                                            它有一个更多或更少的正常分布的信件，而不是使用
+                                            内容在这里，内容在这里，使它看起来像可读的英语。
+                                          </td>
+                                          <td>
+                                              $50.00
+                                          </td>
+                                          <td>
+                                              30
+                                          </td>
+                                          <td>
+                                              2020-09-01
+                                          </td>
+                                          <td class="text-right">
+                                              <div class="btn-group">
+                                                  <button class="btn-white btn btn-xs">详情</button>
+                                                  <button class="btn-white btn btn-xs">通过</button>
+                                                  <button class="btn-white btn btn-xs">拒绝</button>
+                                              </div>
+                                          </td>
                                     </tr>
-                                    <tr>
-                                        <td>001</td>
-                                        <td>武汉一日游</td>
-                                        <td>青年旅行社</td>
-                                        <td>$30</td>
-                                        <td>30</td>
-                                        <td>2020-09-01</td>
-                                        <td>武汉</td>
-                                        <td class="text-right">
-                                            <div class="btn-group">
-                                                <button class="btn-white btn btn-xs">详情</button>
-                                                <button class="btn-white btn btn-xs">通过</button>
-                                                <button class="btn-white btn btn-xs">拒绝</button>
-                                            </div>
-                                        </td>
-                                    </tr>
+
+
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td colspan="6">
+                                        <td colspan="9">
                                             <ul class="pagination pull-right"></ul>
                                         </td>
                                     </tr>
@@ -404,17 +510,17 @@
         </div>
 
     <!-- Mainly scripts -->
-    <script src="js/jquery-2.1.1.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/js/jquery-2.1.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
     <!-- Custom and plugin javascript -->
-    <script src="js/inspinia.js"></script>
-    <script src="js/plugins/pace/pace.min.js"></script>
+    <script src="/js/inspinia.js"></script>
+    <script src="/js/plugins/pace/pace.min.js"></script>
 
     <!-- FooTable -->
-    <script src="js/plugins/footable/footable.all.min.js"></script>
+    <script src="/js/plugins/footable/footable.all.min.js"></script>
 
     <!-- Page-Level Scripts -->
     <script>

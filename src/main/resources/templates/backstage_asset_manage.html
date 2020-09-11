@@ -6,13 +6,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>用户添加</title>
+    <title>资产管理</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <!-- Toastr style -->
+    <link href="/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -25,7 +28,7 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                        <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                        <img alt="image" class="img-circle" src="/img/profile_small.jpg" />
                          </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Admin</strong>
@@ -43,33 +46,33 @@
                     </div>
                 </li>
                 <li>
-                    <a href="index.html"><i class="fa fa-globe"></i> <span class="nav-label">首页</span></a>
+                    <a href="backstage_index.html"><i class="fa fa-home"></i> <span class="nav-label">首页</span></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-database"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-users"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="user_list.html">游客用户管理</a></li>
-                        <li><a href="seller_list.html">经销商用户管理</a></li>
-                        <li><a href="user_add.html">用户添加</a></li>
+                        <li><a href="backstage_user_list.html">游客用户管理</a></li>
+                        <li><a href="backstage_seller_list.html">经销商用户管理</a></li>
+                        <li><a href="backstage_user_add.html">用户添加</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="order_list.html"><i class="fa fa-shopping-cart"></i> <span class="nav-label">订单管理</span></a>
+                    <a href="backstage_order_list.html"><i class="fa fa-archive"></i> <span class="nav-label">订单管理</span></a>
                 </li>
                 <li>
-                    <a href="item_list.html"><i class="fa fa-bars"></i> <span class="nav-label">商品管理</span></a>
+                    <a href="backstage_item_list.html"><i class="fa fa-shopping-cart"></i> <span class="nav-label">商品管理</span></a>
                 </li>
                 <li>
-                    <a href="item_examine.html"><i class="fa fa-upload"></i> <span class="nav-label">商品审核</span></a>
+                    <a href="backstage_item_examine.html"><i class="fa fa-upload"></i> <span class="nav-label">商品审核</span></a>
                 </li>
                 <li>
-                    <a href="comment_list.html"><i class="fa fa-bell"></i> <span class="nav-label">评论管理</span></a>
+                    <a href="backstage_comment_list.html"><i class="fa fa-comments"></i> <span class="nav-label">评论管理</span></a>
                 </li>
                 <li>
-                    <a href="statistics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">数据统计</span></a>
+                    <a href="backstage_statistics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">数据统计</span></a>
                 </li>
-                <li>
-                    <a href="asset_manage.html"><i class="fa fa-diamond"></i> <span class="nav-label">资产管理</span></a>
+                <li class="active">
+                    <a href="backstage_asset_manage.html"><i class="fa fa-money"></i> <span class="nav-label">资产管理</span></a>
                 </li>
             </ul>
 
@@ -99,7 +102,7 @@
                         <li>
                             <div class="dropdown-messages-box">
                                 <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/a7.jpg">
+                                    <img alt="image" class="img-circle" src="/img/a7.jpg">
                                 </a>
                                 <div class="media-body">
                                     <small class="pull-right">46小时前</small>
@@ -112,7 +115,7 @@
                         <li>
                             <div class="dropdown-messages-box">
                                 <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/a4.jpg">
+                                    <img alt="image" class="img-circle" src="/img/a4.jpg">
                                 </a>
                                 <div class="media-body ">
                                     <small class="pull-right text-navy">5小时前</small>
@@ -125,7 +128,7 @@
                         <li>
                             <div class="dropdown-messages-box">
                                 <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/profile.jpg">
+                                    <img alt="image" class="img-circle" src="/img/profile.jpg">
                                 </a>
                                 <div class="media-body ">
                                     <small class="pull-right">23小时前</small>
@@ -190,71 +193,44 @@
         </div>
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-sm-4">
-                <h2>添加用户</h2>
+                <h2>资产管理</h2>
                 <ol class="breadcrumb">
                     <li>
-                        <a href="index.html">首页</a>
-                    </li>
-                    <li>
-                        <a>用户管理</a>
+                        <a href="backstage_index.html">首页</a>
                     </li>
                     <li class="active">
-                        <strong>用户添加</strong>
+                        <strong>资产管理</strong>
                     </li>
                 </ol>
             </div>
         </div>
 
-        <div class="wrapper wrapper-content">
-            <div class="ibox-content">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-title">
-                                <h5>编辑用户信息</h5>
-                            </div>
-                            <div class="ibox-content">
-                                <form method="get" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">用户名</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" class="form-control" required="">
+        <div class="wrapper wrapper-content  animated fadeInRight">
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                    <div class="ibox">
+                        <div class="ibox-title">
+                            现有资产
+                        </div>
+                        <div class="ibox-content">
+                            <div class="panel-group payments-method" id="accordion">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-10 col-md-offset-1">
+                                            <label class="control-label">总资产</label>
+                                            <h2 style="color:coral;">$342,420,000</h2>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">手机号</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" class="form-control" required="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">密码</label>
-                                        <div class="col-sm-6">
-                                            <input type="password" class="form-control" name="password" required="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">用户权限</label>
-                                        <div class="col-sm-6">
-                                            <select class="form-control">
-                                                <option value="0">---请选择用户权限---</option>
-                                                <option value="1">游客</option>
-                                                <option value="2">经销商</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-4 col-sm-offset-2">
-                                            <button class="btn btn-primary" type="submit">修改</button>
-                                            <button class="btn btn-white" type="submit">返回</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                </div>
+                            
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="footer">
             <div>
@@ -266,14 +242,14 @@
         </div>
 
     <!-- Mainly scripts -->
-    <script src="js/jquery-2.1.1.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/js/jquery-2.1.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
     <!-- Custom and plugin javascript -->
-    <script src="js/inspinia.js"></script>
-    <script src="js/plugins/pace/pace.min.js"></script>
+    <script src="/js/inspinia.js"></script>
+    <script src="/js/plugins/pace/pace.min.js"></script>
 
 
 </body>

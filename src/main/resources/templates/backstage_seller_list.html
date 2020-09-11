@@ -8,13 +8,13 @@
 
     <title>经销商用户管理</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-    <link href="css/plugins/footable/footable.core.css" rel="stylesheet">
+    <link href="/css/plugins/footable/footable.core.css" rel="stylesheet">
 
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -27,7 +27,7 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                        <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                        <img alt="image" class="img-circle" src="/img/profile_small.jpg" />
                          </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Admin</strong>
@@ -45,33 +45,33 @@
                     </div>
                 </li>
                 <li>
-                    <a href="index.html"><i class="fa fa-globe"></i> <span class="nav-label">首页</span></a>
+                    <a href="backstage_index.html"><i class="fa fa-home"></i> <span class="nav-label">首页</span></a>
                 </li>
-                <li>
-                    <a href="#"><i class="fa fa-database"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
+                <li class="active">
+                    <a href="#"><i class="fa fa-users"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="user_list.html">游客用户管理</a></li>
-                        <li><a href="seller_list.html">经销商用户管理</a></li>
-                        <li><a href="user_add.html">用户添加</a></li>
+                        <li><a href="backstage_user_list.html">游客用户管理</a></li>
+                        <li class="active"><a href="backstage_seller_list.html">经销商用户管理</a></li>
+                        <li><a href="backstage_user_add.html">用户添加</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="order_list.html"><i class="fa fa-shopping-cart"></i> <span class="nav-label">订单管理</span></a>
+                    <a href="backstage_order_list.html"><i class="fa fa-archive"></i> <span class="nav-label">订单管理</span></a>
                 </li>
                 <li>
-                    <a href="item_list.html"><i class="fa fa-bars"></i> <span class="nav-label">商品管理</span></a>
+                    <a href="backstage_item_list.html"><i class="fa fa-shopping-cart"></i> <span class="nav-label">商品管理</span></a>
                 </li>
                 <li>
-                    <a href="ecommerce-orders.html"><i class="fa fa-upload"></i> <span class="nav-label">商品审核</span></a>
+                    <a href="backstage_item_examine.html"><i class="fa fa-upload"></i> <span class="nav-label">商品审核</span></a>
                 </li>
                 <li>
-                    <a href="comment_list.html"><i class="fa fa-bell"></i> <span class="nav-label">评论管理</span></a>
+                    <a href="backstage_comment_list.html"><i class="fa fa-comments"></i> <span class="nav-label">评论管理</span></a>
                 </li>
                 <li>
-                    <a href="ecommerce-orders.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">数据统计</span></a>
+                    <a href="backstage_statistics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">数据统计</span></a>
                 </li>
                 <li>
-                    <a href="ecommerce-orders.html"><i class="fa fa-diamond"></i> <span class="nav-label">资产管理</span></a>
+                    <a href="backstage_asset_manage.html"><i class="fa fa-money"></i> <span class="nav-label">资产管理</span></a>
                 </li>
             </ul>
 
@@ -101,7 +101,7 @@
                         <li>
                             <div class="dropdown-messages-box">
                                 <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/a7.jpg">
+                                    <img alt="image" class="img-circle" src="/img/a7.jpg">
                                 </a>
                                 <div class="media-body">
                                     <small class="pull-right">46小时前</small>
@@ -114,7 +114,7 @@
                         <li>
                             <div class="dropdown-messages-box">
                                 <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/a4.jpg">
+                                    <img alt="image" class="img-circle" src="/img/a4.jpg">
                                 </a>
                                 <div class="media-body ">
                                     <small class="pull-right text-navy">5小时前</small>
@@ -127,7 +127,7 @@
                         <li>
                             <div class="dropdown-messages-box">
                                 <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/profile.jpg">
+                                    <img alt="image" class="img-circle" src="/img/profile.jpg">
                                 </a>
                                 <div class="media-body ">
                                     <small class="pull-right">23小时前</small>
@@ -195,7 +195,7 @@
                 <h2>经销商用户管理</h2>
                 <ol class="breadcrumb">
                     <li>
-                        <a href="index.html">首页</a>
+                        <a href="backstage_index.html">首页</a>
                     </li>
                     <li>
                         <a>用户管理</a>
@@ -207,7 +207,7 @@
             </div>
             <div class="col-sm-8">
                 <div class="title-action">
-                    <a href="user_add.html" class="btn btn-primary">+ 添加用户</a>
+                    <a href="backstage_user_add.html" class="btn btn-primary">+ 添加用户</a>
                 </div>
             </div>
         </div>
@@ -231,7 +231,7 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <label class="control-label" for="user_id">经销商ID</label>
+                            <label class="control-label" for="seller_id">经销商ID</label>
                             <input type="text" id="seller_id" name="seller_id" value="" placeholder="Seller_id" class="form-control">
                         </div>
                     </div>
@@ -293,7 +293,7 @@
                                         <td>6237879065434678120</td>
                                         <td class="text-right">
                                             <div class="btn-group">
-                                                <button class="btn-white btn btn-xs"><a href="update_user.html">修改</a></button>
+                                                <button class="btn-white btn btn-xs"><a href="backstage_update_user.html">修改</a></button>
                                                 <button class="btn-white btn btn-xs">删除</button>
                                             </div>
                                         </td>
@@ -418,17 +418,17 @@
         </div>
 
     <!-- Mainly scripts -->
-    <script src="js/jquery-2.1.1.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/js/jquery-2.1.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
     <!-- Custom and plugin javascript -->
-    <script src="js/inspinia.js"></script>
-    <script src="js/plugins/pace/pace.min.js"></script>
+    <script src="/js/inspinia.js"></script>
+    <script src="/js/plugins/pace/pace.min.js"></script>
 
     <!-- FooTable -->
-    <script src="js/plugins/footable/footable.all.min.js"></script>
+    <script src="/js/plugins/footable/footable.all.min.js"></script>
 
     <!-- Page-Level Scripts -->
     <script>

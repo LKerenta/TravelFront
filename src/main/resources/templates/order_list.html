@@ -8,12 +8,12 @@
 
     <title>订单管理</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/plugins/footable/footable.core.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/plugins/footable/footable.core.css" rel="stylesheet">
 
 </head>
 
@@ -26,7 +26,7 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                        <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                        <img alt="image" class="img-circle" src="/img/profile_small.jpg" />
                          </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Admin</strong>
@@ -44,33 +44,33 @@
                     </div>
                 </li>
                 <li>
-                    <a href="index.html"><i class="fa fa-globe"></i> <span class="nav-label">首页</span></a>
+                    <a href="index.html"><i class="fa fa-home"></i> <span class="nav-label">首页</span></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-database"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-users"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="user_list.html">游客用户管理</a></li>
                         <li><a href="seller_list.html">经销商用户管理</a></li>
                         <li><a href="user_add.html">用户添加</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="order_list.html"><i class="fa fa-shopping-cart"></i> <span class="nav-label">订单管理</span></a>
+                <li class="active">
+                    <a href="order_list.html"><i class="fa fa-archive"></i> <span class="nav-label">订单管理</span></a>
                 </li>
                 <li>
-                    <a href="item_list.html"><i class="fa fa-bars"></i> <span class="nav-label">商品管理</span></a>
+                    <a href="item_list.html"><i class="fa fa-shopping-cart"></i> <span class="nav-label">商品管理</span></a>
                 </li>
                 <li>
                     <a href="item_examine.html"><i class="fa fa-upload"></i> <span class="nav-label">商品审核</span></a>
                 </li>
                 <li>
-                    <a href="comment_list.html"><i class="fa fa-bell"></i> <span class="nav-label">评论管理</span></a>
+                    <a href="comment_list.html"><i class="fa fa-comments"></i> <span class="nav-label">评论管理</span></a>
                 </li>
                 <li>
                     <a href="statistics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">数据统计</span></a>
                 </li>
                 <li>
-                    <a href="asset_manage.html"><i class="fa fa-diamond"></i> <span class="nav-label">资产管理</span></a>
+                    <a href="asset_manage.html"><i class="fa fa-money"></i> <span class="nav-label">资产管理</span></a>
                 </li>
             </ul>
 
@@ -100,7 +100,7 @@
                         <li>
                             <div class="dropdown-messages-box">
                                 <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/a7.jpg">
+                                    <img alt="image" class="img-circle" src="/img/a7.jpg">
                                 </a>
                                 <div class="media-body">
                                     <small class="pull-right">46小时前</small>
@@ -113,7 +113,7 @@
                         <li>
                             <div class="dropdown-messages-box">
                                 <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/a4.jpg">
+                                    <img alt="image" class="img-circle" src="/img/a4.jpg">
                                 </a>
                                 <div class="media-body ">
                                     <small class="pull-right text-navy">5小时前</small>
@@ -126,7 +126,7 @@
                         <li>
                             <div class="dropdown-messages-box">
                                 <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/profile.jpg">
+                                    <img alt="image" class="img-circle" src="/img/profile.jpg">
                                 </a>
                                 <div class="media-body ">
                                     <small class="pull-right">23小时前</small>
@@ -209,6 +209,7 @@
         <div class="wrapper wrapper-content animated fadeInRight ecommerce">
 
             <div class="ibox-content m-b-sm border-bottom">
+                <form>
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="form-group">
@@ -219,16 +220,19 @@
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label class="control-label" for="status">订单状态</label>
-                            <input type="text" id="status" name="status" value="" placeholder="Status" class="form-control">
+                            <select name="status" id="status" class="form-control">
+                                <option value="1" selected>未完成</option>
+                                <option value="0">已完成</option>
+                            </select> 
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <div class="form-group">
                             <label class="control-label" for="customer">客户</label>
                             <input type="text" id="customer" name="customer" value="" placeholder="Customer" class="form-control">
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <div class="form-group">
                             <label class="control-label" for="seller">经销商</label>
                             <input type="text" id="seller" name="seller" value="" placeholder="Seller" class="form-control">
@@ -252,19 +256,25 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <div class="form-group">
                             <label class="control-label" for="amount">金额</label>
                             <input type="text" id="amount" name="amount" value="" placeholder="Amount" class="form-control">
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <div class="form-group">
                             <label class="control-label" for="item">商品</label>
                             <input type="text" id="item" name="item" value="" placeholder="Item" class="form-control">
                         </div>
                     </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-w-m" type="button">搜索</button>
+                        </div>
+                    </div>
                 </div>
+                </form>
 
             </div>
 
@@ -855,7 +865,7 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <td colspan="7">
+                                    <td colspan="9">
                                         <ul class="pagination pull-right"></ul>
                                     </td>
                                 </tr>
@@ -878,20 +888,20 @@
         </div>
 
     <!-- Mainly scripts -->
-    <script src="js/jquery-2.1.1.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/js/jquery-2.1.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
     <!-- Custom and plugin javascript -->
-    <script src="js/inspinia.js"></script>
-    <script src="js/plugins/pace/pace.min.js"></script>
+    <script src="/js/inspinia.js"></script>
+    <script src="/js/plugins/pace/pace.min.js"></script>
 
     <!-- Data picker -->
-    <script src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
+    <script src="/js/plugins/datapicker/bootstrap-datepicker.js"></script>
 
     <!-- FooTable -->
-    <script src="js/plugins/footable/footable.all.min.js"></script>
+    <script src="/js/plugins/footable/footable.all.min.js"></script>
 
     <!-- Page-Level Scripts -->
     <script>

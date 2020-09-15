@@ -3,7 +3,7 @@ package com.travel.front.Entity;
 public class UserType {
     private int ID;
     private String Password;
-    private int Type;
+    private Integer Type;
 
     public int getID() {
         return ID;

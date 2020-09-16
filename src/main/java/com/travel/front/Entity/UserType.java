@@ -1,15 +1,15 @@
 package com.travel.front.Entity;
 
 public class UserType {
-    private Integer ID;
+    private int ID;
     private String Password;
     private Integer Type;
 
-    public Integer getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
@@ -21,11 +21,11 @@ public class UserType {
         Password = password;
     }
 
-    public Integer getType() {
+    public int getType() {
         return Type;
     }
 
-    public void setType(Integer type) {
+    public void setType(int type) {
         Type = type;
     }
 }

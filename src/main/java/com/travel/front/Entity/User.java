@@ -1,26 +1,25 @@
 package com.travel.front.Entity;
 
 public class User {
-    private Integer UserID;
+    private int UserID;
     private String Password;
-    private String UserName;
     private String UserImage;
     private String TrueName;
     private String IDNumber;
-    private Integer QQNumber;
+    private int QQNumber;
     private String Phone;
     private String Email;
-    private Integer Balance;
+    private int Balance;
     private String Tag1;
     private String Tag2;
     private String Tag3;
     private String Introduce;
 
-    public Integer getUserID() {
+    public int getUserID() {
         return UserID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(int userID) {
         UserID = userID;
     }
 
@@ -30,14 +29,6 @@ public class User {
 
     public void setPassword(String password) {
         Password = password;
-    }
-
-    public String getUserName() {
-        return UserName;
-    }
-
-    public void setUserName(String userName) {
-        UserName = userName;
     }
 
     public String getUserImage() {
@@ -64,11 +55,11 @@ public class User {
         this.IDNumber = IDNumber;
     }
 
-    public Integer getQQNumber() {
+    public int getQQNumber() {
         return QQNumber;
     }
 
-    public void setQQNumber(Integer QQNumber) {
+    public void setQQNumber(int QQNumber) {
         this.QQNumber = QQNumber;
     }
 
@@ -88,11 +79,11 @@ public class User {
         Email = email;
     }
 
-    public Integer getBalance() {
+    public int getBalance() {
         return Balance;
     }
 
-    public void setBalance(Integer balance) {
+    public void setBalance(int balance) {
         Balance = balance;
     }
 

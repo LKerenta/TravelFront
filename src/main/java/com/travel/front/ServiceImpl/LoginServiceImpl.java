@@ -16,13 +16,11 @@ public class LoginServiceImpl implements LoginService {
     private LoginMapper loginMapper;
 
     @Override
-    public Integer Login(UserType userType){
+    public Integer login(UserType userType) {
         UserType loginUser = null;
         loginUser = loginMapper.login(userType);
-        if(loginUser != null){
-            return loginUser.getType();
-        }else
-            return -1;
+        if(loginUser != null)  return loginUser.getType();
+        return -1;
     }
 
     @Override
@@ -39,5 +37,4 @@ public class LoginServiceImpl implements LoginService {
     public Manager RM(UserType userType) {
         return loginMapper.RM(userType);
     }
-
 }

@@ -1,32 +1,24 @@
 package com.travel.front.Entity;
 
 public class Franchise {
-    private Integer FranID;
+    private int FranID;
     private String Password;
     private String FranName;
     private String FranImage;
     private String WhoInCharge;
     private String ChargeID;
-    private Integer ChargePhone;
+    private String ChargePhone;
     private String Phone;
     private String Email;
-    private Integer Balance;
-    private Integer CreditCard;
+    private int Balance;
+    private int CreditCard;
     private String Introduce;
 
-    public String getIntroduce() {
-        return Introduce;
-    }
-
-    public void setIntroduce(String introduce) {
-        Introduce = introduce;
-    }
-
-    public Integer getFranID() {
+    public int getFranID() {
         return FranID;
     }
 
-    public void setFranID(Integer franID) {
+    public void setFranID(int franID) {
         FranID = franID;
     }
 
@@ -70,11 +62,11 @@ public class Franchise {
         ChargeID = chargeID;
     }
 
-    public Integer getChargePhone() {
+    public String getChargePhone() {
         return ChargePhone;
     }
 
-    public void setChargePhone(Integer chargePhone) {
+    public void setChargePhone(String chargePhone) {
         ChargePhone = chargePhone;
     }
 
@@ -94,19 +86,27 @@ public class Franchise {
         Email = email;
     }
 
-    public Integer getBalance() {
+    public int getBalance() {
         return Balance;
     }
 
-    public void setBalance(Integer balance) {
+    public void setBalance(int balance) {
         Balance = balance;
     }
 
-    public Integer getCreditCard() {
+    public int getCreditCard() {
         return CreditCard;
     }
 
-    public void setCreditCard(Integer creditCard) {
+    public void setCreditCard(int creditCard) {
         CreditCard = creditCard;
+    }
+
+    public String getIntroduce() {
+        return Introduce;
+    }
+
+    public void setIntroduce(String introduce) {
+        Introduce = introduce;
     }
 }

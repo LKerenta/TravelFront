@@ -1,49 +1,40 @@
 package com.travel.front.Entity;
 
 public class Order {
-    private Integer OrderID;
-    private Integer GoodsID;
-    private Integer Price;
-    private Integer UserID;
-    private Integer State;
+    private int OrderID;
+    private int GoodsID;
+    private int Price;
+    private int State;
 
-    public Integer getOrderID() {
+    public int getOrderID() {
         return OrderID;
     }
 
-    public void setOrderID(Integer orderID) {
+    public void setOrderID(int orderID) {
         OrderID = orderID;
     }
 
-    public Integer getGoodsID() {
+    public int getGoodsID() {
         return GoodsID;
     }
 
-    public void setGoodsID(Integer goodsID) {
+    public void setGoodsID(int goodsID) {
         GoodsID = goodsID;
     }
 
-    public Integer getPrice() {
+    public int getPrice() {
         return Price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(int price) {
         Price = price;
     }
 
-    public Integer getUserID() {
-        return UserID;
-    }
-
-    public void setUserID(Integer userID) {
-        UserID = userID;
-    }
-
-    public Integer getState() {
+    public int getState() {
         return State;
     }
 
-    public void setState(Integer state) {
+    public void setState(int state) {
         State = state;
     }
 }

@@ -1,33 +1,33 @@
 package com.travel.front.Entity;
 
 public class Comment {
-    private Integer CID;
-    private Integer UserID;
-    private Integer GoodsID;
+    private int CID;
+    private int GoodsID;
+    private int UserID;
     private String CText;
 
-    public Integer getCID() {
+    public int getCID() {
         return CID;
     }
 
-    public void setCID(Integer CID) {
+    public void setCID(int CID) {
         this.CID = CID;
     }
 
-    public Integer getUserID() {
-        return UserID;
-    }
-
-    public void setUserID(Integer userID) {
-        UserID = userID;
-    }
-
-    public Integer getGoodsID() {
+    public int getGoodsID() {
         return GoodsID;
     }
 
-    public void setGoodsID(Integer goodsID) {
+    public void setGoodsID(int goodsID) {
         GoodsID = goodsID;
+    }
+
+    public int getUserID() {
+        return UserID;
+    }
+
+    public void setUserID(int userID) {
+        UserID = userID;
     }
 
     public String getCText() {

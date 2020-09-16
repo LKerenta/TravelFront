@@ -1,18 +1,18 @@
 package com.travel.front.Entity;
 
 public class ScenicSpot {
-    private Integer SSID;
+    private int SSID;
     private String SSName;
     private String SSImage_1;
     private String SSImage_2;
     private String SSImage_3;
     private String Introduce;
 
-    public Integer getSSID() {
+    public int getSSID() {
         return SSID;
     }
 
-    public void setSSID(Integer SSID) {
+    public void setSSID(int SSID) {
         this.SSID = SSID;
     }
 

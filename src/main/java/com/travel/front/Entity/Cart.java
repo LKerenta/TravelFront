@@ -3,32 +3,32 @@ package com.travel.front.Entity;
 import java.sql.Date;
 
 public class Cart {
-    private Integer UserID;
-    private Integer GoodsID;
-    private Integer Number;
+    private int UserID;
+    private int GoodsID;
+    private int Number;
     private Date AddDate;
 
-    public Integer getUserID() {
+    public int getUserID() {
         return UserID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(int userID) {
         UserID = userID;
     }
 
-    public Integer getGoodsID() {
+    public int getGoodsID() {
         return GoodsID;
     }
 
-    public void setGoodsID(Integer goodsID) {
+    public void setGoodsID(int goodsID) {
         GoodsID = goodsID;
     }
 
-    public Integer getNumber() {
+    public int getNumber() {
         return Number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(int number) {
         Number = number;
     }
 

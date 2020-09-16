@@ -1,4 +1,6 @@
 package com.travel.front.ServiceImpl;
 
-public class OrderServiceImpl {
+import com.travel.front.Service.OrderService;
+
+public class OrderServiceImpl implements OrderService {
 }

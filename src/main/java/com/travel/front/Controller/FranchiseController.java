@@ -1,4 +1,4 @@
 package com.travel.front.Controller;
 
-public class FranchiesController {
+public class FranchiseController {
 }

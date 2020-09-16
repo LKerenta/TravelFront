@@ -1,4 +1,4 @@
 package com.travel.front.Mapper;
 
-public interface FranchiesMapper {
+public interface FranchiseMapper {
 }

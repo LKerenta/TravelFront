@@ -1,4 +1,6 @@
 package com.travel.front.ServiceImpl;
 
-public class GoodsServiceImpl {
+import com.travel.front.Service.GoodsService;
+
+public class GoodsServiceImpl implements GoodsService {
 }

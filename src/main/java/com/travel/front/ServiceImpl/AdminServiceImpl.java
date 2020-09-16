@@ -1,4 +1,6 @@
 package com.travel.front.ServiceImpl;
 
-public class AdminServiceImpl {
+import com.travel.front.Service.AdminService;
+
+public class AdminServiceImpl implements AdminService {
 }

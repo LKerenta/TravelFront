@@ -1,4 +1,4 @@
 package com.travel.front.Service;
 
-public interface FranchiesService {
+public interface FranchiseService {
 }

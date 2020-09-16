@@ -8,7 +8,7 @@
 
     <title>评论管理</title>
 
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <!--FooTable-->
@@ -208,24 +208,16 @@
         <div class="wrapper wrapper-content">
             <div class="ibox-content m-b-sm border-bottom">
                 <div class="row">
-                    <form class="form-inline">
-                    <div class="col-sm-4">
+                    <form class="form-inline" action="/Tourist_Backstage/comment_list" method="post">
                         <div class="form-group">
-                            <label for="product_name">商品名</label>
-                            <input type="text" id="product_name" name="product_name" value="" placeholder="Product Name" class="form-control">
+                            <label for="GoodsName">商品名</label>
+                            <input type="text" id="GoodsName" name="GoodsName" th:value="${GoodsName}" placeholder="Product Name" class="form-control">
                         </div>
-                    </div>
-                    <div class="col-sm-4">
                         <div class="form-group">
-                            <label for="user">用户名</label>
-                            <input type="text" id="user" name="user" value="" placeholder="User" class="form-control">
+                            <label for="UserName">用户名</label>
+                            <input type="text" id="UserName" name="UserName" th:value="${UserName}" placeholder="User" class="form-control">
                         </div>
-                    </div>
-                    <div class="col-sm-2 col-sm-offset-1">
-                        <div class="form-group">
-                            <button class="btn btn-primary btn-w-m" type="button">搜索</button>
-                        </div>
-                    </div>
+                        <button class="btn btn-primary btn-w-m" type="submit">搜索</button>
                     </form>
                 </div>
 
@@ -236,264 +228,57 @@
                     <div class="ibox">
                         <div class="ibox-content">
 
-                            <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="5">
-                            <thead>
+                            <table class="table table-stripped toggle-arrow-tiny">
                                 <tr>
 
-                                    <th data-toggle="true">商品ID</th>
+                                    <th data-toggle="true">评论ID</th>
                                     <th>商品名</th>
-                                    <th>经销商</th>
-                                    <th data-hide="all">介绍</th>
-                                    <th>价格</th>
-                                    <th>计划开团人数</th>
-                                    <th>计划开团日期</th>
+                                    <th>用户名</th>
+                                    <th data-hide="all">评论</th>
                                     <th class="text-right" data-sort-ignore="true">动作</th>
 
                                 </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                          001
-                                        </td>
-                                        <td>
-                                            武汉一日游
-                                        </td>
-                                        <td>
-                                            Seller example
-                                        </td>
-                                        <td>
-                                          这是一个长期公认的事实，一个读者会被可读的
-                                          一页的内容，当看它的布局。使用Lorem存有点
-                                          它有一个更多或更少的正常分布的信件，而不是使用
-                                          内容在这里，内容在这里，使它看起来像可读的英语。
-                                        </td>
-                                        <td>
-                                            $50.00
-                                        </td>
-                                        <td>
-                                            30
-                                        </td>
-                                        <td>
-                                            2020-09-01
-                                        </td>
-                                        <td class="text-right">
-                                            <div class="btn-group">
-                                                <button class="btn-white btn btn-xs">详情</button>
-                                                <button class="btn-white btn btn-xs">通过</button>
-                                                <button class="btn-white btn btn-xs">拒绝</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            001
-                                          </td>
-                                          <td>
-                                              武汉一日游
-                                          </td>
-                                          <td>
-                                              Seller example
-                                          </td>
-                                          <td>
-                                            这是一个长期公认的事实，一个读者会被可读的
-                                            一页的内容，当看它的布局。使用Lorem存有点
-                                            它有一个更多或更少的正常分布的信件，而不是使用
-                                            内容在这里，内容在这里，使它看起来像可读的英语。
-                                          </td>
-                                          <td>
-                                              $50.00
-                                          </td>
-                                          <td>
-                                              30
-                                          </td>
-                                          <td>
-                                              2020-09-01
-                                          </td>
-                                          <td class="text-right">
-                                              <div class="btn-group">
-                                                  <button class="btn-white btn btn-xs">详情</button>
-                                                  <button class="btn-white btn btn-xs">通过</button>
-                                                  <button class="btn-white btn btn-xs">拒绝</button>
-                                              </div>
-                                          </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            001
-                                          </td>
-                                          <td>
-                                              武汉一日游
-                                          </td>
-                                          <td>
-                                              Seller example
-                                          </td>
-                                          <td>
-                                            这是一个长期公认的事实，一个读者会被可读的
-                                            一页的内容，当看它的布局。使用Lorem存有点
-                                            它有一个更多或更少的正常分布的信件，而不是使用
-                                            内容在这里，内容在这里，使它看起来像可读的英语。
-                                          </td>
-                                          <td>
-                                              $50.00
-                                          </td>
-                                          <td>
-                                              30
-                                          </td>
-                                          <td>
-                                              2020-09-01
-                                          </td>
-                                          <td class="text-right">
-                                              <div class="btn-group">
-                                                  <button class="btn-white btn btn-xs">详情</button>
-                                                  <button class="btn-white btn btn-xs">通过</button>
-                                                  <button class="btn-white btn btn-xs">拒绝</button>
-                                              </div>
-                                          </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            001
-                                          </td>
-                                          <td>
-                                              武汉一日游
-                                          </td>
-                                          <td>
-                                              Seller example
-                                          </td>
-                                          <td>
-                                            这是一个长期公认的事实，一个读者会被可读的
-                                            一页的内容，当看它的布局。使用Lorem存有点
-                                            它有一个更多或更少的正常分布的信件，而不是使用
-                                            内容在这里，内容在这里，使它看起来像可读的英语。
-                                          </td>
-                                          <td>
-                                              $50.00
-                                          </td>
-                                          <td>
-                                              30
-                                          </td>
-                                          <td>
-                                              2020-09-01
-                                          </td>
-                                          <td class="text-right">
-                                              <div class="btn-group">
-                                                  <button class="btn-white btn btn-xs">详情</button>
-                                                  <button class="btn-white btn btn-xs">通过</button>
-                                                  <button class="btn-white btn btn-xs">拒绝</button>
-                                              </div>
-                                          </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            001
-                                          </td>
-                                          <td>
-                                              武汉一日游
-                                          </td>
-                                          <td>
-                                              Seller example
-                                          </td>
-                                          <td>
-                                            这是一个长期公认的事实，一个读者会被可读的
-                                            一页的内容，当看它的布局。使用Lorem存有点
-                                            它有一个更多或更少的正常分布的信件，而不是使用
-                                            内容在这里，内容在这里，使它看起来像可读的英语。
-                                          </td>
-                                          <td>
-                                              $50.00
-                                          </td>
-                                          <td>
-                                              30
-                                          </td>
-                                          <td>
-                                              2020-09-01
-                                          </td>
-                                          <td class="text-right">
-                                              <div class="btn-group">
-                                                  <button class="btn-white btn btn-xs">详情</button>
-                                                  <button class="btn-white btn btn-xs">通过</button>
-                                                  <button class="btn-white btn btn-xs">拒绝</button>
-                                              </div>
-                                          </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            001
-                                          </td>
-                                          <td>
-                                              武汉一日游
-                                          </td>
-                                          <td>
-                                              Seller example
-                                          </td>
-                                          <td>
-                                            这是一个长期公认的事实，一个读者会被可读的
-                                            一页的内容，当看它的布局。使用Lorem存有点
-                                            它有一个更多或更少的正常分布的信件，而不是使用
-                                            内容在这里，内容在这里，使它看起来像可读的英语。
-                                          </td>
-                                          <td>
-                                              $50.00
-                                          </td>
-                                          <td>
-                                              30
-                                          </td>
-                                          <td>
-                                              2020-09-01
-                                          </td>
-                                          <td class="text-right">
-                                              <div class="btn-group">
-                                                  <button class="btn-white btn btn-xs">详情</button>
-                                                  <button class="btn-white btn btn-xs">通过</button>
-                                                  <button class="btn-white btn btn-xs">拒绝</button>
-                                              </div>
-                                          </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            001
-                                          </td>
-                                          <td>
-                                              武汉一日游
-                                          </td>
-                                          <td>
-                                              Seller example
-                                          </td>
-                                          <td>
-                                            这是一个长期公认的事实，一个读者会被可读的
-                                            一页的内容，当看它的布局。使用Lorem存有点
-                                            它有一个更多或更少的正常分布的信件，而不是使用
-                                            内容在这里，内容在这里，使它看起来像可读的英语。
-                                          </td>
-                                          <td>
-                                              $50.00
-                                          </td>
-                                          <td>
-                                              30
-                                          </td>
-                                          <td>
-                                              2020-09-01
-                                          </td>
-                                          <td class="text-right">
-                                              <div class="btn-group">
-                                                  <button class="btn-white btn btn-xs">详情</button>
-                                                  <button class="btn-white btn btn-xs">通过</button>
-                                                  <button class="btn-white btn btn-xs">拒绝</button>
-                                              </div>
-                                          </td>
-                                    </tr>
-
-
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="9">
-                                            <ul class="pagination pull-right"></ul>
-                                        </td>
-                                    </tr>
-                                </tfoot>
+                                <tr th:each="Comment,commentStat:${comments.list}">
+                                    <td th:text="${Comment.CID}">
+                                        001
+                                    </td>
+                                    <td th:text="${GoodsNameList[commentStat.index]}">
+                                        武汉一日游
+                                    </td>
+                                    <td th:text="${UserNameList[commentStat.index]}">
+                                        user001
+                                    </td>
+                                    <td th:text="${Comment.CText}">
+                                        风景很不错，导游的态度也很好，这次是和父母一起参加的旅游团，对于老人也很合适，下次出游还会考虑。
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="btn-group">
+                                            <button class="btn-white btn btn-xs">详情</button>
+                                            <button class="btn-white btn btn-xs"><a th:href="@{'delete_comment/'+${Comment.CID}}">删除</a></button>
+                                        </div>
+                                    </td>
+                                </tr>
                             </table>
+
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination">
+                                    <li>
+                                        <a th:href="@{/Tourist_Backstage/comment_list(PageSize=5,PageIndex=${comments.pageNum-1},GoodsName=${GoodsName},UserName=${UserName})}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <th:block th:each="nav : ${comments.navigatepageNums}">
+                                        <li th:class="${nav==comments.pageNum}?'active':''">
+                                            <a th:href="@{/Tourist_Backstage/comment_list(PageSize=5,PageIndex=${nav},GoodsName=${GoodsName},UserName=${UserName})}" th:text="${nav}"></a>
+                                        </li>
+                                    </th:block>
+                                    <li>
+                                        <a th:href="@{/Tourist_Backstage/comment_list(PageSize=5,PageIndex=${comments.pageNum+1},GoodsName=${GoodsName},UserName=${UserName})}" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,6 @@
 package com.travel.front.ServiceImpl;
 
-public class CommentServiceImpl {
+import com.travel.front.Service.CommentService;
+
+public class CommentServiceImpl implements CommentService {
 }

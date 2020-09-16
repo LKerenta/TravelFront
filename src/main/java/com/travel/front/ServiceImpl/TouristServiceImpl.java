@@ -1,4 +1,6 @@
 package com.travel.front.ServiceImpl;
 
-public class TouristServiceImpl {
+import com.travel.front.Service.TouristService;
+
+public class TouristServiceImpl  implements TouristService {
 }

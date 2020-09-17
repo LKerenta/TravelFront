@@ -19,4 +19,15 @@ public interface LoginMapper {
 
     @Select("SELECT * FROM manager WHERE MaID=#{ID} AND Password=#{Password}")
     Manager RM(UserType userType);
+
+    @Select("SELECT UserID FROM franchise WHERE FranName=#{UserName}")
+    Integer getNewIDFran(String UserName);
+
+//    Insert
+    @Insert("insert into franchise (Password,FranName,FranImage,WhoInCharge,ChargeID,ChargePhone,Phone,Email,Balance,CreditCard,Introduce)" +
+            "values (#{Password},#{FranName},#{FranImage},#{WhoInCharge},#{ChargeID},#{ChargePhone},#{Phone},#{Email},#{Balance},#{CreditCard},#{Introduce})")
+    public Integer Registry(Franchise franchise);
+
+    @Insert("insert into usertype (ID,Password,UserType) values (#{ID},#{Password},#{UserType})")
+    public Integer userTypeInsert(UserType userType);
 }

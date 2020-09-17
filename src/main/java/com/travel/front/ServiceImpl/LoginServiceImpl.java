@@ -15,6 +15,7 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private LoginMapper loginMapper;
 
+
     @Override
     public Integer login(UserType userType) {
         UserType loginUser = null;
@@ -37,4 +38,27 @@ public class LoginServiceImpl implements LoginService {
     public Manager RM(UserType userType) {
         return loginMapper.RM(userType);
     }
+
+    @Override
+    public Integer Registry(User user) {
+        return null;
+    }
+
+    @Override
+    public Integer Registry(Franchise franchise) {
+        loginMapper.Registry(franchise);
+        Integer ID = loginMapper.getNewIDFran(franchise.getFranName());
+        UserType userType = new UserType();
+        userType.setID(ID);
+        userType.setPassword(franchise.getPassword());
+        userType.setType(1);
+        return loginMapper.userTypeInsert(userType);
+    }
+
+    @Override
+    public Integer Registry(Manager manager) {
+        return null;
+    }
+
+
 }

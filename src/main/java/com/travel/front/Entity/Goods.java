@@ -11,7 +11,7 @@ public class Goods {
     private int FranID;
     private Date LaunchDate;
     private String Ways;
-    private boolean Meals;
+    private int Meals;
 
     public int getGoodsID() {
         return GoodsID;
@@ -77,11 +77,11 @@ public class Goods {
         Ways = ways;
     }
 
-    public boolean isMeals() {
+    public int isMeals() {
         return Meals;
     }
 
-    public void setMeals(boolean meals) {
+    public void setMeals(int meals) {
         Meals = meals;
     }
 }

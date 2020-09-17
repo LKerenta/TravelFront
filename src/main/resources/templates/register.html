@@ -38,7 +38,7 @@
     <div class="middle-box text-center loginscreen   animated fadeInDown">
         <div class="form">
             <h3>注册抱团旅游网站</h3>
-            <form class="m-t" role="form" action="index.html" id="form">
+            <form class="m-t" role="form" action="/Tourist/login/register" id="form" method="post">
                 
                 <div class="form-group">
                     <input type="text" class="form-control" name="user_name" placeholder="姓名" required="">
@@ -51,10 +51,10 @@
                     <input type="password" class="form-control" name="password" placeholder="密码" required="">
                 </div>
                 <div class="form-group">
-                    <select class="form-control" name="select">
-                        <option value="0">---请选择您的身份---</option>
-                        <option value="1">游客</option>
-                        <option value="2">经销商</option>
+                    <select class="form-control" name="type">
+                        <option value="-1">---请选择您的身份---</option>
+                        <option value="2">游客</option>
+                        <option value="1">经销商</option>
                     </select>
                 </div>
                 

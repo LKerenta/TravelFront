@@ -1,17 +1,15 @@
 package com.travel.front.Controller;
 
 
-import com.travel.front.Entity.Franchise;
-import com.travel.front.Entity.Manager;
-import com.travel.front.Entity.User;
+import com.travel.front.Entity.*;
 import com.travel.front.Service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.travel.front.Entity.UserType;
 
 import java.util.List;
 
@@ -50,5 +48,24 @@ public class LoginController {
             return "index_T";
         }
         else return "login";
+    }
+    @GetMapping("/index/register")
+    public String RegPage(){
+        return "register";
+    }
+
+    @PostMapping("/login/register")
+    public String Registry(Register register,Model model){
+        Integer i = register.getType();
+        if(i == 1){
+            Franchise franchise = new Franchise();
+            franchise.setFranName(register.getUser_name());
+            franchise.setPassword(register.getPassword());
+            franchise.setPhone(register.getPhone());
+            loginService.Registry(franchise);
+            model.addAttribute("Info",franchise);
+            return "index_F";
+        }
+        return null;
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
 
@@ -28,12 +28,11 @@
                         <img alt="image" class="img-circle" src="/img/profile_small.jpg" />
                          </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Admin</strong>
-                         </span> <span class="text-muted text-xs block">经销商 <b class="caret"></b></span> </span> </a>
+                        <span class="clear"> <span class="block m-t-xs">
+                            <table class="table"><tr><td th:text="${Info.FranName}"></td></tr></table>
+                         </span> <span class="text-muted text-xs block" >经销商 <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="profile.html">个人信息</a></li>
-                            <li><a href="contacts.html">联系方式</a></li>
-                            <li><a href="mailbox.html">邮箱</a></li>
                             <li class="divider"></li>
                             <li><a href="login.html">退出登录</a></li>
                         </ul>
@@ -43,7 +42,7 @@
                     </div>
                 </li>
                 <li class="active">
-                    <a href="index.html"><i class="fa fa-home"></i> <span class="nav-label">首页</span></a>
+                    <a href="/Franchise/index"><i class="fa fa-home"></i> <span class="nav-label">首页</span></a>
                 </li>
                 <!--<li>
                     <a href="#"><i class="fa fa-users"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
@@ -54,22 +53,22 @@
                     </ul>
                 </li>-->
                 <li>
-                    <a href="order_list.html"><i class="fa fa-archive"></i> <span class="nav-label">订单管理</span></a>
+                    <a href="/Franchise/Order"><i class="fa fa-archive"></i> <span class="nav-label">订单管理</span></a>
                 </li>
                 <li>
-                    <a href="item_list.html"><i class="fa fa-shopping-cart"></i> <span class="nav-label">商品管理</span></a>
+                    <a href="/Franchise/item"><i class="fa fa-shopping-cart"></i> <span class="nav-label">商品管理</span></a>
                 </li>
                 <!--<li>
                     <a href="item_examine.html"><i class="fa fa-upload"></i> <span class="nav-label">商品审核</span></a>
                 </li>-->
                 <li>
-                    <a href="comment_list.html"><i class="fa fa-comments"></i> <span class="nav-label">评论管理</span></a>
+                    <a href="/Franchise/comment"><i class="fa fa-comments"></i> <span class="nav-label">评论管理</span></a>
                 </li>
                 <li>
-                    <a href="statistics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">数据统计</span></a>
+                    <a href="/Franchise/statistics"><i class="fa fa-pie-chart"></i> <span class="nav-label">数据统计</span></a>
                 </li>
                 <li>
-                    <a href="asset_manage.html"><i class="fa fa-money"></i> <span class="nav-label">资产管理</span></a>
+                    <a href="/Franchise/asset"><i class="fa fa-money"></i> <span class="nav-label">资产管理</span></a>
                 </li>
             </ul>
 

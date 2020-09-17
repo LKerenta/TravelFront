@@ -11,4 +11,7 @@ public interface LoginService {
     User RT(UserType userType);
     Franchise RF(UserType userType);
     Manager RM(UserType userType);
+    Integer Registry(User user);
+    Integer Registry(Franchise franchise);
+    Integer Registry(Manager manager);
 }

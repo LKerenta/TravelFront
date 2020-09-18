@@ -406,42 +406,21 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td><small>商品1</small></td>
-                                            <td>2020-09-01</td>
-                                            <td>Samantha</td>
-                                            <td>$50</td>
+                                        <tr th:each="item,GoodsStat:${items}">
+                                            <td th:text="${item.GoodsName}">
+                                                Goods ID
+                                            </td>
+                                            <td th:text="${item.LaunchDate}">
+                                                GoodsName
+                                            </td>
+                                            <td th:text="${item.FranID}">
+                                                Price
+                                            </td>
+                                            <td th:text="${item.Price}">
+                                                Number
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td><small>商品2</small> </td>
-                                            <td>2020-09-01</td>
-                                            <td>Monica</td>
-                                            <td>$50</td>
-                                        </tr>
-                                        <tr>
-                                            <td><small>商品3</small> </td>
-                                            <td>2020-09-01</td>
-                                            <td>John</td>
-                                            <td>$50</td>
-                                        </tr>
-                                        <tr>
-                                            <td><small>商品4</small> </td>
-                                            <td>2020-09-01</td>
-                                            <td>Agnes</td>
-                                            <td>$50</td>
-                                        </tr>
-                                        <tr>
-                                            <td><small>商品5</small> </td>
-                                            <td>2020-09-01</td>
-                                            <td>Janet</td>
-                                            <td>$50</td>
-                                        </tr>
-                                        <tr>
-                                            <td><small>商品6</small></td>
-                                            <td>2020-09-01</td>
-                                            <td>Amelia</td>
-                                            <td>$50</td>
-                                        </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -472,41 +451,20 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td><small>001</small></td>
-                                            <td>武汉一日游</td>
-                                            <td>Samantha</td>
-                                            <td class="text-center"><span class="label label-primary">$50</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><small>002</small> </td>
-                                            <td>武汉一日游</td>
-                                            <td>Monica</td>
-                                            <td class="text-center"><span class="label label-primary">$50</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><small>003</small> </td>
-                                            <td>武汉一日游</td>
-                                            <td>John</td>
-                                            <td class="text-center"><span class="label label-primary">$50</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><small>004</small> </td>
-                                            <td>武汉一日游</td>
-                                            <td>Agnes</td>
-                                            <td class="text-center"><span class="label label-primary">$50</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><small>005</small> </td>
-                                            <td>武汉一日游</td>
-                                            <td>Janet</td>
-                                            <td class="text-center"><span class="label label-primary">$50</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><small>006</small></td>
-                                            <td>武汉一日游</td>
-                                            <td>Amelia</td>
-                                            <td class="text-center"><span class="label label-primary">$50</span></td>
+
+                                        <tr th:each="View,orderStat:${orders}">
+                                            <td th:text="${View.OrderID}">
+                                                Order ID
+                                            </td>
+                                            <td th:text="${View.GoodsID}">
+                                                GoodsID
+                                            </td>
+                                            <td th:text="${View.UserID}">
+                                                Price
+                                            </td>
+                                            <td th:text="${View.Price}">
+                                                UserID
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>

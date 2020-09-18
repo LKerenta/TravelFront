@@ -3,22 +3,22 @@ package com.travel.front.Entity;
 import java.sql.Date;
 
 public class Goods {
-    private int GoodsID;
+    private Integer GoodsID;
     private String GoodsName;
-    private int Price;
-    private int Number;
-    private int SSID;
-    private int FranID;
+    private Integer Price;
+    private Integer Number;
+    private Integer SSID;
+    private Integer FranID;
     private Date LaunchDate;
     private String Ways;
-    private int Meals;
-    private int State;
+    private Integer Meals;
+    private Integer State;
 
-    public int getGoodsID() {
+    public Integer getGoodsID() {
         return GoodsID;
     }
 
-    public void setGoodsID(int goodsID) {
+    public void setGoodsID(Integer goodsID) {
         GoodsID = goodsID;
     }
 
@@ -30,35 +30,35 @@ public class Goods {
         GoodsName = goodsName;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return Price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         Price = price;
     }
 
-    public int getSSID() {
-        return SSID;
-    }
-
-    public void setSSID(int SSID) {
-        this.SSID = SSID;
-    }
-
-    public int getNumber() {
+    public Integer getNumber() {
         return Number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(Integer number) {
         Number = number;
     }
 
-    public int getFranID() {
+    public Integer getSSID() {
+        return SSID;
+    }
+
+    public void setSSID(Integer SSID) {
+        this.SSID = SSID;
+    }
+
+    public Integer getFranID() {
         return FranID;
     }
 
-    public void setFranID(int franID) {
+    public void setFranID(Integer franID) {
         FranID = franID;
     }
 
@@ -78,19 +78,19 @@ public class Goods {
         Ways = ways;
     }
 
-    public void setMeals(int meals) {
-        Meals = meals;
-    }
-
-    public int getMeals() {
+    public Integer getMeals() {
         return Meals;
     }
 
-    public int getState() {
+    public void setMeals(Integer meals) {
+        Meals = meals;
+    }
+
+    public Integer getState() {
         return State;
     }
 
-    public void setState(int state) {
+    public void setState(Integer state) {
         State = state;
     }
 }

@@ -34,8 +34,12 @@ public class FranchiseController {
 
     @GetMapping("/index")
     public String indexFran(Model model){
-        Login userType = loginService.getLoginUser();
-        model.addAttribute("Info",userType);
+        Login login = loginService.getLoginUser();
+        List<Goods> items = goodsService.getGoodsByFranID(login.getID());
+        List<Order> orders = franchiseService.getOrdersByFran(login.getID());
+        model.addAttribute("Info",login);
+        model.addAttribute("items",items);
+        model.addAttribute("orders",orders);
         return "index_F";
     }
 

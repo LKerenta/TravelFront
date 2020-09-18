@@ -4,6 +4,7 @@ import com.travel.front.Entity.Comment;
 import com.travel.front.Entity.Franchise;
 import com.travel.front.Entity.Goods;
 import com.travel.front.Entity.Order;
+import com.travel.front.Mapper.FranchiseMapper;
 import com.travel.front.Mapper.GoodsMapper;
 import com.travel.front.Mapper.OrderMapper;
 import com.travel.front.Service.FranchiseService;
@@ -20,9 +21,13 @@ public class FranchiseServiceImpl implements FranchiseService {
     @Autowired
     private GoodsMapper goodsMapper;
 
+    @Autowired
+    private FranchiseMapper franchiseMapper;
+
+
     @Override
-    public List<Order> getOrdersByFran(Franchise franchise) {
-        return orderMapper.getAllOrderByFran(franchise.getFranID());
+    public List<Order> getOrdersByFran(int franchise) {
+        return orderMapper.getAllOrderByFran(franchise);
     }
 
     @Override
@@ -34,5 +39,15 @@ public class FranchiseServiceImpl implements FranchiseService {
     public List<Comment> getCommentByGoods(Goods goods) {
 //        List<Goods> goods1 =
         return null;
+    }
+
+    @Override
+    public Franchise getFranByName(String FranName) {
+        return franchiseMapper.getFranByName(FranName);
+    }
+
+    @Override
+    public Integer updateFranInfo(Franchise franchise) {
+        return franchiseMapper.updateFran(franchise);
     }
 }

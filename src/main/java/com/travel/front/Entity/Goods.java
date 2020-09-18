@@ -6,12 +6,13 @@ public class Goods {
     private int GoodsID;
     private String GoodsName;
     private int Price;
-    private int SSID;
     private int Number;
+    private int SSID;
     private int FranID;
     private Date LaunchDate;
     private String Ways;
     private int Meals;
+    private int State;
 
     public int getGoodsID() {
         return GoodsID;
@@ -77,11 +78,19 @@ public class Goods {
         Ways = ways;
     }
 
-    public int isMeals() {
+    public void setMeals(int meals) {
+        Meals = meals;
+    }
+
+    public int getMeals() {
         return Meals;
     }
 
-    public void setMeals(int meals) {
-        Meals = meals;
+    public int getState() {
+        return State;
+    }
+
+    public void setState(int state) {
+        State = state;
     }
 }

@@ -21,6 +21,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String userLogin(){
+        loginService.logOut();
         return "login";
     }
     @PostMapping("/index")
@@ -29,22 +30,26 @@ public class LoginController {
         Integer i = loginService.login(userType);
 
 
+
         if(i == 0)
         {
             Manager manager = loginService.RM(userType);
-            model.addAttribute("Info",manager);
+            Login login = loginService.getLoginUser();
+            model.addAttribute("Info",login);
             return "index";
         }
         else if(i == 1)
         {
             Franchise franchise = loginService.RF(userType);
-            model.addAttribute("Info",franchise);
+            Login login = loginService.getLoginUser();
+            model.addAttribute("Info",login);
             return "index_F";
         }
         else if(i == 2)
         {
             User user = loginService.RT(userType);
-            model.addAttribute("Info",user);
+            Login login = loginService.getLoginUser();
+            model.addAttribute("Info",login);
             return "index_T";
         }
         else return "login";
@@ -63,8 +68,15 @@ public class LoginController {
             franchise.setPassword(register.getPassword());
             franchise.setPhone(register.getPhone());
             loginService.Registry(franchise);
-            model.addAttribute("Info",franchise);
-            return "index_F";
+            return "login";
+        }
+        if(i == 2){
+            User user = new User();
+            user.setUserName(register.getUser_name());
+            user.setPassword(register.getPassword());
+            user.setPhone(register.getPhone());
+            loginService.Registry(user);
+            return "login";
         }
         return null;
     }

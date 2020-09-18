@@ -8,9 +8,10 @@ import com.travel.front.Entity.Order;
 import java.util.List;
 
 public interface FranchiseService {
-    List<Order> getOrdersByFran(Franchise franchise);
+    List<Order> getOrdersByFran(int franchise);
     Integer updateOrderState(Order order);
     List<Comment> getCommentByGoods(Goods goods);
-
+    Franchise getFranByName(String FranName);
+    Integer updateFranInfo(Franchise franchise);
 
 }

@@ -11,7 +11,7 @@ public class Franchise {
     private String Phone;
     private String Email;
     private int Balance;
-    private int CreditCard;
+    private String CreditCard;
     private String Introduce;
 
     public int getFranID() {
@@ -94,11 +94,11 @@ public class Franchise {
         Balance = balance;
     }
 
-    public int getCreditCard() {
+    public String getCreditCard() {
         return CreditCard;
     }
 
-    public void setCreditCard(int creditCard) {
+    public void setCreditCard(String creditCard) {
         CreditCard = creditCard;
     }
 

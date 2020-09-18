@@ -1,9 +1,7 @@
 package com.travel.front.Mapper;
 
 import com.travel.front.Entity.Comment;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -47,4 +45,21 @@ public interface CommentMapper {
 
     @Delete("DELETE from comment where CID=#{CID}")
     Integer deleteComment(Integer CID);
+
+    @Select("select * from comment where UserID=#{ID}")
+    List<Comment> getCommentByUser(Integer ID);
+
+    @Select("select * from comment where GoodsID=#{ID}")
+    List<Comment> getCommentByItem(Integer ID);
+
+    @Select("select * from comment where CText like '%${search}%'")
+    List<Comment> getCommentByKeyword(String search);
+    //    Insert
+    @Insert("insert into comment (GoodsID,UserID,CText) values (#{GoodsID},#{UserID},#{CText})")
+    Integer writeComment(Comment comment);
+
+    //    Update
+    @Update("update comment set CText=#{CText} where UserID=#{UserID} and GoodsID=#{GoodsID}")
+    Integer updateComment(Comment comment);
+
 }

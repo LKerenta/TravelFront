@@ -2,6 +2,8 @@ package com.travel.front.Controller;
 
 
 import com.travel.front.Entity.*;
+import com.travel.front.Service.FranchiseService;
+import com.travel.front.Service.GoodsService;
 import com.travel.front.Service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,12 @@ import java.util.List;
 public class LoginController {
     @Autowired
     private LoginService loginService;
+
+    @Autowired
+    private GoodsService goodsService;
+
+    @Autowired
+    private FranchiseService franchiseService;
 
     @GetMapping("/login")
     public String userLogin(){
@@ -42,7 +50,11 @@ public class LoginController {
         {
             Franchise franchise = loginService.RF(userType);
             Login login = loginService.getLoginUser();
+            List<Goods> items = goodsService.getGoodsByFranID(franchise.getFranID());
+            List<Order> orders = franchiseService.getOrdersByFran(franchise.getFranID());
             model.addAttribute("Info",login);
+            model.addAttribute("items",items);
+            model.addAttribute("orders",orders);
             return "index_F";
         }
         else if(i == 2)

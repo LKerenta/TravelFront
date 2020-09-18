@@ -1,16 +1,16 @@
 package com.travel.front.Entity;
 
 public class Comment {
-    private int CID;
-    private int GoodsID;
-    private int UserID;
+    private Integer CID;
+    private Integer GoodsID;
+    private Integer UserID;
     private String CText;
 
-    public int getCID() {
+    public Integer getCID() {
         return CID;
     }
 
-    public void setCID(int CID) {
+    public void setCID(Integer CID) {
         this.CID = CID;
     }
 

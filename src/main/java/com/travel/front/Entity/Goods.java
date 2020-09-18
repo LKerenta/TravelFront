@@ -12,6 +12,15 @@ public class Goods {
     private Integer Meals;
     private Integer SSID;
     private Integer FranID;
+    private Integer State;
+
+    public Integer getState() {
+        return State;
+    }
+
+    public void setState(Integer state) {
+        State = state;
+    }
 
     public Integer getGoodsID() {
         return GoodsID;

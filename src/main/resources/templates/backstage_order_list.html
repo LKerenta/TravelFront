@@ -209,68 +209,35 @@
         <div class="wrapper wrapper-content animated fadeInRight ecommerce">
 
             <div class="ibox-content m-b-sm border-bottom">
-                <form>
+                <form action="/Tourist_Backstage/order_list" method="post">
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <div class="form-group">
-                            <label class="control-label" for="order_id">订单 ID</label>
-                            <input type="text" id="order_id" name="order_id" value="" placeholder="Order ID" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label class="control-label" for="status">订单状态</label>
-                            <select name="status" id="status" class="form-control">
-                                <option value="1" selected>未完成</option>
-                                <option value="0">已完成</option>
-                            </select> 
+                            <label for="OrderID">订单ID</label>
+                            <input type="text" id="OrderID" name="OrderID" th:value="${OrderID}" placeholder="OrderID" class="form-control">
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <label class="control-label" for="customer">客户</label>
-                            <input type="text" id="customer" name="customer" value="" placeholder="Customer" class="form-control">
+                            <label for="GoodsName">商品名</label>
+                            <input type="text" id="GoodsName" name="GoodsName" th:value="${GoodsName}" placeholder="GoodsName" class="form-control">
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <label class="control-label" for="seller">经销商</label>
-                            <input type="text" id="seller" name="seller" value="" placeholder="Seller" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label class="control-label" for="date_added">添加日期</label>
-                            <div class="input-group date">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="date_added" type="text" class="form-control" value="03/04/2014">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label class="control-label" for="date_modified">修改日期</label>
-                            <div class="input-group date">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="date_modified" type="text" class="form-control" value="03/06/2014">
-                            </div>
+                            <label for="UserName">用户名</label>
+                            <input type="text" id="UserName" name="UserName" th:value="${UserName}" placeholder="UserName" class="form-control">
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <label class="control-label" for="amount">金额</label>
-                            <input type="text" id="amount" name="amount" value="" placeholder="Amount" class="form-control">
+                            <label for="FranName">经销商名</label>
+                            <input type="text" id="FranName" name="FranName" th:value="${FranName}" placeholder="FranName" class="form-control">
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <label class="control-label" for="item">商品</label>
-                            <input type="text" id="item" name="item" value="" placeholder="Item" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="form-group">
-                            <button class="btn btn-primary btn-w-m" type="button">搜索</button>
+                            <button class="btn btn-primary btn-w-m" type="submit">搜索</button>
                         </div>
                     </div>
                 </div>
@@ -283,48 +250,40 @@
                     <div class="ibox">
                         <div class="ibox-content">
 
-                            <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="7">
-                                <thead>
+                            <table class="table table-stripped toggle-arrow-tiny">
                                 <tr>
 
                                     <th>订单 ID</th>
-                                    <th data-hide="phone">客户</th>
-                                    <th data-hide="phone">经销商</th>
-                                    <th data-hide="phone">商品</th>
-                                    <th data-hide="phone">金额</th>
-                                    <th data-hide="phone">添加日期</th>
-                                    <th data-hide="phone,tablet" >修改日期</th>
-                                    <th data-hide="phone">订单状态</th>
-                                    <th class="text-right">操作</th>
-
+                                    <th>商品名</th>
+                                    <th>价格</th>
+                                    <th>用户名</th>
+                                    <th>经销商名</th>
+                                    <th>状态</th>
+                                    <th>创建日期</th>
+                                    <th>操作</th>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
+                                <tr th:each="Order,OrderStat:${Orders.list}">
+                                    <td th:text="${Order.OrderID}">
                                        3214
                                     </td>
-                                    <td>
+                                    <td th:text="${Goods[(Orders.PageNum-1)*5+OrderStat.index]}">
                                         Customer example
                                     </td>
-                                    <td>
+                                    <td th:text="${Order.Price}">
                                         Seller example
                                     </td>
-                                    <td>
+                                    <td th:text="${Users[(Orders.PageNum-1)*5+OrderStat.index]}">
                                         Item example
                                     </td>
-                                    <td>
+                                    <td th:text="${Frans[(Orders.PageNum-1)*5+OrderStat.index]}">
                                         $500.00
                                     </td>
-                                    <td>
-                                        03/04/2015
+                                    <td th:text="${States[Order.State]}">
+                                        <span class="label label-primary">Pending</span>
                                     </td>
-                                    <td>
+                                    <td th:text="${Order.Date}">
                                         03/05/2015
                                     </td>
-                                    <td>
-                                        <span class="label label-primary">Pending</span>
-                                    </td>
                                     <td class="text-right">
                                         <div class="btn-group">
                                             <button class="btn-white btn btn-xs">查看</button>
@@ -333,544 +292,27 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        324
-                                    </td>
-                                    <td>
-                                        Customer example
-                                    </td>
-                                    <td>
-                                        Seller example
-                                    </td>
-                                    <td>
-                                        Item example
-                                    </td>
-                                    <td>
-                                        $320.00
-                                    </td>
-                                    <td>
-                                        12/04/2015
-                                    </td>
-                                    <td>
-                                        21/07/2015
-                                    </td>
-                                    <td>
-                                        <span class="label label-primary">Pending</span>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">查看</button>
-                                            <button class="btn-white btn btn-xs">修改</button>
-                                            <button class="btn-white btn btn-xs">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        546
-                                    </td>
-                                    <td>
-                                        Customer example
-                                    </td>
-                                    <td>
-                                        Seller example
-                                    </td>
-                                    <td>
-                                        Item example
-                                    </td>
-                                    <td>
-                                        $2770.00
-                                    </td>
-                                    <td>
-                                        06/07/2015
-                                    </td>
-                                    <td>
-                                        04/08/2015
-                                    </td>
-                                    <td>
-                                        <span class="label label-primary">Pending</span>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">查看</button>
-                                            <button class="btn-white btn btn-xs">修改</button>
-                                            <button class="btn-white btn btn-xs">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        6327
-                                    </td>
-                                    <td>
-                                        Customer example
-                                    </td>
-                                    <td>
-                                        Seller example
-                                    </td>
-                                    <td>
-                                        Item example
-                                    </td>
-                                    <td>
-                                        $8560.00
-                                    </td>
-                                    <td>
-                                        01/12/2015
-                                    </td>
-                                    <td>
-                                        05/12/2015
-                                    </td>
-                                    <td>
-                                        <span class="label label-primary">Pending</span>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">查看</button>
-                                            <button class="btn-white btn btn-xs">修改</button>
-                                            <button class="btn-white btn btn-xs">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        642
-                                    </td>
-                                    <td>
-                                        Customer example
-                                    </td>
-                                    <td>
-                                        Seller example
-                                    </td>
-                                    <td>
-                                        Item example
-                                    </td>
-                                    <td>
-                                        $6843.00
-                                    </td>
-                                    <td>
-                                        10/04/2015
-                                    </td>
-                                    <td>
-                                        13/07/2015
-                                    </td>
-                                    <td>
-                                        <span class="label label-success">Shipped</span>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">查看</button>
-                                            <button class="btn-white btn btn-xs">修改</button>
-                                            <button class="btn-white btn btn-xs">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        7435
-                                    </td>
-                                    <td>
-                                        Customer example
-                                    </td>
-                                    <td>
-                                        Seller example
-                                    </td>
-                                    <td>
-                                        Item example
-                                    </td>
-                                    <td>
-                                        $750.00
-                                    </td>
-                                    <td>
-                                        04/04/2015
-                                    </td>
-                                    <td>
-                                        14/05/2015
-                                    </td>
-                                    <td>
-                                        <span class="label label-success">Shipped</span>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">查看</button>
-                                            <button class="btn-white btn btn-xs">修改</button>
-                                            <button class="btn-white btn btn-xs">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        3214
-                                    </td>
-                                    <td>
-                                        Customer example
-                                    </td>
-                                    <td>
-                                        Seller example
-                                    </td>
-                                    <td>
-                                        Item example
-                                    </td>
-                                    <td>
-                                        $500.00
-                                    </td>
-                                    <td>
-                                        03/04/2015
-                                    </td>
-                                    <td>
-                                        03/05/2015
-                                    </td>
-                                    <td>
-                                        <span class="label label-primary">Pending</span>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">查看</button>
-                                            <button class="btn-white btn btn-xs">修改</button>
-                                            <button class="btn-white btn btn-xs">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        546
-                                    </td>
-                                    <td>
-                                        Customer example
-                                    </td>
-                                    <td>
-                                        Seller example
-                                    </td>
-                                    <td>
-                                        Item example
-                                    </td>
-                                    <td>
-                                        $2770.00
-                                    </td>
-                                    <td>
-                                        06/07/2015
-                                    </td>
-                                    <td>
-                                        04/08/2015
-                                    </td>
-                                    <td>
-                                        <span class="label label-primary">Pending</span>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">查看</button>
-                                            <button class="btn-white btn btn-xs">修改</button>
-                                            <button class="btn-white btn btn-xs">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        6327
-                                    </td>
-                                    <td>
-                                        Customer example
-                                    </td>
-                                    <td>
-                                        Seller example
-                                    </td>
-                                    <td>
-                                        Item example
-                                    </td>
-                                    <td>
-                                        $8560.00
-                                    </td>
-                                    <td>
-                                        01/12/2015
-                                    </td>
-                                    <td>
-                                        05/12/2015
-                                    </td>
-                                    <td>
-                                        <span class="label label-primary">Pending</span>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">查看</button>
-                                            <button class="btn-white btn btn-xs">修改</button>
-                                            <button class="btn-white btn btn-xs">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        642
-                                    </td>
-                                    <td>
-                                        Customer example
-                                    </td>
-                                    <td>
-                                        Seller example
-                                    </td>
-                                    <td>
-                                        Item example
-                                    </td>
-                                    <td>
-                                        $6843.00
-                                    </td>
-                                    <td>
-                                        10/04/2015
-                                    </td>
-                                    <td>
-                                        13/07/2015
-                                    </td>
-                                    <td>
-                                        <span class="label label-success">Shipped</span>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">查看</button>
-                                            <button class="btn-white btn btn-xs">修改</button>
-                                            <button class="btn-white btn btn-xs">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        7435
-                                    </td>
-                                    <td>
-                                        Customer example
-                                    </td>
-                                    <td>
-                                        Seller example
-                                    </td>
-                                    <td>
-                                        Item example
-                                    </td>
-                                    <td>
-                                        $750.00
-                                    </td>
-                                    <td>
-                                        04/04/2015
-                                    </td>
-                                    <td>
-                                        14/05/2015
-                                    </td>
-                                    <td>
-                                        <span class="label label-success">Shipped</span>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">查看</button>
-                                            <button class="btn-white btn btn-xs">修改</button>
-                                            <button class="btn-white btn btn-xs">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        3214
-                                    </td>
-                                    <td>
-                                        Customer example
-                                    </td>
-                                    <td>
-                                        Seller example
-                                    </td>
-                                    <td>
-                                        Item example
-                                    </td>
-                                    <td>
-                                        $500.00
-                                    </td>
-                                    <td>
-                                        03/04/2015
-                                    </td>
-                                    <td>
-                                        03/05/2015
-                                    </td>
-                                    <td>
-                                        <span class="label label-primary">Pending</span>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">查看</button>
-                                            <button class="btn-white btn btn-xs">修改</button>
-                                            <button class="btn-white btn btn-xs">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        324
-                                    </td>
-                                    <td>
-                                        Customer example
-                                    </td>
-                                    <td>
-                                        Seller example
-                                    </td>
-                                    <td>
-                                        Item example
-                                    </td>
-                                    <td>
-                                        $320.00
-                                    </td>
-                                    <td>
-                                        12/04/2015
-                                    </td>
-                                    <td>
-                                        21/07/2015
-                                    </td>
-                                    <td>
-                                        <span class="label label-primary">Pending</span>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">查看</button>
-                                            <button class="btn-white btn btn-xs">修改</button>
-                                            <button class="btn-white btn btn-xs">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        546
-                                    </td>
-                                    <td>
-                                        Customer example
-                                    </td>
-                                    <td>
-                                        Seller example
-                                    </td>
-                                    <td>
-                                        Item example
-                                    </td>
-                                    <td>
-                                        $2770.00
-                                    </td>
-                                    <td>
-                                        06/07/2015
-                                    </td>
-                                    <td>
-                                        04/08/2015
-                                    </td>
-                                    <td>
-                                        <span class="label label-primary">Pending</span>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">查看</button>
-                                            <button class="btn-white btn btn-xs">修改</button>
-                                            <button class="btn-white btn btn-xs">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        6327
-                                    </td>
-                                    <td>
-                                        Customer example
-                                    </td>
-                                    <td>
-                                        Seller example
-                                    </td>
-                                    <td>
-                                        Item example
-                                    </td>
-                                    <td>
-                                        $8560.00
-                                    </td>
-                                    <td>
-                                        01/12/2015
-                                    </td>
-                                    <td>
-                                        05/12/2015
-                                    </td>
-                                    <td>
-                                        <span class="label label-primary">Pending</span>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">查看</button>
-                                            <button class="btn-white btn btn-xs">修改</button>
-                                            <button class="btn-white btn btn-xs">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        642
-                                    </td>
-                                    <td>
-                                        Customer example
-                                    </td>
-                                    <td>
-                                        Seller example
-                                    </td>
-                                    <td>
-                                        Item example
-                                    </td>
-                                    <td>
-                                        $6843.00
-                                    </td>
-                                    <td>
-                                        10/04/2015
-                                    </td>
-                                    <td>
-                                        13/07/2015
-                                    </td>
-                                    <td>
-                                        <span class="label label-success">Shipped</span>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">查看</button>
-                                            <button class="btn-white btn btn-xs">修改</button>
-                                            <button class="btn-white btn btn-xs">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        7435
-                                    </td>
-                                    <td>
-                                        Customer example
-                                    </td>
-                                    <td>
-                                        Seller example
-                                    </td>
-                                    <td>
-                                        Item example
-                                    </td>
-                                    <td>
-                                        $750.00
-                                    </td>
-                                    <td>
-                                        04/04/2015
-                                    </td>
-                                    <td>
-                                        14/05/2015
-                                    </td>
-                                    <td>
-                                        <span class="label label-primary">Pending</span>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">查看</button>
-                                            <button class="btn-white btn btn-xs">修改</button>
-                                            <button class="btn-white btn btn-xs">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                </tbody>
-                                <tfoot>
-                                <tr>
-                                    <td colspan="9">
-                                        <ul class="pagination pull-right"></ul>
-                                    </td>
-                                </tr>
-                                </tfoot>
                             </table>
+
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination">
+                                    <li>
+                                        <a th:href="@{/Tourist_Backstage/order_list(PageSize=5,PageIndex=${Orders.pageNum-1},OrderID=${OrderID},UserName=${UserName},FranName=${FranName},State=${State},GoodsName=${GoodsName})}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <th:block th:each="nav : ${Orders.navigatepageNums}">
+                                        <li th:class="${nav==Orders.pageNum}?'active':''">
+                                            <a th:href="@{/Tourist_Backstage/order_list(PageSize=5,PageIndex=${nav},OrderID=${OrderID},UserName=${UserName},FranName=${FranName},State=${State},GoodsName=${GoodsName})}" th:text="${nav}"></a>
+                                        </li>
+                                    </th:block>
+                                    <li>
+                                        <a th:href="@{/Tourist_Backstage/order_list(PageSize=5,PageIndex=${Orders.pageNum+1},OrderID=${OrderID},UserName=${UserName},FranName=${FranName},State=${State},GoodsName=${GoodsName})}" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>

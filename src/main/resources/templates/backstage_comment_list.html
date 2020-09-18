@@ -242,10 +242,10 @@
                                     <td th:text="${Comment.CID}">
                                         001
                                     </td>
-                                    <td th:text="${GoodsNameList[commentStat.index]}">
+                                    <td th:text="${GoodsNameList[(comments.pageNum-1)*5+commentStat.index]}">
                                         武汉一日游
                                     </td>
-                                    <td th:text="${UserNameList[commentStat.index]}">
+                                    <td th:text="${UserNameList[(comments.pageNum-1)*5+commentStat.index]}">
                                         user001
                                     </td>
                                     <td th:text="${Comment.CText}">

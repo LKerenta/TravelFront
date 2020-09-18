@@ -31,7 +31,7 @@
                          </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear"> <span class="block m-t-xs">
-                            <!--<table class="table"><tr><td th:text="${Info.FranName}"></td></tr></table>-->Music Passport
+                            <table class="table"><tr><td th:text="${Info.Name}"></td></tr></table><!--Music Passport-->
                          </span> <span class="text-muted text-xs block">经销商 <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <!--<li><a href="profile.html">个人信息</a></li>
@@ -231,8 +231,8 @@
                         <div class="col-sm-4">
                             <label for="status">状态</label>
                             <select name="status" id="status" class="form-control">
-                                <option value="1" selected>未完成</option>
-                                <option value="0">已完成</option>
+                                <option value="1" selected>已发布</option>
+                                <option value="0">审核中</option>
                             </select> 
                         </div>
                         <div class="col-sm-2 col-sm-offset-1">
@@ -251,36 +251,51 @@
                             <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="5">
                                 <thead>
                                 <tr>
-
-                                    <th data-toggle="true">订单号</th>
-                                    <th>商品</th>
-                                    <th data-hide="all">用户</th>
-                                    <th>价格</th>
-                                    <th>状态</th>
-                                    <th>经销商</th>
+                                    <th>商品编号</th>
+                                    <th>商品名称</th>
+                                    <th>商品价格</th>
+                                    <th>抱团人数</th>
+                                    <th>出发日期</th>
+                                    <th>出行方式</th>
+                                    <th>是否含餐</th>
+                                    <th>出行地点</th>
+                                    <th>商户名称</th>
+                                    <th>审核状态</th>
                                     <th class="text-right" data-sort-ignore="true">动作</th>
 
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="View,orderStat:${Order.list}">
-                                        <td th:text="${orderStat.OrderID}">
-                                          Order ID
+                                    <tr th:each="item,GoodsStat:${items}">
+                                        <td th:text="${item.GoodsID}">
+                                          Goods ID
                                         </td>
-                                        <td th:text="${orderStat.GoodsID}">
-                                            GoodsID
+                                        <td th:text="${item.GoodsName}">
+                                            GoodsName
                                         </td>
-                                        <td th:text="${orderStat.Price}">
+                                        <td th:text="${item.Price}">
                                           Price
                                         </td>
-                                        <td th:text="${UserID}">
-                                            UserID
+                                        <td th:text="${item.Number}">
+                                            Number
                                         </td>
-                                        <td th:text="${orderStat.State}">
-                                            State
+                                        <td th:text="${item.LaunchDate}">
+                                            Date
                                         </td>
-                                        <td th:text="${orderStat.FranID}">
-                                            FranID
+                                        <td th:text="${item.Ways}">
+                                            ways
+                                        </td>
+                                        <td th:text="${item.Meals}">
+                                            ways
+                                        </td>
+                                        <td th:text="${item.SSID}">
+                                            ways
+                                        </td>
+                                        <td th:text="${item.FranID}">
+                                            ways
+                                        </td>
+                                        <td th:text="${item.State}">
+                                            ways
                                         </td>
                                         <td class="text-right">
                                             <div class="btn-group">

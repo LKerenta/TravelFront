@@ -4,10 +4,11 @@ import com.travel.front.Entity.ScenicSpot;
 import com.travel.front.Mapper.ScenicSpotMapper;
 import com.travel.front.Service.ScenicSpotService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
+@Service
 public class ScenicSpotServiceImpl implements ScenicSpotService {
     @Autowired
     private ScenicSpotMapper ssMapper;

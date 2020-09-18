@@ -209,24 +209,36 @@
 
             <div class="ibox-content m-b-sm border-bottom">
                 <div class="row">
-                    <form class="form-inline">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="product_name">商品名</label>
-                            <input type="text" id="product_name" name="product_name" value="" placeholder="Product Name" class="form-control">
+                    <form class="form-inline" action="/Tourist_Backstage/item_examine" method="post">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="GoodsName">商品名</label>
+                                <input type="text" id="GoodsName" name="GoodsName" th:value="${GoodsName}" placeholder="GoodsName" class="form-control">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="seller">经销商</label>
-                            <input type="text" id="seller" name="seller" value="" placeholder="Seller" class="form-control">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="FranName">经销商名</label>
+                              <input type="text" id="FranName" name="FranName" th:value="${FranName}" placeholder="FranName" class="form-control">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-2 col-sm-offset-1">
-                        <div class="form-group">
-                            <button class="btn btn-primary btn-w-m" type="button">搜索</button>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="GoodsID">商品ID</label>
+                                <input type="text" id="GoodsID" name="GoodsID" th:value="${GoodsID}" placeholder="GoodsID" class="form-control">
+                            </div>
                         </div>
-                    </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="Price">价格</label>
+                                <input type="text" id="Price" name="Price" th:value="${Price}" placeholder="Price" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-2 col-sm-offset-1">
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-w-m" type="submit">搜索</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
 

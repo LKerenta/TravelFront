@@ -166,30 +166,34 @@ public class MaController {
     @RequestMapping("/item_examine")
     public String getPageItemExamine(@RequestParam(value = "PageSize",defaultValue = "5") Integer PageSize,
                                      @RequestParam(value = "PageIndex",defaultValue = "1")Integer PageIndex,
-                                     @RequestParam(value = "GoodID",defaultValue = "") Integer GoodID,
+                                     @RequestParam(value = "GoodsID",defaultValue = "") Integer GoodsID,
                                      @RequestParam(value = "GoodsName",defaultValue = "") String GoodsName,
                                      @RequestParam(value = "FranName",defaultValue = "") String FranName,
                                      @RequestParam(value = "Price",defaultValue = "") Integer Price,
                                      Model model){
         PageInfo<Goods> goodsList = null;
         List<String> franList = null;
-        if(GoodID == null && Price == null && GoodsName.isEmpty() && FranName.isEmpty()){
+        if(GoodsID == null && Price == null && GoodsName.isEmpty() && FranName.isEmpty()){
             goodsList = goodsService.getAllExamineGoods(PageSize,PageIndex);
             franList = goodsService.getAllExamineFranName();
-        }else if(GoodID == null && Price == null){
-
-        }else if(GoodID != null && Price == null){
-
-        }else if(GoodID == null && Price != null){
-
+        }else if(GoodsID == null && Price == null){
+            goodsList = goodsService.getAllExamineGoodsWithOutGoodsIDAndPrice(PageSize,PageIndex,GoodsName,FranName);
+            franList = goodsService.getAllExamineFranNameWithOutGoodsIDAndPrice(GoodsName,FranName);
+        }else if(GoodsID != null && Price == null){
+            goodsList = goodsService.getAllExamineGoodsByGoodsID(PageSize,PageIndex,GoodsName,FranName,GoodsID);
+            franList = goodsService.getAllExamineFranNameByGoodsID(GoodsName,FranName,GoodsID);
+        }else if(GoodsID == null && Price != null){
+            goodsList = goodsService.getAllExamineGoodsByPrice(PageSize,PageIndex,GoodsName,FranName,Price);
+            franList = goodsService.getAllExamineFranNameByPrice(GoodsName,FranName,Price);
         }else{
-
+            goodsList = goodsService.getAllExamineGoodsByPriceAndGoodsID(PageSize,PageIndex,GoodsID,GoodsName,FranName,Price);
+            franList = goodsService.getAllExamineFranNameByPriceAndGoodsID(GoodsID,GoodsName,FranName,Price);
         }
 
         model.addAttribute("Goods",goodsList);
         model.addAttribute("Frans",franList);
 
-        model.addAttribute("GoodsID",GoodID);
+        model.addAttribute("GoodsID",GoodsID);
         model.addAttribute("GoodsName",GoodsName);
         model.addAttribute("FranName",FranName);
         model.addAttribute("Price",Price);

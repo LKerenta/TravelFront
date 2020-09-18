@@ -2,6 +2,7 @@ package com.travel.front.Service;
 
 import com.github.pagehelper.PageInfo;
 import com.travel.front.Entity.Goods;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -43,6 +44,14 @@ public interface GoodsService {
     Integer deleteGoodsByGoodsID(Integer GoodsID);
 
     PageInfo<Goods> getAllExamineGoods(Integer PageSize,Integer PageIndex);
+    PageInfo<Goods> getAllExamineGoodsWithOutGoodsIDAndPrice(Integer PageSize,Integer PageIndex,String GoodsName,String FranName);
+    PageInfo<Goods> getAllExamineGoodsByGoodsID(Integer PageSize,Integer PageIndex,String GoodsName,String FranName,Integer GoodsID);
+    PageInfo<Goods> getAllExamineGoodsByPrice(Integer PageSize,Integer PageIndex,String GoodsName,String FranName,Integer Price);
+    PageInfo<Goods> getAllExamineGoodsByPriceAndGoodsID(Integer PageSize,Integer PageIndex,Integer GoodsID,String GoodsName,String FranName,Integer Price);
 
     List<String> getAllExamineFranName();
+    List<String> getAllExamineFranNameWithOutGoodsIDAndPrice(String GoodsName,String FranName);
+    List<String> getAllExamineFranNameByGoodsID(String GoodsName,String FranName,Integer GoodsID);
+    List<String> getAllExamineFranNameByPrice(String GoodsName,String FranName,Integer Price);
+    List<String> getAllExamineFranNameByPriceAndGoodsID(Integer GoodsID,String GoodsName,String FranName,Integer Price);
 }

@@ -238,7 +238,59 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
+    public PageInfo<Goods> getAllExamineGoodsWithOutGoodsIDAndPrice(Integer PageSize, Integer PageIndex, String GoodsName, String FranName) {
+        PageHelper.startPage(PageIndex,PageSize);
+        List<Goods> goods = goodsMapper.getAllExamineGoodsWithOutGoodsIDAndPrice(GoodsName,FranName);
+        PageInfo<Goods> list = new PageInfo<Goods>(goods);
+        return list;
+    }
+
+    @Override
+    public PageInfo<Goods> getAllExamineGoodsByGoodsID(Integer PageSize, Integer PageIndex, String GoodsName, String FranName, Integer GoodsID) {
+        PageHelper.startPage(PageIndex,PageSize);
+        List<Goods> goods = goodsMapper.getAllExamineGoodsByGoodsID(GoodsName,FranName,GoodsID);
+        PageInfo<Goods> list = new PageInfo<Goods>(goods);
+        return list;
+    }
+
+    @Override
+    public PageInfo<Goods> getAllExamineGoodsByPrice(Integer PageSize, Integer PageIndex, String GoodsName, String FranName, Integer Price) {
+        PageHelper.startPage(PageIndex,PageSize);
+        List<Goods> goods = goodsMapper.getAllExamineGoodsByPrice(GoodsName,FranName,Price);
+        PageInfo<Goods> list = new PageInfo<Goods>(goods);
+        return list;
+    }
+
+    @Override
+    public PageInfo<Goods> getAllExamineGoodsByPriceAndGoodsID(Integer PageSize, Integer PageIndex, Integer GoodsID, String GoodsName, String FranName, Integer Price) {
+        PageHelper.startPage(PageIndex,PageSize);
+        List<Goods> goods = goodsMapper.getAllExamineGoodsByPriceAndGoodsID(GoodsID,GoodsName,FranName,Price);
+        PageInfo<Goods> list = new PageInfo<Goods>(goods);
+        return list;
+    }
+
+    @Override
     public List<String> getAllExamineFranName() {
         return goodsMapper.getAllExamineFranName();
+    }
+
+    @Override
+    public List<String> getAllExamineFranNameWithOutGoodsIDAndPrice(String GoodsName, String FranName) {
+        return goodsMapper.getAllExamineFranNameWithOutGoodsIDAndPrice(GoodsName,FranName);
+    }
+
+    @Override
+    public List<String> getAllExamineFranNameByGoodsID(String GoodsName, String FranName, Integer GoodsID) {
+        return goodsMapper.getAllExamineFranNameByGoodsID(GoodsName,FranName,GoodsID);
+    }
+
+    @Override
+    public List<String> getAllExamineFranNameByPrice(String GoodsName, String FranName, Integer Price) {
+        return goodsMapper.getAllExamineFranNameByPrice(GoodsName,FranName,Price);
+    }
+
+    @Override
+    public List<String> getAllExamineFranNameByPriceAndGoodsID(Integer GoodsID, String GoodsName, String FranName, Integer Price) {
+        return goodsMapper.getAllExamineFranNameByPriceAndGoodsID(GoodsID,GoodsName,FranName,Price);
     }
 }

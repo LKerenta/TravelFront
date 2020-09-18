@@ -14,6 +14,9 @@
     <!--FooTable-->
     <link href="/css/plugins/footable/footable.core.css" rel="stylesheet">
 
+    <!-- Sweet Alert -->
+    <link href="css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
     <link href="/css/animate.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
 
@@ -239,23 +242,25 @@
 
                                 </tr>
                                 <tr th:each="Comment,commentStat:${comments.list}">
-                                    <td th:text="${Comment.CID}">
+                                    <td th:text="${Comment.CID}" id="commentID">
                                         001
                                     </td>
-                                    <td th:text="${GoodsNameList[(comments.pageNum-1)*5+commentStat.index]}">
+                                    <td th:text="${GoodsNameList[(comments.pageNum-1)*5+commentStat.index]}" id="goodsName1">
                                         武汉一日游
                                     </td>
-                                    <td th:text="${UserNameList[(comments.pageNum-1)*5+commentStat.index]}">
+                                    <td th:text="${UserNameList[(comments.pageNum-1)*5+commentStat.index]}"id="userName1">
                                         user001
                                     </td>
-                                    <td th:text="${Comment.CText}">
+                                    <td th:text="${Comment.CText}" id="cText">
                                         风景很不错，导游的态度也很好，这次是和父母一起参加的旅游团，对于老人也很合适，下次出游还会考虑。
                                     </td>
-                                    <td class="text-right">
+                                    <td>
+                                    <div class="text-right">
                                         <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">详情</button>
+                                            <button class="btn-white btn btn-xs btn-sm details">详情</button>
                                             <button class="btn-white btn btn-xs"><a th:href="@{'delete_comment/'+${Comment.CID}}">删除</a></button>
                                         </div>
+                                    </div>
                                     </td>
                                 </tr>
                             </table>
@@ -306,6 +311,9 @@
     <!-- FooTable -->
     <script src="/js/plugins/footable/footable.all.min.js"></script>
 
+    <!-- Sweet alert -->
+    <script src="js/plugins/sweetalert/sweetalert.min.js"></script>
+
     <!-- Page-Level Scripts -->
     <script>
         $(document).ready(function() {
@@ -313,6 +321,19 @@
             $('.footable').footable();
 
         });
+
+        const commentID = document.getElementById('commentID');
+        const userName1 = document.getElementById('userName1');
+        const goodsName1 = document.getElementById('goodsName1');
+        const cText = document.getElementById('cText');
+
+        $('.details').click(function(){
+            swal({
+                title: "评论详情",
+                text: "评论ID   " + commentID +"\n商品名   " + goodsName1 + "\n用户名   " + userName1 + "\n评论   " + cText
+            });
+        });
+
 
     </script>
 

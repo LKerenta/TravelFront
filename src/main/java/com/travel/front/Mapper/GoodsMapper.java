@@ -4,6 +4,7 @@ import com.travel.front.Entity.Goods;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.jmx.export.naming.IdentityNamingStrategy;
 
 import java.util.List;
 
@@ -95,9 +96,25 @@ public interface GoodsMapper {
     @Select("SELECT FranName from goods JOIN franchise where franchise.FranID=goods.FranID AND state=0 ORDER BY GoodsID")
     List<String> getAllExamineFranName();
 
-    @Select("")
+    @Select("SELECT goods.* from goods JOIN franchise WHERE state=0 AND goods.FranID=franchise.FranID AND FranName LIKE CONCAT('%',#{FranName},'%') AND GoodsName LIKE CONCAT('%',#{GoodsName},'%') ORDER BY GoodsID")
+    List<Goods> getAllExamineGoodsWithOutGoodsIDAndPrice(String GoodsName,String FranName);
+    @Select("SELECT FranName from goods JOIN franchise WHERE state=0 AND goods.FranID=franchise.FranID AND FranName LIKE CONCAT('%',#{FranName},'%') AND GoodsName LIKE CONCAT('%',#{GoodsName},'%') ORDER BY GoodsID")
+    List<String> getAllExamineFranNameWithOutGoodsIDAndPrice(String GoodsName,String FranName);
 
-    @Select("")
+    @Select("SELECT goods.* from goods JOIN franchise WHERE state=0 AND GoodsID=#{GoodsID} AND goods.FranID=franchise.FranID AND FranName LIKE CONCAT('%',#{FranName},'%') AND GoodsName LIKE CONCAT('%',#{GoodsName},'%') ORDER BY GoodsID")
+    List<Goods> getAllExamineGoodsByGoodsID(String GoodsName,String FranName,Integer GoodsID);
+    @Select("SELECT FranName from goods JOIN franchise WHERE state=0 AND GoodsID=#{GoodsID} AND goods.FranID=franchise.FranID AND FranName LIKE CONCAT('%',#{FranName},'%') AND GoodsName LIKE CONCAT('%',#{GoodsName},'%') ORDER BY GoodsID")
+    List<String> getAllExamineFranNameByGoodsID(String GoodsName,String FranName,Integer GoodsID);
+
+    @Select("SELECT goods.* from goods JOIN franchise WHERE state=0 AND Price=#{Price} AND goods.FranID=franchise.FranID AND FranName LIKE CONCAT('%',#{FranName},'%') AND GoodsName LIKE CONCAT('%',#{GoodsName},'%') ORDER BY GoodsID")
+    List<Goods> getAllExamineGoodsByPrice(String GoodsName,String FranName,Integer Price);
+    @Select("SELECT FranName from goods JOIN franchise WHERE state=0 AND Price=#{Price} AND goods.FranID=franchise.FranID AND FranName LIKE CONCAT('%',#{FranName},'%') AND GoodsName LIKE CONCAT('%',#{GoodsName},'%') ORDER BY GoodsID")
+    List<String> getAllExamineFranNameByPrice(String GoodsName,String FranName,Integer Price);
+
+    @Select("SELECT goods.* from goods JOIN franchise WHERE state=0 AND GoodsID=#{GoodsID} AND Price=#{Price} AND goods.FranID=franchise.FranID AND FranName LIKE CONCAT('%',#{FranName},'%') AND GoodsName LIKE CONCAT('%',#{GoodsName},'%') ORDER BY GoodsID")
+    List<Goods> getAllExamineGoodsByPriceAndGoodsID(Integer GoodsID,String GoodsName,String FranName,Integer Price);
+    @Select("SELECT FranName from goods JOIN franchise WHERE state=0 AND GoodsID=#{GoodsID}  AND Price=#{Price} AND goods.FranID=franchise.FranID AND FranName LIKE CONCAT('%',#{FranName},'%') AND GoodsName LIKE CONCAT('%',#{GoodsName},'%') ORDER BY GoodsID")
+    List<String> getAllExamineFranNameByPriceAndGoodsID(Integer GoodsID,String GoodsName,String FranName,Integer Price);
 
     @Delete("")
     Integer deleteGoodsByGoodsID(Integer GoodsID);

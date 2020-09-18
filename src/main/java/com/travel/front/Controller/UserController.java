@@ -1,6 +1,8 @@
 package com.travel.front.Controller;
 
 
+import com.travel.front.Service.ScenicSpotService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +11,10 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("Tourist")
 public class UserController {
+    @Autowired
+    private ScenicSpotService SSService;
+
+
     @GetMapping("/order")
     public String toOrder()
     {
@@ -44,6 +50,5 @@ public class UserController {
     {
         return "line";
     }
-
 
 }

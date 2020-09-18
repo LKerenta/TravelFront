@@ -1,12 +1,13 @@
 package com.travel.front.Mapper;
 
 import com.travel.front.Entity.Order;
-import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
-@Mapper
 public interface OrderMapper {
     @Select("SELECT * From `order`")
     List<Order> getAllOrder();
@@ -35,4 +36,27 @@ public interface OrderMapper {
     @Select("SELECT GoodsName From `order` JOIN `user` JOIN goods JOIN franchise WHERE `user`.UserID=`order`.UserID AND franchise.FranID=`order`.FranID AND goods.GoodsID=`order`.GoodsID AND OrderID=#{OrderID} AND UserName LIKE CONCAT('%',#{UserName},'%') AND GoodsName LIKE CONCAT('%',#{GoodsName},'%') AND FranName LIKE CONCAT('%',#{FranName},'%') ORDER BY OrderID")
     List<String> getAllGoodNameByOrderID(Integer OrderID,String UserName,String GoodsName,String FranName);
 
+    //    SELECT
+    @Select("SELECT * FROM `order` WHERE FranID=#{ID}")
+    List<Order> getAllOrderByFran(Integer ID);
+
+    @Select("SELECT * FROM `order` WHERE UserID=#{ID}")
+    List<Order> getAllOrderByUser(Integer ID);
+
+    @Select("SELECT * FROM `order` WHERE GoodsID=#{ID}")
+    List<Order> getAllOrderByGoods(Integer ID);
+
+
+    //    INSERT
+    @Insert("INSERT INTO `order` (OrderID,GoodsID,Price,UserID,State,FranID) " +
+            "VALUES(#{OrderID},#{GoodsID},#{Price},#{UserID},#{State},#{FranID})")
+    Integer CreateOrder(Order order);
+
+    //    Update
+    @Update("UPDATE `order` SET state=#{state} WHERE OrderID=#{OrderID}")
+    Integer UpdateOrder(Order order);
+
+    //    Delete
+    @Delete("DELETE FROM `order` WHERE OrderID=#{OrderID}")
+    Integer DeleteOrder(Order order);
 }

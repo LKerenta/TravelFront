@@ -1,10 +1,15 @@
 package com.travel.front.Entity;
 
+import java.sql.Date;
+
 public class Order {
     private int OrderID;
     private int GoodsID;
     private int Price;
+    private int UserID;
     private int State;
+    private int FranID;
+    private Date date;
 
     public int getOrderID() {
         return OrderID;
@@ -36,5 +41,29 @@ public class Order {
 
     public void setState(int state) {
         State = state;
+    }
+
+    public int getFranID() {
+        return FranID;
+    }
+
+    public void setFranID(int franID) {
+        FranID = franID;
+    }
+
+    public int getUserID() {
+        return UserID;
+    }
+
+    public void setUserID(int userID) {
+        UserID = userID;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

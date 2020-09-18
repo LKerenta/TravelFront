@@ -2,12 +2,13 @@ package com.travel.front.Service;
 
 import com.github.pagehelper.PageInfo;
 import com.travel.front.Entity.Goods;
-import org.apache.ibatis.annotations.Select;
+import com.travel.front.Entity.ScenicSpot;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface GoodsService {
-    PageInfo<Goods> getAllGoods(Integer PageSize,Integer PageIndex);
+    PageInfo<Goods> getAllGoods(Integer PageSize, Integer PageIndex);
     PageInfo<Goods> getGoodsByGoodName(Integer PageSize,Integer PageIndex,String GoodName);
     PageInfo<Goods> getGoodsByGoodID(Integer PageSize,Integer PageIndex,Integer GoodID);
     PageInfo<Goods> getGoodsByPrice(Integer PageSize,Integer PageIndex,Integer Price);
@@ -49,9 +50,20 @@ public interface GoodsService {
     PageInfo<Goods> getAllExamineGoodsByPrice(Integer PageSize,Integer PageIndex,String GoodsName,String FranName,Integer Price);
     PageInfo<Goods> getAllExamineGoodsByPriceAndGoodsID(Integer PageSize,Integer PageIndex,Integer GoodsID,String GoodsName,String FranName,Integer Price);
 
+
     List<String> getAllExamineFranName();
     List<String> getAllExamineFranNameWithOutGoodsIDAndPrice(String GoodsName,String FranName);
     List<String> getAllExamineFranNameByGoodsID(String GoodsName,String FranName,Integer GoodsID);
     List<String> getAllExamineFranNameByPrice(String GoodsName,String FranName,Integer Price);
     List<String> getAllExamineFranNameByPriceAndGoodsID(Integer GoodsID,String GoodsName,String FranName,Integer Price);
+
+    List<Goods> getAllGoods();
+    List<Goods> getGoodsBySSID(ScenicSpot scenicSpot);
+    List<Goods> getGoodsByDate(Date date);
+    List<Goods> getGoodsByName(String name);
+    List<Goods> getGoodsByMeals(int Meals);
+    List<Goods> getGoodsByFranID(int ID);
+    Integer CreateGoods(Goods goods);
+    Integer updateGoods(Goods goods);
+    Integer deleteGoods(Integer ID);
 }

@@ -3,6 +3,7 @@ package com.travel.front.Entity;
 public class User {
     private int UserID;
     private String Password;
+    private String UserName;
     private String UserImage;
     private String TrueName;
     private String IDNumber;
@@ -29,6 +30,14 @@ public class User {
 
     public void setPassword(String password) {
         Password = password;
+    }
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String userName) {
+        UserName = userName;
     }
 
     public String getUserImage() {

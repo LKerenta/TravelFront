@@ -3,6 +3,7 @@ package com.travel.front.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.travel.front.Entity.Comment;
+import com.travel.front.Entity.Order;
 import com.travel.front.Mapper.CommentMapper;
 import com.travel.front.Service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,5 +93,25 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public Integer deleteComment(Integer CID) {
         return commentMapper.deleteComment(CID);
+    }
+
+    @Override
+    public List<Comment> getAllComment() {
+        return commentMapper.getAllComment();
+    }
+
+    @Override
+    public Comment findCommentByID(Integer CID) {
+        return commentMapper.findCommentByID(CID);
+    }
+
+    @Override
+    public String findUserNameByID(Integer CID) {
+        return commentMapper.findUserNameByID(CID);
+    }
+
+    @Override
+    public String findGoodsNameByID(Integer CID) {
+        return commentMapper.findGoodsNameByID(CID);
     }
 }

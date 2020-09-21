@@ -3,12 +3,13 @@ package com.travel.front.Service;
 import com.github.pagehelper.PageInfo;
 import com.travel.front.Entity.Goods;
 import com.travel.front.Entity.ScenicSpot;
+import org.apache.ibatis.annotations.Select;
 
 import java.sql.Date;
 import java.util.List;
 
 public interface GoodsService {
-    PageInfo<Goods> getAllGoods(Integer PageSize, Integer PageIndex);
+    PageInfo<Goods> getAllGoods(Integer PageSize,Integer PageIndex);
     PageInfo<Goods> getGoodsByGoodName(Integer PageSize,Integer PageIndex,String GoodName);
     PageInfo<Goods> getGoodsByGoodID(Integer PageSize,Integer PageIndex,Integer GoodID);
     PageInfo<Goods> getGoodsByPrice(Integer PageSize,Integer PageIndex,Integer Price);
@@ -50,12 +51,23 @@ public interface GoodsService {
     PageInfo<Goods> getAllExamineGoodsByPrice(Integer PageSize,Integer PageIndex,String GoodsName,String FranName,Integer Price);
     PageInfo<Goods> getAllExamineGoodsByPriceAndGoodsID(Integer PageSize,Integer PageIndex,Integer GoodsID,String GoodsName,String FranName,Integer Price);
 
-
     List<String> getAllExamineFranName();
     List<String> getAllExamineFranNameWithOutGoodsIDAndPrice(String GoodsName,String FranName);
     List<String> getAllExamineFranNameByGoodsID(String GoodsName,String FranName,Integer GoodsID);
     List<String> getAllExamineFranNameByPrice(String GoodsName,String FranName,Integer Price);
     List<String> getAllExamineFranNameByPriceAndGoodsID(Integer GoodsID,String GoodsName,String FranName,Integer Price);
+
+    List<Goods> getAllGoods();
+    List<Goods> getAllExamineGoods();
+    Integer passExamine(Integer GoodsID);
+    Integer rejectExamine(Integer GoodsID);
+    Goods getGoodsByID(Integer GoodsID);
+    ScenicSpot getScenicByID(Integer SSID);
+    String getFranName(Integer GoodsID);
+    Integer updateGood(Goods goods);
+    Integer updateScenic(ScenicSpot scenicSpot);
+    List<Goods> getAllNotPassGoods();
+    List<Goods> allGoods();
 
     List<Goods> getAllGoods();
     List<Goods> getGoodsBySSID(ScenicSpot scenicSpot);

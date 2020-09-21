@@ -12,6 +12,8 @@
     <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
     <!-- c3 Charts -->
     <link href="/css/plugins/c3/c3.min.css" rel="stylesheet">
+    <!-- orris -->
+    <link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
 
     <link href="/css/animate.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
@@ -27,17 +29,15 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                        <img alt="image" class="img-circle" src="/img/profile_small.jpg" />
+                        <img alt="image" width="50" height="50" class="img-circle" th:src="@{'http://localhost:8080/src/pic/'+${Manager.MaImage}}" />
                          </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Admin</strong>
-                         </span> <span class="text-muted text-xs block">管理员 <b class="caret"></b></span> </span> </a>
+                        <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold" th:text="${Manager.MaName}">Admin</strong>
+                         </span> <span class="text-muted text-xs block">管理员<b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="profile.html">个人信息</a></li>
-                            <li><a href="contacts.html">联系方式</a></li>
-                            <li><a href="mailbox.html">邮箱</a></li>
+                            <li><a href="/Tourist_Backstage/manager_info">个人信息</a></li>
                             <li class="divider"></li>
-                            <li><a href="login.html">退出登录</a></li>
+                            <li><a href="/Tourist/login">退出登录</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
@@ -45,33 +45,34 @@
                     </div>
                 </li>
                 <li>
-                    <a href="index.html"><i class="fa fa-home"></i> <span class="nav-label">首页</span></a>
+                    <a href="/Tourist_Backstage/index"><i class="fa fa-home"></i> <span class="nav-label">首页</span></a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-users"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="user_list.html">游客用户管理</a></li>
-                        <li><a href="seller_list.html">经销商用户管理</a></li>
-                        <li><a href="user_add.html">用户添加</a></li>
+                        <li><a href="/Tourist_Backstage/user_list">游客用户管理</a></li>
+                        <li><a href="/Tourist_Backstage/seller_list">经销商用户管理</a></li>
+                        <li><a href="/Tourist_Backstage/user_add">用户添加</a></li>
+                        <li><a href="/Tourist_Backstage/seller_add">经销商添加</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="order_list.html"><i class="fa fa-archive"></i> <span class="nav-label">订单管理</span></a>
+                    <a href="/Tourist_Backstage/order_list"><i class="fa fa-archive"></i> <span class="nav-label">订单管理</span></a>
                 </li>
                 <li>
-                    <a href="item_list.html"><i class="fa fa-shopping-cart"></i> <span class="nav-label">商品管理</span></a>
+                    <a href="/Tourist_Backstage/item_list"><i class="fa fa-shopping-cart"></i> <span class="nav-label">商品管理</span></a>
                 </li>
                 <li>
-                    <a href="item_examine.html"><i class="fa fa-upload"></i> <span class="nav-label">商品审核</span></a>
+                    <a href="/Tourist_Backstage/item_examine"><i class="fa fa-upload"></i> <span class="nav-label">商品审核</span></a>
                 </li>
                 <li>
-                    <a href="comment_list.html"><i class="fa fa-comments"></i> <span class="nav-label">评论管理</span></a>
+                    <a href="/Tourist_Backstage/comment_list"><i class="fa fa-comments"></i> <span class="nav-label">评论管理</span></a>
                 </li>
                 <li class="active">
-                    <a href="statistics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">数据统计</span></a>
+                    <a href="/Tourist_Backstage/statistics"><i class="fa fa-pie-chart"></i> <span class="nav-label">数据统计</span></a>
                 </li>
                 <li>
-                    <a href="asset_manage.html"><i class="fa fa-money"></i> <span class="nav-label">资产管理</span></a>
+                    <a href="/Tourist_Backstage/asset_manage"><i class="fa fa-money"></i> <span class="nav-label">资产管理</span></a>
                 </li>
             </ul>
 
@@ -83,106 +84,13 @@
         <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-            <form role="search" class="navbar-form-custom" action="search_results.html">
-                <div class="form-group">
-                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
-                </div>
-            </form>
         </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
                     <span class="m-r-sm text-muted welcome-message">欢迎来到抱团旅游网站后台管理系统</span>
                 </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-messages">
-                        <li>
-                            <div class="dropdown-messages-box">
-                                <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="/img/a7.jpg">
-                                </a>
-                                <div class="media-body">
-                                    <small class="pull-right">46小时前</small>
-                                    <strong>李文俊</strong> 关注了 <strong>刘海洋</strong>. <br>
-                                    <small class="text-muted">3 天 前- 10.06.2014</small>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="dropdown-messages-box">
-                                <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="/img/a4.jpg">
-                                </a>
-                                <div class="media-body ">
-                                    <small class="pull-right text-navy">5小时前</small>
-                                    <strong>王昆</strong> 关注了 <strong>李文俊</strong>. <br>
-                                    <small class="text-muted">昨天下午1:21 - 11.06.2014</small>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="dropdown-messages-box">
-                                <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="/img/profile.jpg">
-                                </a>
-                                <div class="media-body ">
-                                    <small class="pull-right">23小时前</small>
-                                    <strong>张三</strong> 赞了 <strong>李四</strong>. <br>
-                                    <small class="text-muted">2天前 - 11.06.2014</small>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="text-center link-block">
-                                <a href="mailbox.html">
-                                    <i class="fa fa-envelope"></i> <strong>查看更多消息</strong>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-alerts">
-                        <li>
-                            <a href="mailbox.html">
-                                <div>
-                                    <i class="fa fa-envelope fa-fw"></i> 您有 16 条未读通知
-                                    <span class="pull-right text-muted small">4 分钟 前</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="grid_options.html">
-                                <div>
-                                    <i class="fa fa-upload fa-fw"></i> 服务器重启
-                                    <span class="pull-right text-muted small">4 分钟 前</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="text-center link-block">
-                                <a href="notifications.html">
-                                    <strong>查看更多通知</strong>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-
-
                 <li>
-                    <a href="login.html">
+                    <a href="/Tourist/login">
                         <i class="fa fa-sign-out"></i> 退出登录
                     </a>
                 </li>
@@ -195,7 +103,7 @@
                 <h2>数据统计</h2>
                 <ol class="breadcrumb">
                     <li>
-                        <a href="index.html">首页</a>
+                        <a href="backstage_index.html">首页</a>
                     </li>
                     <li class="active">
                         <strong>数据统计</strong>
@@ -206,144 +114,92 @@
 
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="ibox">
-                        <div class="ibox-content">
-                            <h5>24小时访问量</h5>
-                            <h2>198 009</h2>
-                            <div id="sparkline1"></div>
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>本月订单数</h5>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="ibox">
                         <div class="ibox-content">
-                            <h5>周访问量</h5>
-                            <h2>65 000</h2>
-                            <div id="sparkline2"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="ibox">
-                        <div class="ibox-content">
-                            <h5>上个月</h5>
-                            <h2>680 900</h2>
-                            <div id="sparkline3"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="ibox">
-                        <div class="ibox-content">
-                            <h5>平均访问时长</h5>
-                            <h2>00:06:40</h2>
-                            <div id="sparkline4"></div>
+                            <div>
+                                <div id="lineChart"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="ibox">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>本月日收入</h5>
+                        </div>
                         <div class="ibox-content">
-                            <h5>收入</h5>
-                            <h1 class="no-margins">886,200</h1>
-                            <div class="stat-percent font-bold text-navy">98% <i class="fa fa-bolt"></i></div>
-                            <small>总收入</small>
+                            <div>
+                                <div id="lineChartIncome"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
                     <div class="ibox">
                         <div class="ibox-content">
                             <h5>上月收入</h5>
-                            <h1 class="no-margins">1 738,200</h1>
-                            <div class="stat-percent font-bold text-navy">98% <i class="fa fa-bolt"></i></div>
+                            <h1 class="no-margins" th:text="${lastMonthInCome}">1 738,200</h1>
+                            <div class="stat-percent font-bold text-navy"><i class="fa fa-bolt"></i></div>
                             <small>总收入</small>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="ibox">
-                        <div class="ibox-content">
-                            <h5>昨日收入</h5>
-                            <h1 class="no-margins">20,100</h1>
-                            <div class="stat-percent font-bold text-danger">12% <i class="fa fa-level-down"></i></div>
-                            <small>总收入</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="ibox">
                         <div class="ibox-content">
                             <h5>总收入</h5>
-                            <h1 class="no-margins">54,200</h1>
-                            <div class="stat-percent font-bold text-danger">24% <i class="fa fa-level-down"></i></div>
+                            <h1 class="no-margins" th:text="${AllInCome}">54,200</h1>
+                            <div class="stat-percent font-bold text-danger"><i class="fa fa-level-down"></i></div>
                             <small>总收入</small>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="ibox">
-                        <div class="ibox-content">
-                            <h5>订单</h5>
-                            <h1 class="no-margins">5324</h1>
-                            <div class="stat-percent font-bold text-navy">45% <i class="fa fa-bolt"></i></div>
-                            <small>总订单数</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="ibox">
                         <div class="ibox-content">
                             <h5>上月订单</h5>
-                            <h1 class="no-margins">4103</h1>
-                            <div class="stat-percent font-bold text-navy">32% <i class="fa fa-bolt"></i></div>
-                            <small>总订单数</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="ibox">
-                        <div class="ibox-content">
-                            <h5>昨日订单</h5>
-                            <h1 class="no-margins">200</h1>
-                            <div class="stat-percent font-bold text-muted">50% <i class="fa fa-level-down"></i></div>
-                            <small>总订单数</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="ibox">
-                        <div class="ibox-content">
-                            <h5>总订单</h5>
-                            <h1 class="no-margins">86,200</h1>
-                            <div class="stat-percent font-bold text-danger">18% <i class="fa fa-level-down"></i></div>
+                            <h1 class="no-margins" th:text="${lastMonthOrders}">4103</h1>
+                            <div class="stat-percent font-bold text-navy"><i class="fa fa-bolt"></i></div>
                             <small>总订单数</small>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <h5>总订单</h5>
+                            <h1 class="no-margins" th:text="${AllOrders}">86,200</h1>
+                            <div class="stat-percent font-bold text-danger"><i class="fa fa-level-down"></i></div>
+                            <small>总订单数</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
                     <div class="ibox">
                         <div class="ibox-content">
                             <h5>商品总数</h5>
-                            <h1 class="no-margins">3230</h1>
-                            <div class="stat-percent font-bold text-navy">20% <i class="fa fa-bolt"></i></div>
+                            <h1 class="no-margins" th:text="${allGoods}">3230</h1>
+                            <div class="stat-percent font-bold text-navy"><i class="fa fa-bolt"></i></div>
                             <small>总商品数</small>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="ibox">
                         <div class="ibox-content">
                             <h5>评论数</h5>
-                            <h1 class="no-margins">56,200</h1>
-                            <div class="stat-percent font-bold text-navy">18% <i class="fa fa-bolt"></i></div>
+                            <h1 class="no-margins" th:text="${comments}">56,200</h1>
+                            <div class="stat-percent font-bold text-navy"><i class="fa fa-bolt"></i></div>
                             <small>总评论数</small>
                         </div>
                     </div>
@@ -392,8 +248,6 @@
     <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-    <!-- Sparkline -->
-    <script src="/js/plugins/sparkline/jquery.sparkline.min.js"></script>
 
     <!-- Peity -->
     <script src="/js/plugins/peity/jquery.peity.min.js"></script>
@@ -408,112 +262,97 @@
     <script src="/js/inspinia.js"></script>
     <script src="/js/plugins/pace/pace.min.js"></script>
 
-    <script>
+    <!-- Morris demo data-->
+    <script src="js/demo/morris-demo.js"></script>
+
+    <script th:inline="javascript">
         $(document).ready(function() {
 
-            var sparklineCharts = function(){
-                 $("#sparkline1").sparkline([34, 43, 43, 35, 44, 32, 44, 52], {
-                     type: 'line',
-                     width: '100%',
-                     height: '60',
-                     lineColor: '#1ab394',
-                     fillColor: "#ffffff"
-                 });
-
-                 $("#sparkline2").sparkline([24, 43, 43, 55, 44, 62, 44, 72], {
-                     type: 'line',
-                     width: '100%',
-                     height: '60',
-                     lineColor: '#1ab394',
-                     fillColor: "#ffffff"
-                 });
-
-                 $("#sparkline3").sparkline([74, 43, 23, 55, 54, 32, 24, 12], {
-                     type: 'line',
-                     width: '100%',
-                     height: '60',
-                     lineColor: '#ed5565',
-                     fillColor: "#ffffff"
-                 });
-
-                 $("#sparkline4").sparkline([24, 43, 33, 55, 64, 72, 44, 22], {
-                     type: 'line',
-                     width: '100%',
-                     height: '60',
-                     lineColor: '#ed5565',
-                     fillColor: "#ffffff"
-                 });
-
-                 $("#sparkline5").sparkline([1, 4], {
-                     type: 'pie',
-                     height: '140',
-                     sliceColors: ['#1ab394', '#F5F5F5']
-                 });
-
-                 $("#sparkline6").sparkline([5, 3], {
-                     type: 'pie',
-                     height: '140',
-                     sliceColors: ['#1ab394', '#F5F5F5']
-                 });
-
-                 $("#sparkline7").sparkline([2, 2], {
-                     type: 'pie',
-                     height: '140',
-                     sliceColors: ['#ed5565', '#F5F5F5']
-                 });
-
-                 $("#sparkline8").sparkline([2, 3], {
-                     type: 'pie',
-                     height: '140',
-                     sliceColors: ['#ed5565', '#F5F5F5']
-                 });
-            };
-
-            var sparkResize;
-
-            $(window).resize(function(e) {
-                clearTimeout(sparkResize);
-                sparkResize = setTimeout(sparklineCharts, 500);
-            });
-
-            sparklineCharts();
+            var orderEnd = [[${orderEnd}]];
+            console.log(orderEnd);
+            var orderNotEnd = [[${orderNotEnd}]];
+            console.log(orderNotEnd);
+            var orderDraw = [[${orderDraw}]];
+            console.log(orderDraw);
 
             c3.generate({
                 bindto: '#pie2',
-                data:{
+                data: {
                     columns: [
-                        ['正常完成', 100],
-                        ['未结束', 80],
-                        ['退款',20]
+                        ['正常完成', orderEnd],
+                        ['未结束', orderNotEnd],
+                        ['退款', orderDraw]
                     ],
-                    colors:{
+                    colors: {
                         正常完成: '#1ab394',
                         未结束: '#BABABA',
-                        退款:'#C82E31'
+                        退款: '#C82E31'
                     },
-                    type : 'pie'
+                    type: 'pie'
                 }
             });
+
+            var pass = [[${Pass}]];
+            console.log(pass);
+            var notPass = [[${notPass}]];
+            console.log(notPass);
+            var Examine = [[${Examine}]];
+            console.log(Examine);
 
             c3.generate({
                 bindto: '#pie',
-                data:{
+                data: {
                     columns: [
-                        ['未开始', 30],
-                        ['已结束', 70],
-                        ['进行中', 50]
+                        ['未审核', Examine],
+                        ['已审核', pass],
+                        ['未通过', notPass]
                     ],
-                    colors:{
-                        未开始: '#1ab394',
-                        已结束: '#BABABA',
-                        进行中: '#87CEFA'
+                    colors: {
+                        未审核: '#1ab394',
+                        已审核: '#BABABA',
+                        未通过: '#87CEFA'
                     },
-                    type : 'pie'
+                    type: 'pie'
                 }
             });
 
+            var dayOrdersList = [[${dayOrdersList}]];
+            console.log(dayOrdersList);
 
+            c3.generate({
+                bindto: '#lineChart',
+                data:{
+                    columns: [
+                        ['订单数', dayOrdersList[1],dayOrdersList[2],dayOrdersList[3],dayOrdersList[4],dayOrdersList[5],dayOrdersList[6],dayOrdersList[7],dayOrdersList[8],dayOrdersList[9],dayOrdersList[10],
+                            dayOrdersList[11],dayOrdersList[12],dayOrdersList[13],dayOrdersList[14],dayOrdersList[15],dayOrdersList[16],dayOrdersList[17],dayOrdersList[18],dayOrdersList[19],dayOrdersList[20],
+                            dayOrdersList[21],dayOrdersList[22],dayOrdersList[23],dayOrdersList[24],dayOrdersList[25],dayOrdersList[26],dayOrdersList[27],dayOrdersList[28],dayOrdersList[29],dayOrdersList[30],
+                            dayOrdersList[31]]
+                    ],
+                    colors:{
+                        订单数: '#1ab394'
+                    }
+                }
+            });
+
+            var dayInComeList = [[${dayInComeList}]];
+            console.log(dayInComeList);
+            c3.generate({
+                bindto: '#lineChartIncome',
+                data:{
+                    columns: [
+                        ['收入', dayInComeList[1],dayInComeList[2],dayInComeList[3],dayInComeList[4],dayInComeList[5],dayInComeList[6],dayInComeList[7],dayInComeList[8],dayInComeList[9],dayInComeList[10],
+                            dayInComeList[11],dayInComeList[12],dayInComeList[13],dayInComeList[14],dayInComeList[15],dayInComeList[16],dayInComeList[17],dayInComeList[18],dayInComeList[19],dayInComeList[20],
+                            dayInComeList[21],dayInComeList[22],dayInComeList[23],dayInComeList[24],dayInComeList[25],dayInComeList[26],dayInComeList[27],dayInComeList[28],dayInComeList[29],dayInComeList[30],
+                            dayInComeList[31]]
+                    ],
+                    colors:{
+                        收入: '#AF2018'
+                    }
+                }
+            });
         });
+
+
     </script>
 
 

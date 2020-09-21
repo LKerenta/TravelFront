@@ -206,7 +206,7 @@ public class MaController {
         List<User> userList = touristService.getAllUser();
         Integer userNumber = userList.size();
 
-        List<Comment> commentList = commentService.getAllComment();
+        List<Comment> commentList = commentService.getAllComments();
         ArrayList<Comment> newCommentList = new ArrayList<Comment>();
         List<String> userNameList = commentService.getUserNameList();
         ArrayList<String> userNameC = new ArrayList<String>();
@@ -688,7 +688,7 @@ public class MaController {
         List<Order> ordersDraw = orderService.getDrawBackDoneOrders();
         List<Order> orderNotEnd = orderService.getNotEndOrders();
 
-        List<Comment> allComment = commentService.getAllComment();
+        List<Comment> allComment = commentService.getAllComments();
         List<Goods> allGoods = goodsService.allGoods();
 
         Calendar cal = Calendar.getInstance();

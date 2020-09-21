@@ -8,7 +8,10 @@ import java.util.List;
 
 
 public interface CommentService {
-    PageInfo<Comment> getAllComment(Integer PageSize,Integer PageIndex);
+
+
+    List<Comment> getAllComments();
+    PageInfo<Comment> getAllComment(Integer PageSize, Integer PageIndex);
 
     List<String> getUserNameList();
     List<String> getGoodsNameList();
@@ -24,8 +27,13 @@ public interface CommentService {
     PageInfo<Comment> getCommentByGoodsNameAndUserName(Integer PageSize,Integer PageIndex,String GoodsName,String UserName);
 
     Integer deleteComment(Integer CID);
-    List<Comment> getAllComment();
 
+
+    List<Comment> getCommentByUser(Integer ID);
+    List<Comment> getCommentByItem(Integer ID);
+    List<Comment> getCommentByKeyword(String search);
+    Integer writeComment(Comment comment);
+    Integer updateComment(Comment comment);
     Comment findCommentByID(Integer CID);
     String findUserNameByID(Integer CID);
     String findGoodsNameByID(Integer CID);

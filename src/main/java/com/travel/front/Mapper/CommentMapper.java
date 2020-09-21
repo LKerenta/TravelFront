@@ -1,5 +1,6 @@
 package com.travel.front.Mapper;
 
+
 import com.travel.front.Entity.Comment;
 import org.apache.ibatis.annotations.*;
 
@@ -81,9 +82,6 @@ public interface CommentMapper {
 
 
 //    Delete
-
-    @Delete("DELETE from comment where CID=#{CID}")
-    Integer deleteComment(Integer CID);
 
 
 }

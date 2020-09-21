@@ -34,7 +34,6 @@ public interface CommentService {
     List<Comment> getCommentByKeyword(String search);
     Integer writeComment(Comment comment);
     Integer updateComment(Comment comment);
-    Integer deleteComment(Comment comment);
     Comment findCommentByID(Integer CID);
     String findUserNameByID(Integer CID);
     String findGoodsNameByID(Integer CID);

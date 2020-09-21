@@ -388,4 +388,44 @@ public class GoodsServiceImpl implements GoodsService {
     public List<Goods> allGoods() {
         return goodsMapper.allGoods();
     }
+
+    @Override
+    public List<Goods> getGoodsBySSID(ScenicSpot scenicSpot) {
+        return null;
+    }
+
+    @Override
+    public List<Goods> getGoodsByDate(Date date) {
+        return null;
+    }
+
+    @Override
+    public List<Goods> getGoodsByName(String name) {
+        return null;
+    }
+
+    @Override
+    public List<Goods> getGoodsByMeals(int Meals) {
+        return null;
+    }
+
+    @Override
+    public List<Goods> getGoodsByFranID(int ID) {
+        return null;
+    }
+
+    @Override
+    public Integer CreateGoods(Goods goods) {
+        return null;
+    }
+
+    @Override
+    public Integer updateGoods(Goods goods) {
+        return null;
+    }
+
+    @Override
+    public Integer deleteGoods(Integer ID) {
+        return null;
+    }
 }

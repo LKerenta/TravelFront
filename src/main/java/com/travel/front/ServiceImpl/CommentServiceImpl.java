@@ -17,6 +17,7 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     private CommentMapper commentMapper;
 
+
     @Override
     public PageInfo<Comment> getAllComment(Integer PageSize,Integer PageIndex) {
         PageHelper.startPage(PageIndex,PageSize);
@@ -96,7 +97,33 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<Comment> getAllComment() {
+    public List<Comment> getCommentByUser(Integer ID) {
+        return null;
+    }
+
+    @Override
+    public List<Comment> getCommentByItem(Integer ID) {
+        return null;
+    }
+
+    @Override
+    public List<Comment> getCommentByKeyword(String search) {
+        return null;
+    }
+
+    @Override
+    public Integer writeComment(Comment comment) {
+        return null;
+    }
+
+    @Override
+    public Integer updateComment(Comment comment) {
+        return null;
+    }
+
+
+    @Override
+    public List<Comment> getAllComments() {
         return commentMapper.getAllComment();
     }
 

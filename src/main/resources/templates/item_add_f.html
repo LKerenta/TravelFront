@@ -34,7 +34,7 @@
                          </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear"> <span class="block m-t-xs">
-                            <table class="table"><tr><td th:text="${Info.FranName}"></td></tr></table>
+                            <table class="table"><tr><td th:text="${Info.Name}"></td></tr></table>
                          </span> <span class="text-muted text-xs block">经销商 <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <!--<li><a href="profile.html">个人信息</a></li>
@@ -205,484 +205,97 @@
                         <a href="item_list.html">商品管理</a>
                     </li>
                     <li class="active">
-                        <strong>产品编辑</strong>
+                        <strong>产品添加</strong>
                     </li>
                 </ol>
             </div>
         </div>
 
         <div class="wrapper wrapper-content animated fadeInRight ecommerce">
-            <form action="item_list.html">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="tabs-container">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a data-toggle="tab" href="#tab-1">产品信息</a></li>
-                                <li class=""><a data-toggle="tab" href="#tab-2">数据</a></li>
-                                <li class=""><a data-toggle="tab" href="#tab-3"> 优惠</a></li>
-                                <li class=""><a data-toggle="tab" href="#tab-4"> 图像</a></li>
-                            </ul>
-                            <div class="tab-content">
-                                <div id="tab-1" class="tab-pane active">
-                                    <div class="panel-body">
-
-                                        <fieldset class="form-horizontal">
-                                            <div class="form-group"><label class="col-sm-2 control-label">品名:</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control" placeholder="Product name"></div>
-                                            </div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">价格:</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control" placeholder="$160.00"></div>
-                                            </div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">描述:</label>
-                                                <div class="col-sm-10">
-                                                    <div class="summernote">
-                                                        <h3>Lorem Ipsum is simply</h3>
-                                                        dummy text of the printing and typesetting industry. <strong>Lorem Ipsum has been the industry's</strong> standard dummy text ever since the 1500s,
-                                                        when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-                                                        when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-                                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-                                                        <br/>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">元标签标题:</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control" placeholder="..."></div>
-                                            </div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">元标签描述:</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control" placeholder="Sheets containing Lorem"></div>
-                                            </div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">元标签关键字:</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control" placeholder="Lorem, Ipsum, has, been"></div>
-                                            </div>
-                                        </fieldset>
-                                        <div class="col-md-offset-5">
-                                            <button class="btn btn-success btn-w-m">提交</button>
-                                            <button class="btn btn-default btn-w-m">返回</button>
-                                        </div>
-                                        
-
-                                    </div>
-                                </div>
-                                <div id="tab-2" class="tab-pane">
-                                    <div class="panel-body">
-
-                                        <fieldset class="form-horizontal">
-                                            <div class="form-group"><label class="col-sm-2 control-label">ID:</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control" placeholder="543"></div>
-                                            </div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">位置:</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control" placeholder="location"></div>
-                                            </div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">路线：</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control" placeholder="site1-site2-site3"></div>
-                                            </div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">计划参团人数:</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control" placeholder="Quantity"></div>
-                                            </div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">最小参团人数:</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control" placeholder="2"></div>
-                                            </div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">排序:</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control" placeholder="0"></div>
-                                            </div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">状态:</label>
-                                                <div class="col-sm-10">
-                                                    <select class="form-control" >
-                                                        <option>未开始</option>
-                                                        <option>已开团</option>
-                                                        <option>开团结束</option>
-                                                        <option>已开始</option>
-                                                        <option>已结束</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                        <div class="col-md-offset-5">
-                                            <button class="btn btn-success btn-w-m">提交</button>
-                                            <button class="btn btn-default btn-w-m">返回</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div id="tab-3" class="tab-pane">
-                                    <div class="panel-body">
-
-                                        <div class="table-responsive">
-                                            <table class="table table-stripped table-bordered">
-
-                                                <thead>
-                                                <tr>
-                                                    <th>
-                                                        分组
-                                                    </th>
-                                                    <th>
-                                                        数量
-                                                    </th>
-                                                    <th>
-                                                        优惠
-                                                    </th>
-                                                    <th style="width: 20%">
-                                                        开始日期
-                                                    </th>
-                                                    <th style="width: 20%">
-                                                        结束日期
-                                                    </th>
-                                                    <th>
-                                                      操作
-                                                    </th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <select class="form-control" >
-                                                            <option selected>Group 1</option>
-                                                            <option>Group 2</option>
-                                                            <option>Group 3</option>
-                                                            <option>Group 4</option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" placeholder="10">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" placeholder="$10.00">
-                                                    </td>
-                                                    <td>
-                                                        <div class="input-group date">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="07/01/2014">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="input-group date">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="07/01/2014">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                            <button class="btn btn-white"><i class="fa fa-trash"></i> </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <select class="form-control" >
-                                                            <option selected>Group 1</option>
-                                                            <option>Group 2</option>
-                                                            <option>Group 3</option>
-                                                            <option>Group 4</option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" placeholder="10">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" placeholder="$10.00">
-                                                    </td>
-                                                    <td>
-                                                        <div class="input-group date">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="07/01/2014">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="input-group date">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="07/01/2014">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-white"><i class="fa fa-trash"></i> </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <select class="form-control" >
-                                                            <option selected>Group 1</option>
-                                                            <option>Group 2</option>
-                                                            <option>Group 3</option>
-                                                            <option>Group 4</option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" placeholder="10">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" placeholder="$10.00">
-                                                    </td>
-                                                    <td>
-                                                        <div class="input-group date">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="07/01/2014">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="input-group date">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="07/01/2014">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-white"><i class="fa fa-trash"></i> </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <select class="form-control" >
-                                                            <option selected>Group 1</option>
-                                                            <option>Group 2</option>
-                                                            <option>Group 3</option>
-                                                            <option>Group 4</option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" placeholder="10">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" placeholder="$10.00">
-                                                    </td>
-                                                    <td>
-                                                        <div class="input-group date">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="07/01/2014">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="input-group date">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="07/01/2014">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-white"><i class="fa fa-trash"></i> </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <select class="form-control" >
-                                                            <option selected>Group 1</option>
-                                                            <option>Group 2</option>
-                                                            <option>Group 3</option>
-                                                            <option>Group 4</option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" placeholder="10">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" placeholder="$10.00">
-                                                    </td>
-                                                    <td>
-                                                        <div class="input-group date">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="07/01/2014">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="input-group date">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="07/01/2014">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-white"><i class="fa fa-trash"></i> </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <select class="form-control" >
-                                                            <option selected>Group 1</option>
-                                                            <option>Group 2</option>
-                                                            <option>Group 3</option>
-                                                            <option>Group 4</option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" placeholder="10">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" placeholder="$10.00">
-                                                    </td>
-                                                    <td>
-                                                        <div class="input-group date">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="07/01/2014">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="input-group date">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="07/01/2014">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-white"><i class="fa fa-trash"></i> </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <select class="form-control" >
-                                                            <option selected>Group 1</option>
-                                                            <option>Group 2</option>
-                                                            <option>Group 3</option>
-                                                            <option>Group 4</option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" placeholder="10">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" placeholder="$10.00">
-                                                    </td>
-                                                    <td>
-                                                        <div class="input-group date">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="07/01/2014">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="input-group date">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="07/01/2014">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-white"><i class="fa fa-trash"></i> </button>
-                                                    </td>
-                                                </tr>
-
-                                                </tbody>
-
-                                            </table>
-                                        </div>
-                                        <div class="col-md-offset-5">
-                                            <button class="btn btn-success btn-w-m">提交</button>
-                                            <button class="btn btn-default btn-w-m">返回</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div id="tab-4" class="tab-pane">
-                                    <div class="panel-body">
-
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered table-stripped">
-                                                <thead>
-                                                <tr>
-                                                    <th>
-                                                        图片视图
-                                                    </th>
-                                                    <th>
-                                                        图片链接
-                                                    </th>
-                                                    <th>
-                                                        排序
-                                                    </th>
-                                                    <th>
-                                                        操作
-                                                    </th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <img src="img/gallery/2s.jpg">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" disabled value="http://mydomain.com/images/image1.png">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" value="1">
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-white"><i class="fa fa-trash"></i> </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="img/gallery/1s.jpg">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" disabled value="http://mydomain.com/images/image2.png">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" value="2">
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-white"><i class="fa fa-trash"></i> </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="img/gallery/3s.jpg">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" disabled value="http://mydomain.com/images/image3.png">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" value="3">
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-white"><i class="fa fa-trash"></i> </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="img/gallery/4s.jpg">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" disabled value="http://mydomain.com/images/image4.png">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" value="4">
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-white"><i class="fa fa-trash"></i> </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="img/gallery/5s.jpg">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" disabled value="http://mydomain.com/images/image5.png">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" value="5">
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-white"><i class="fa fa-trash"></i> </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="img/gallery/6s.jpg">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" disabled value="http://mydomain.com/images/image6.png">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" value="6">
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-white"><i class="fa fa-trash"></i> </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="img/gallery/7s.jpg">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" disabled value="http://mydomain.com/images/image7.png">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" value="7">
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-white"><i class="fa fa-trash"></i> </button>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="col-md-offset-5">
-                                            <button class="btn btn-success btn-w-m">提交</button>
-                                            <button class="btn btn-default btn-w-m">返回</button>
-                                        </div>
-                                    </div>
+            <fieldset class="form-horizontal">
+                <div class="row">
+                    <form action="/Franchise/AddItem" method="post">
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                <label for="inputName" class="col-lg-2 control-label">商品名称</label>
+                                <div class="col-lg-6">
+                                    <input type="text" name="GoodsName" class="form-control" id="inputName" placeholder="Item Name">
                                 </div>
                             </div>
-                    </div>
+                            <div class="form-group">
+                                <label for="price" class="col-lg-2 control-label">商品价格</label>
+                                <div class="col-lg-6">
+                                    <input type="number" name="Price" class="form-control" id="price" placeholder="Price ￥">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="number" class="col-lg-2 control-label">报团人数</label>
+                                <div class="col-lg-6">
+                                    <input type="text" name="Number" class="form-control" id="number" placeholder="number">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="SS" class="col-lg-2 control-label">旅游地点</label>
+                                <div class="col-lg-6">
+                                    <select name="SSID" id="SS" class="form-control">
+                                        <option value="1">HUST</option>
+                                        <option value="2">武大</option>
+                                        <option value="3">黄鹤楼</option>
+                                        <option value="4">光谷</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="fran" class="col-lg-2">
+                                    <div class="col-lg-6">
+                                        <input type="number" id="fran" name="FranID" th:value="${Info.ID}" class="form-control hidden">
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label for="launch" class="col-lg-2 control-label">出发日期</label>
+                                <div class="col-lg-6">
+                                    <input type="date" id="launch" name="LaunchDate">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="way" class="col-lg-2 control-label">出行方式</label>
+                                <div class="col-lg-6">
+                                    <select name="Ways" id="way" class="form-control">
+                                        <option>步行</option>
+                                        <option>乘车</option>
+                                        <option>自驾</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="meal" class="col-lg-2 control-label">是否含餐</label>
+                                <div class="col-lg-6">
+                                    <select name="Meals" id="meal" class="form-control">
+                                        <option value="1">是</option>
+                                        <option value="0">否</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+<!--                                <label for="state" class="col-lg-2 control-label">审核状态</label>-->
+                                <div class="col-lg-6">
+                                    <select name="State" id="state" class="form-control hidden">
+                                        <option value="1">审核通过</option>
+                                        <option value="0" selected="selected">审核中</option>
+                                        <option value="2">隐藏显示</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-offset-4"><button class="btn btn-success btn-w-m" type="submit">提交</button></div>
+
+                        </div>
+                    </form>
+
                 </div>
-            </div>
-            </form>
+            </fieldset>
         </div>
         <div class="footer">
             <div>

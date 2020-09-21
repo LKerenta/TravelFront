@@ -45,6 +45,13 @@ public interface CommentMapper {
     @Select("SELECT GoodsName from comment JOIN user JOIN goods where user.UserID=comment.UserID and user.UserName=#{UserName} and goods.GoodsName=#{GoodsName} and goods.GoodsID=comment.GoodsID")
     List<String> getGoodsNameListByGoodsNameAndUserName(String GoodsName,String UserName);
 
+
+    @Select("SELECT CText from `comment` JOIN goods JOIN franchise where `comment`.GoodsID=goods.GoodsID AND goods.FranID=franchise.FranID AND franchise.FranID=#{ID}")
+    List<String> getCommentByFran(Integer ID);
+
+    @Select("SELECT user.UserName from `comment` JOIN goods JOIN franchise JOIN user where `comment`.GoodsID=goods.GoodsID AND goods.FranID=franchise.FranID AND franchise.FranID=#{ID} AND `comment`.UserID=user.UserID")
+    List<String> getCommentUserNameByFran(Integer ID);
+
     @Delete("DELETE from comment where CID=#{CID}")
     Integer deleteComment(Integer CID);
 
@@ -54,6 +61,7 @@ public interface CommentMapper {
     String findUserNameByID(Integer CID);
     @Select("SELECT GoodsName from `comment` JOIN goods WHERE goods.GoodsID=`comment`.GoodsID AND CID=#{CID}")
     String findGoodsNameByID(Integer CID);
+
 
     @Select("select * from comment where UserID=#{ID}")
     List<Comment> getCommentByUser(Integer ID);
@@ -70,4 +78,12 @@ public interface CommentMapper {
     //    Update
     @Update("update comment set CText=#{CText} where UserID=#{UserID} and GoodsID=#{GoodsID}")
     Integer updateComment(Comment comment);
+
+
+//    Delete
+
+    @Delete("DELETE from comment where CID=#{CID}")
+    Integer deleteComment(Integer CID);
+
+
 }

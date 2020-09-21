@@ -6,6 +6,7 @@ import com.travel.front.Entity.Goods;
 import com.travel.front.Entity.Login;
 import com.travel.front.Entity.Order;
 
+import com.travel.front.Service.CommentService;
 import com.travel.front.Service.FranchiseService;
 import com.travel.front.Service.GoodsService;
 import com.travel.front.Service.LoginService;
@@ -30,6 +31,9 @@ public class FranchiseController {
 
     @Autowired
     private GoodsService goodsService;
+
+    @Autowired
+    private CommentService commentService;
 
 
     @GetMapping("/index")
@@ -65,6 +69,21 @@ public class FranchiseController {
         Login userType = loginService.getLoginUser();
         model.addAttribute("Info",userType);
         return "item_update_f";
+    }
+
+    @GetMapping("/AddItem")
+    public String addItemPage(Model model){
+        Login login = loginService.getLoginUser();
+        model.addAttribute("Info",login);
+        return "item_add_f";
+    }
+
+    @PostMapping("/AddItem")
+    public String addItem(Goods goods,Model model){
+        Login login=loginService.getLoginUser();
+        goodsService.CreateGoods(goods);
+        model.addAttribute("Info",login);
+        return "redirect:item";
     }
 
 

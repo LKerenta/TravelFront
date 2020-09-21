@@ -7,10 +7,12 @@ import com.travel.front.Entity.ScenicSpot;
 import com.travel.front.Mapper.GoodsMapper;
 import com.travel.front.Service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.util.List;
 
+@Service
 public class GoodsServiceImpl implements GoodsService {
     @Autowired
     GoodsMapper goodsMapper;
@@ -389,43 +391,4 @@ public class GoodsServiceImpl implements GoodsService {
         return goodsMapper.allGoods();
     }
 
-    @Override
-    public List<Goods> getGoodsBySSID(ScenicSpot scenicSpot) {
-        return null;
-    }
-
-    @Override
-    public List<Goods> getGoodsByDate(Date date) {
-        return null;
-    }
-
-    @Override
-    public List<Goods> getGoodsByName(String name) {
-        return null;
-    }
-
-    @Override
-    public List<Goods> getGoodsByMeals(int Meals) {
-        return null;
-    }
-
-    @Override
-    public List<Goods> getGoodsByFranID(int ID) {
-        return null;
-    }
-
-    @Override
-    public Integer CreateGoods(Goods goods) {
-        return null;
-    }
-
-    @Override
-    public Integer updateGoods(Goods goods) {
-        return null;
-    }
-
-    @Override
-    public Integer deleteGoods(Integer ID) {
-        return null;
-    }
 }

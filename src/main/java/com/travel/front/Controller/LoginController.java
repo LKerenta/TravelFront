@@ -44,7 +44,7 @@ public class LoginController {
             Manager manager = loginService.RM(userType);
             Login login = loginService.getLoginUser();
             model.addAttribute("Manager",manager);
-            return "backstage_index";
+            return "redirect:/Tourist_Backstage/index";
         }
         else if(i == 1)
         {

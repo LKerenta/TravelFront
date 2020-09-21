@@ -1,15 +1,20 @@
 package com.travel.front.Mapper;
 
 import com.travel.front.Entity.Goods;
+import com.travel.front.Entity.ScenicSpot;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.jmx.export.naming.IdentityNamingStrategy;
 
 import java.util.List;
 
 @Mapper
 public interface GoodsMapper {
+    @Select("SELECT * FROM goods where State!=-1")
+    List<Goods> allGoods();
+
     @Select("SELECT * FROM goods where state=1")
     List<Goods> getAllGoods();
     @Select("SELECT FranName FROM goods JOIN franchise where franchise.FranID=goods.FranID AND state=1")
@@ -116,6 +121,30 @@ public interface GoodsMapper {
     @Select("SELECT FranName from goods JOIN franchise WHERE state=0 AND GoodsID=#{GoodsID}  AND Price=#{Price} AND goods.FranID=franchise.FranID AND FranName LIKE CONCAT('%',#{FranName},'%') AND GoodsName LIKE CONCAT('%',#{GoodsName},'%') ORDER BY GoodsID")
     List<String> getAllExamineFranNameByPriceAndGoodsID(Integer GoodsID,String GoodsName,String FranName,Integer Price);
 
-    @Delete("")
+    @Update("UPDATE goods SET State=-1 WHERE GoodsID=#{GoodsID}")
     Integer deleteGoodsByGoodsID(Integer GoodsID);
+
+    @Update("UPDATE goods set State=1 WHERE GoodsID=#{GoodsID}")
+    Integer passExamine(Integer GoodsID);
+
+    @Update("UPDATE goods set State=-1 WHERE GoodsID=#{GoodsID}")
+    Integer rejectExamine(Integer GoodsID);
+
+    @Select("SELECT * FROM goods where GoodsID=#{GoodsID}")
+    Goods getGoodsByID(Integer GoodsID);
+
+    @Select("SELECT * FROM scenicspot WHERE SSID=#{SSID}")
+    ScenicSpot getScenicByID(Integer SSID);
+
+    @Select("SELECT FranName FROM franchise JOIN goods WHERE goods.FranID=franchise.FranID AND GoodsID=#{GoodsID}")
+    String getFranName(Integer GoodsID);
+
+    @Update("UPDATE goods SET GoodsName=#{GoodsName},Price=#{Price},Number=#{Number},LaunchDate=#{LaunchDate},Ways=#{Ways},Meals=#{Meals},IntroduceG=#{IntroduceG} WHERE GoodsID=#{GoodsID};")
+    Integer updateGood(Goods goods);
+    @Update("UPDATE scenicspot SET SSImage_1=#{SSImage_1},SSImage_2=#{SSImage_2},SSImage_3=#{SSImage_3},Introduce=#{Introduce} WHERE SSID=#{SSID};")
+    Integer updateScenic(ScenicSpot scenicSpot);
+
+    @Select("SELECT * from goods where state=-1")
+    List<Goods> getAllNotPassGoods();
+
 }

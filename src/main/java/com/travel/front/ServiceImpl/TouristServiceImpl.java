@@ -55,4 +55,29 @@ public class TouristServiceImpl  implements TouristService {
         PageInfo<User> list = new PageInfo<User>(users);
         return list;
     }
+
+    @Override
+    public Integer addUser(User user) {
+        return touristMapper.addUser(user);
+    }
+
+    @Override
+    public User findUserByID(Integer UserID) {
+        return touristMapper.findUserByID(UserID);
+    }
+
+    @Override
+    public Integer updateUserByID(User user) {
+        return touristMapper.updateUserByID(user);
+    }
+
+    @Override
+    public List<User> getAllUser() {
+        return touristMapper.getAllUser();
+    }
+
+    @Override
+    public Integer deleteUserByID(Integer UserID) {
+        return touristMapper.deleteUserByID(UserID);
+    }
 }

@@ -32,7 +32,7 @@ public class LoginController {
 
         if(i==0){
             Manager manager = loginService.RM(userType);
-            model.addAttribute("Info",manager);
+            model.addAttribute("Manager",manager);
             return "backstage_index";
         }else if(i == 1){
             Franchise franchise = loginService.RF(userType);

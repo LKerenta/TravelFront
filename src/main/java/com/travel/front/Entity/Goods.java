@@ -13,6 +13,15 @@ public class Goods {
     private Integer SSID;
     private Integer FranID;
     private Integer State;
+    private String IntroduceG;
+
+    public String getIntroduceG() {
+        return IntroduceG;
+    }
+
+    public void setIntroduceG(String introduceG) {
+        IntroduceG = introduceG;
+    }
 
     public Integer getState() {
         return State;

@@ -1,6 +1,7 @@
 package com.travel.front.Mapper;
 
 import com.travel.front.Entity.Comment;
+import com.travel.front.Entity.Order;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -47,4 +48,11 @@ public interface CommentMapper {
 
     @Delete("DELETE from comment where CID=#{CID}")
     Integer deleteComment(Integer CID);
+
+    @Select("SELECT * from `comment` WHERE CID=#{CID}")
+    Comment findCommentByID(Integer CID);
+    @Select("SELECT UserName from `comment` JOIN `user` WHERE `user`.UserID=`comment`.UserID AND CID=#{CID}")
+    String findUserNameByID(Integer CID);
+    @Select("SELECT GoodsName from `comment` JOIN goods WHERE goods.GoodsID=`comment`.GoodsID AND CID=#{CID}")
+    String findGoodsNameByID(Integer CID);
 }

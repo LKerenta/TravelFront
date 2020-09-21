@@ -7,6 +7,15 @@ public class Manager {
     private String MaImage;
     private String Phone;
     private String Email;
+    private Integer Balance;
+
+    public Integer getBalance() {
+        return Balance;
+    }
+
+    public void setBalance(Integer balance) {
+        Balance = balance;
+    }
 
     public Integer getMaID() {
         return MaID;

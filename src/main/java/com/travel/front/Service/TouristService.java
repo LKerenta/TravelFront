@@ -11,4 +11,10 @@ public interface TouristService {
     PageInfo<User> getUsersByUserID(Integer PageSize,Integer PageIndex,Integer UserID,String UserName,String TrueName,String IDNumber,String Email,String Phone);
     PageInfo<User> getUsersByQQNumber(Integer PageSize,Integer PageIndex,Integer QQNumber,String UserName,String TrueName,String IDNumber,String Email,String Phone);
     PageInfo<User> getUsersByUserIDAndQQNumber(Integer PageSize,Integer PageIndex,Integer UserID,Integer QQNumber,String UserName,String TrueName,String IDNumber,String Email,String Phone);
+
+    Integer addUser(User user);
+    User findUserByID(Integer UserID);
+    Integer updateUserByID(User user);
+    List<User> getAllUser();
+    Integer deleteUserByID(Integer UserID);
 }

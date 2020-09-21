@@ -2,6 +2,7 @@ package com.travel.front.Service;
 
 import com.github.pagehelper.PageInfo;
 import com.travel.front.Entity.Goods;
+import com.travel.front.Entity.ScenicSpot;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -54,4 +55,16 @@ public interface GoodsService {
     List<String> getAllExamineFranNameByGoodsID(String GoodsName,String FranName,Integer GoodsID);
     List<String> getAllExamineFranNameByPrice(String GoodsName,String FranName,Integer Price);
     List<String> getAllExamineFranNameByPriceAndGoodsID(Integer GoodsID,String GoodsName,String FranName,Integer Price);
+
+    List<Goods> getAllGoods();
+    List<Goods> getAllExamineGoods();
+    Integer passExamine(Integer GoodsID);
+    Integer rejectExamine(Integer GoodsID);
+    Goods getGoodsByID(Integer GoodsID);
+    ScenicSpot getScenicByID(Integer SSID);
+    String getFranName(Integer GoodsID);
+    Integer updateGood(Goods goods);
+    Integer updateScenic(ScenicSpot scenicSpot);
+    List<Goods> getAllNotPassGoods();
+    List<Goods> allGoods();
 }

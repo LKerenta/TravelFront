@@ -54,4 +54,24 @@ public class FranchiseServiceImpl implements FranchiseService {
         PageInfo<Franchise> list = new PageInfo<Franchise>(frans);
         return list;
     }
+
+    @Override
+    public Integer addFran(Franchise franchise) {
+        return franchiseMapper.addFran(franchise);
+    }
+
+    @Override
+    public Franchise findFranByID(Integer FranID) {
+        return franchiseMapper.findFranByID(FranID);
+    }
+
+    @Override
+    public Integer updateFranByID(Franchise franchise) {
+        return franchiseMapper.updateFranByID(franchise);
+    }
+
+    @Override
+    public Integer deleteFranByID(Integer FranID) {
+        return franchiseMapper.deleteFranByID(FranID);
+    }
 }

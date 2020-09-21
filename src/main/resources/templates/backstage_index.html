@@ -25,15 +25,13 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                        <img alt="image" class="img-circle" src="/img/profile_small.jpg" />
+                        <img alt="image" width="50" height="50" class="img-circle" th:src="@{'http://localhost:8080/src/pic/'+${Manager.MaImage}}" />
                          </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><div>Admin</div></strong>
+                        <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold" th:text="${Manager.MaName}">Admin</strong>
                          </span> <span class="text-muted text-xs block">管理员 <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="profile.html">个人信息</a></li>
-                            <li><a href="contacts.html">联系方式</a></li>
-                            <li><a href="mailbox.html">邮箱</a></li>
+                            <li><a href="/Tourist_Backstage/manager_info">个人信息</a></li>
                             <li class="divider"></li>
                             <li><a href="/Tourist/login">退出登录</a></li>
                         </ul>
@@ -51,6 +49,7 @@
                         <li><a href="/Tourist_Backstage/user_list">游客用户管理</a></li>
                         <li><a href="/Tourist_Backstage/seller_list">经销商用户管理</a></li>
                         <li><a href="/Tourist_Backstage/user_add">用户添加</a></li>
+                        <li><a href="/Tourist_Backstage/seller_add">经销商添加</a></li>
                     </ul>
                 </li>
                 <li>
@@ -81,104 +80,11 @@
         <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-            <form role="search" class="navbar-form-custom" action="search_results.html">
-                <div class="form-group">
-                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
-                </div>
-            </form>
         </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
                     <span class="m-r-sm text-muted welcome-message">欢迎来到抱团旅游网站后台管理系统</span>
                 </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-messages">
-                        <li>
-                            <div class="dropdown-messages-box">
-                                <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="/img/a7.jpg">
-                                </a>
-                                <div class="media-body">
-                                    <small class="pull-right">46小时前</small>
-                                    <strong>李文俊</strong> 关注了 <strong>刘海洋</strong>. <br>
-                                    <small class="text-muted">3 天 前- 10.06.2014</small>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="dropdown-messages-box">
-                                <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="/img/a4.jpg">
-                                </a>
-                                <div class="media-body ">
-                                    <small class="pull-right text-navy">5小时前</small>
-                                    <strong>王昆</strong> 关注了 <strong>李文俊</strong>. <br>
-                                    <small class="text-muted">昨天下午1:21 - 11.06.2014</small>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="dropdown-messages-box">
-                                <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="/img/profile.jpg">
-                                </a>
-                                <div class="media-body ">
-                                    <small class="pull-right">23小时前</small>
-                                    <strong>张三</strong> 赞了 <strong>李四</strong>. <br>
-                                    <small class="text-muted">2天前 - 11.06.2014</small>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="text-center link-block">
-                                <a href="mailbox.html">
-                                    <i class="fa fa-envelope"></i> <strong>查看更多消息</strong>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-alerts">
-                        <li>
-                            <a href="mailbox.html">
-                                <div>
-                                    <i class="fa fa-envelope fa-fw"></i> 您有 16 条未读通知
-                                    <span class="pull-right text-muted small">4 分钟 前</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="grid_options.html">
-                                <div>
-                                    <i class="fa fa-upload fa-fw"></i> 服务器重启
-                                    <span class="pull-right text-muted small">4 分钟 前</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="text-center link-block">
-                                <a href="notifications.html">
-                                    <strong>查看更多通知</strong>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-
-
                 <li>
                     <a href="/Tourist/login">
                         <i class="fa fa-sign-out"></i> 退出登录
@@ -194,25 +100,25 @@
                 <div class="col-lg-3">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <span class="label label-success pull-right">月</span>
-                            <h5>收入</h5>
+                            <span class="label label-success pull-right">年</span>
+                            <h5>总收入</h5>
                         </div>
                         <div class="ibox-content">
-                            <h1 class="no-margins">40 886,200</h1>
-                            <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
-                            <small>总收入</small>
+                            <h1 class="no-margins" th:text="${Income}">40 886,200</h1>
+                            <div class="stat-percent font-bold text-success"><i class="fa fa-bolt"></i></div>
+                            <small>新收入</small>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <span class="label label-info pull-right">季</span>
-                            <h5>订单</h5>
+                            <span class="label label-info pull-right">年</span>
+                            <h5>订单总数</h5>
                         </div>
                         <div class="ibox-content">
-                            <h1 class="no-margins">275,800</h1>
-                            <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
+                            <h1 class="no-margins" th:text="${orderNumber}">275,800</h1>
+                            <div class="stat-percent font-bold text-info"><i class="fa fa-level-up"></i></div>
                             <small>新订单</small>
                         </div>
                     </div>
@@ -220,13 +126,13 @@
                 <div class="col-lg-3">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <span class="label label-primary pull-right">今日</span>
-                            <h5>访客</h5>
+                            <span class="label label-primary pull-right">年</span>
+                            <h5>商品总数</h5>
                         </div>
                         <div class="ibox-content">
-                            <h1 class="no-margins">106,120</h1>
-                            <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>
-                            <small>新访客</small>
+                            <h1 class="no-margins" th:text="${goodsNumber}">106,120</h1>
+                            <div class="stat-percent font-bold text-navy"><i class="fa fa-level-up"></i></div>
+                            <small>新商品</small>
                         </div>
                     </div>
                 </div>
@@ -234,66 +140,12 @@
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
                             <span class="label label-danger pull-right">低值</span>
-                            <h5>活跃用户</h5>
+                            <h5>用户总数</h5>
                         </div>
                         <div class="ibox-content">
-                            <h1 class="no-margins">80,600</h1>
-                            <div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i></div>
-                            <small>第一个月</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>订单</h5>
-                            <div class="pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-xs btn-white active">今日</button>
-                                    <button type="button" class="btn btn-xs btn-white">月</button>
-                                    <button type="button" class="btn btn-xs btn-white">季度</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-                            <div class="row">
-                            <div class="col-lg-9">
-                                <div class="flot-chart">
-                                    <div class="flot-chart-content" id="flot-dashboard-chart"></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <ul class="stat-list">
-                                    <li>
-                                        <h2 class="no-margins">2,346</h2>
-                                        <small>所有订单</small>
-                                        <div class="stat-percent">48% <i class="fa fa-level-up text-navy"></i></div>
-                                        <div class="progress progress-mini">
-                                            <div style="width: 48%;" class="progress-bar"></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <h2 class="no-margins ">4,422</h2>
-                                        <small>上月订单</small>
-                                        <div class="stat-percent">60% <i class="fa fa-level-down text-navy"></i></div>
-                                        <div class="progress progress-mini">
-                                            <div style="width: 60%;" class="progress-bar"></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <h2 class="no-margins ">9,180</h2>
-                                        <small>订单收入</small>
-                                        <div class="stat-percent">22% <i class="fa fa-bolt text-navy"></i></div>
-                                        <div class="progress progress-mini">
-                                            <div style="width: 22%;" class="progress-bar"></div>
-                                        </div>
-                                    </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <h1 class="no-margins" th:text="${UserNumber}">80,600</h1>
+                            <div class="stat-percent font-bold text-danger"><i class="fa fa-level-down"></i></div>
+                            <small>新用户</small>
                         </div>
                     </div>
                 </div>
@@ -319,13 +171,11 @@
     
                                             <div class="pull-right text-right">
     
-                                                <span class="bar_dashboard">5,3,9,6,5,9,7,3,5,2,4,7,3,2,7,9,6,4,5,7,3,2,1,0,9,5,6,8,3,2,1</span>
-                                                <br/>
-                                                <small class="font-bold">$ 20 054.43</small>
+                                                <span class="bar_dashboard">5,3,9,6,5,9,7,3,5,2,4,5,7,3,2,1,0,9,5,6,8,3,2,1</span>
                                             </div>
                                             <h4>有新的报表数据
                                                 <br/>
-                                                <small class="m-r"><a href="backstage_statistics.html"> 立即查看 </a> </small>
+                                                <small class="m-r"><a href="/Tourist_Backstage/statistics"> 立即查看 </a> </small>
                                             </h4>
                                         </div>
                                     </div>
@@ -337,15 +187,6 @@
                                             <a class="collapse-link">
                                                 <i class="fa fa-chevron-up"></i>
                                             </a>
-                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                                <i class="fa fa-wrench"></i>
-                                            </a>
-                                            <ul class="dropdown-menu dropdown-user">
-                                                <li><a href="#">设置 1</a>
-                                                </li>
-                                                <li><a href="#">设置 2</a>
-                                                </li>
-                                            </ul>
                                             <a class="close-link">
                                                 <i class="fa fa-times"></i>
                                             </a>
@@ -353,25 +194,9 @@
                                     </div>
                                     <div class="ibox-content no-padding">
                                         <ul class="list-group">
-                                            <li class="list-group-item">
-                                                <p><a class="text-info" href="#">@Alan Marry</a> 风景不错，导游耐心，好评</p>
-                                                <small class="block text-muted"><i class="fa fa-clock-o"></i> 1分钟前</small>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <p><a class="text-info" href="#">@Kevin Smith</a> 风景不错，导游耐心，好评 </p>
-                                                <small class="block text-muted"><i class="fa fa-clock-o"></i> 2分钟前</small>
-                                            </li>
-                                            <li class="list-group-item ">
-                                                <p><a class="text-info" href="#">@Jonathan Febrick</a> 风景不错，导游耐心，好评</p>
-                                                <small class="block text-muted"><i class="fa fa-clock-o"></i> 1小时前</small>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <p><a class="text-info" href="#">@Alan Marry</a> 风景不错，导游耐心，好评.</p>
-                                                <small class="block text-muted"><i class="fa fa-clock-o"></i> 1分钟前</small>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <p><a class="text-info" href="#">@Kevin Smith</a> 风景不错，导游耐心，好评 </p>
-                                                <small class="block text-muted"><i class="fa fa-clock-o"></i> 2分钟前</small>
+                                            <li class="list-group-item" th:each="Comment,CommentStat:${newComments}">
+                                                <div style="color: #0d8ddb" th:text="@{'@'+${userNameC[CommentStat.index]}}">@Alan Marry</div>
+                                                <p th:text="${Comment.CText}">风景不错，导游耐心，好评</p>
                                             </li>
                                         </ul>
                                     </div>
@@ -400,48 +225,18 @@
                                     <table class="table table-hover no-margins">
                                         <thead>
                                         <tr>
-                                            <th>名称</th>
+                                            <th>商品名</th>
                                             <th>日期</th>
                                             <th>经销商</th>
                                             <th>价格</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td><small>商品1</small></td>
-                                            <td>2020-09-01</td>
-                                            <td>Samantha</td>
-                                            <td>$50</td>
-                                        </tr>
-                                        <tr>
-                                            <td><small>商品2</small> </td>
-                                            <td>2020-09-01</td>
-                                            <td>Monica</td>
-                                            <td>$50</td>
-                                        </tr>
-                                        <tr>
-                                            <td><small>商品3</small> </td>
-                                            <td>2020-09-01</td>
-                                            <td>John</td>
-                                            <td>$50</td>
-                                        </tr>
-                                        <tr>
-                                            <td><small>商品4</small> </td>
-                                            <td>2020-09-01</td>
-                                            <td>Agnes</td>
-                                            <td>$50</td>
-                                        </tr>
-                                        <tr>
-                                            <td><small>商品5</small> </td>
-                                            <td>2020-09-01</td>
-                                            <td>Janet</td>
-                                            <td>$50</td>
-                                        </tr>
-                                        <tr>
-                                            <td><small>商品6</small></td>
-                                            <td>2020-09-01</td>
-                                            <td>Amelia</td>
-                                            <td>$50</td>
+                                        <tr th:each="Good,GoodStat:${newGoods}">
+                                            <td th:text="${Good.GoodsName}"><small>商品1</small></td>
+                                            <td th:text="${Good.LaunchDate}">2020-09-01</td>
+                                            <td th:text="${franNameG[GoodStat.index]}">Samantha</td>
+                                            <td th:text="${Good.Price}">$50</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -473,41 +268,11 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td><small>001</small></td>
-                                            <td>武汉一日游</td>
-                                            <td>Samantha</td>
-                                            <td class="text-center"><span class="label label-primary">$50</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><small>002</small> </td>
-                                            <td>武汉一日游</td>
-                                            <td>Monica</td>
-                                            <td class="text-center"><span class="label label-primary">$50</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><small>003</small> </td>
-                                            <td>武汉一日游</td>
-                                            <td>John</td>
-                                            <td class="text-center"><span class="label label-primary">$50</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><small>004</small> </td>
-                                            <td>武汉一日游</td>
-                                            <td>Agnes</td>
-                                            <td class="text-center"><span class="label label-primary">$50</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><small>005</small> </td>
-                                            <td>武汉一日游</td>
-                                            <td>Janet</td>
-                                            <td class="text-center"><span class="label label-primary">$50</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><small>006</small></td>
-                                            <td>武汉一日游</td>
-                                            <td>Amelia</td>
-                                            <td class="text-center"><span class="label label-primary">$50</span></td>
+                                        <tr th:each="Order,OrderStat:${newOrders}">
+                                            <td th:text="${Order.OrderID}"><small>001</small></td>
+                                            <td th:text="${goodsNameO[OrderStat.index]}">武汉一日游</td>
+                                            <td th:text="${userNameO[OrderStat.index]}">Samantha</td>
+                                            <td th:text="${Order.Price}">$50</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -569,11 +334,12 @@
     <!-- Sparkline demo data  -->
     <script src="/js/demo/sparkline-demo.js"></script>
 
+
     <script>
         $(document).ready(function() {
             $('.chart').easyPieChart({
                 barColor: '#f8ac59',
-//                scaleColor: false,
+                scaleColor: false,
                 scaleLength: 5,
                 lineWidth: 4,
                 size: 80
@@ -581,7 +347,7 @@
 
             $('.chart2').easyPieChart({
                 barColor: '#1c84c6',
-//                scaleColor: false,
+                scaleColor: false,
                 scaleLength: 5,
                 lineWidth: 4,
                 size: 80
@@ -629,8 +395,8 @@
                     color: "#1C84C6",
                     lines: {
                         lineWidth:1,
-                            show: true,
-                            fill: true,
+                        show: true,
+                        fill: true,
                         fillColor: {
                             colors: [{
                                 opacity: 0.2
@@ -732,7 +498,6 @@
             });
         });
     </script>
-
 
 </body>
 

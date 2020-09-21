@@ -84,5 +84,121 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.getAllGoodNameByOrderID(OrderID,UserName,GoodsName,FranName);
     }
 
+    @Override
+    public List<Order> getAllOrder() {
+        return orderMapper.getAllOrder();
+    }
+
+    @Override
+    public Integer changePrice(Order order) {
+        return orderMapper.changePrice(order);
+    }
+
+    @Override
+    public Order findOrderByID(Integer OrderID) {
+        return orderMapper.findOrderByID(OrderID);
+    }
+
+    @Override
+    public String findUserNameByID(Integer OrderID) {
+        return orderMapper.findUserNameByID(OrderID);
+    }
+
+    @Override
+    public String findFranNameByID(Integer OrderID) {
+        return orderMapper.findFranNameByID(OrderID);
+    }
+
+    @Override
+    public String findGoodNameByID(Integer OrderID) {
+        return orderMapper.findGoodNameByID(OrderID);
+    }
+
+    @Override
+    public PageInfo<Order> getOrdersDrawBack(Integer PageSize, Integer PageIndex) {
+        PageHelper.startPage(PageIndex,PageSize);
+        List<Order> orders = orderMapper.getOrdersDrawBack();
+        PageInfo<Order> list = new PageInfo<Order>(orders);
+        return list;
+    }
+
+    @Override
+    public List<String> getUsersDrawBack() {
+        return orderMapper.getUsersDrawBack();
+    }
+
+    @Override
+    public List<String> getFransDrawBack() {
+        return orderMapper.getFransDrawBack();
+    }
+
+    @Override
+    public List<String> getGoodsDrawBack() {
+        return orderMapper.getGoodsDrawBack();
+    }
+
+    @Override
+    public PageInfo<Order> getOrdersWaitForPay(Integer PageSize, Integer PageIndex) {
+        PageHelper.startPage(PageIndex,PageSize);
+        List<Order> orders = orderMapper.getOrdersWaitForPay();
+        PageInfo<Order> list = new PageInfo<Order>(orders);
+        return list;
+    }
+
+    @Override
+    public List<Order> getOrdersWaitForPay() {
+        return orderMapper.getOrdersWaitForPay();
+    }
+
+    @Override
+    public List<String> getUsersWaitForPay() {
+        return orderMapper.getUsersWaitForPay();
+    }
+
+    @Override
+    public List<String> getFransWaitForPay() {
+        return orderMapper.getFransWaitForPay();
+    }
+
+    @Override
+    public List<String> getGoodsWaitForPay() {
+        return orderMapper.getGoodsWaitForPay();
+    }
+
+    @Override
+    public Integer drawBackByID(Order order) {
+        return orderMapper.drawBackByID(order);
+    }
+
+    @Override
+    public Integer rejectDrawBackByID(Integer OrderID) {
+        return orderMapper.rejectDrawBackByID(OrderID);
+    }
+
+    @Override
+    public List<Order> getAllDoneOrder() {
+        return orderMapper.getAllDoneOrder();
+    }
+
+    @Override
+    public Integer payToFran(Order order,Integer MaID) {
+        return orderMapper.payToFran(order,MaID);
+    }
+
+    @Override
+    public List<Order> getNotEndOrders() {
+        return orderMapper.getNotEndOrders();
+    }
+
+    @Override
+    public List<Order> getDrawBackDoneOrders() {
+        return orderMapper.getDrawBackDoneOrders();
+    }
+
+    @Override
+    public Integer deleteOrderByID(Integer OrderID) {
+        return orderMapper.deleteOrderByID(OrderID);
+    }
+
 
 }

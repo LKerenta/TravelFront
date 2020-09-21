@@ -3,6 +3,7 @@ package com.travel.front.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.travel.front.Entity.Goods;
+import com.travel.front.Entity.ScenicSpot;
 import com.travel.front.Mapper.GoodsMapper;
 import com.travel.front.Service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -292,5 +293,60 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public List<String> getAllExamineFranNameByPriceAndGoodsID(Integer GoodsID, String GoodsName, String FranName, Integer Price) {
         return goodsMapper.getAllExamineFranNameByPriceAndGoodsID(GoodsID,GoodsName,FranName,Price);
+    }
+
+    @Override
+    public List<Goods> getAllGoods() {
+        return goodsMapper.getAllGoods();
+    }
+
+    @Override
+    public List<Goods> getAllExamineGoods() {
+        return goodsMapper.getAllExamineGoods();
+    }
+
+    @Override
+    public Integer passExamine(Integer GoodsID) {
+        return goodsMapper.passExamine(GoodsID);
+    }
+
+    @Override
+    public Integer rejectExamine(Integer GoodsID) {
+        return goodsMapper.rejectExamine(GoodsID);
+    }
+
+    @Override
+    public Goods getGoodsByID(Integer GoodsID) {
+        return goodsMapper.getGoodsByID(GoodsID);
+    }
+
+    @Override
+    public ScenicSpot getScenicByID(Integer SSID) {
+        return goodsMapper.getScenicByID(SSID);
+    }
+
+    @Override
+    public String getFranName(Integer GoodsID) {
+        return goodsMapper.getFranName(GoodsID);
+    }
+
+    @Override
+    public Integer updateGood(Goods goods) {
+        return goodsMapper.updateGood(goods);
+    }
+
+    @Override
+    public Integer updateScenic(ScenicSpot scenicSpot) {
+        return goodsMapper.updateScenic(scenicSpot);
+    }
+
+    @Override
+    public List<Goods> getAllNotPassGoods() {
+        return goodsMapper.getAllNotPassGoods();
+    }
+
+    @Override
+    public List<Goods> allGoods() {
+        return goodsMapper.allGoods();
     }
 }

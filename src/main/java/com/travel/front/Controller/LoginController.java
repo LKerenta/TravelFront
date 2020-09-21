@@ -43,8 +43,8 @@ public class LoginController {
         {
             Manager manager = loginService.RM(userType);
             Login login = loginService.getLoginUser();
-            model.addAttribute("Info",login);
-            return "index";
+            model.addAttribute("Manager",manager);
+            return "backstage_index";
         }
         else if(i == 1)
         {

@@ -1,9 +1,8 @@
 package com.travel.front.Mapper;
 
 import com.travel.front.Entity.Comment;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
+
 
 import java.util.List;
 

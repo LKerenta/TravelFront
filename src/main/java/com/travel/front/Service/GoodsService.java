@@ -68,8 +68,7 @@ public interface GoodsService {
     Integer updateScenic(ScenicSpot scenicSpot);
     List<Goods> getAllNotPassGoods();
     List<Goods> allGoods();
-
-    List<Goods> getAllGoods();
+    
     List<Goods> getGoodsBySSID(ScenicSpot scenicSpot);
     List<Goods> getGoodsByDate(Date date);
     List<Goods> getGoodsByName(String name);

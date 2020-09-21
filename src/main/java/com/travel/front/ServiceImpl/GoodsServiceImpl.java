@@ -338,10 +338,6 @@ public class GoodsServiceImpl implements GoodsService {
         return goodsMapper.getAllExamineFranNameByPriceAndGoodsID(GoodsID,GoodsName,FranName,Price);
     }
 
-    @Override
-    public List<Goods> getAllGoods() {
-        return goodsMapper.getAllGoods();
-    }
 
     @Override
     public List<Goods> getAllExamineGoods() {

@@ -41,6 +41,9 @@ public class MaController {
     @Autowired
     private AdminService adminService;
 
+    @Autowired
+    private LoginService loginService;
+
     @GetMapping("/asset_manage")
     public String getPageAssetManage(@RequestParam(value = "PageSize",defaultValue = "5") Integer PageSize,
                                      @RequestParam(value = "PageIndex",defaultValue = "1") Integer PageIndex,
@@ -85,7 +88,8 @@ public class MaController {
         model.addAttribute("Frans",FranList);
         model.addAttribute("Goods",GoodsList);
         model.addAttribute("States",States);
-        Manager manager = adminService.findManagerByID(10000);
+        Login login = loginService.getLoginUser();
+        Manager manager = adminService.findManagerByID(login.getID());
         model.addAttribute("Manager",manager);
 
         model.addAttribute("OrdersP",payOrderList);
@@ -148,7 +152,8 @@ public class MaController {
         model.addAttribute("UserNameList",usernamelist);
         model.addAttribute("GoodsNameList",goodsnamelist);
 
-        Manager manager = adminService.findManagerByID(10000);
+        Login login = loginService.getLoginUser();
+        Manager manager = adminService.findManagerByID(login.getID());
         model.addAttribute("Manager",manager);
         model.addAttribute("GoodsName",GoodsName);
         model.addAttribute("UserName",UserName);
@@ -161,7 +166,8 @@ public class MaController {
         String UserName = commentService.findUserNameByID(CID);
         String GoodsName = commentService.findGoodsNameByID(CID);
 
-        Manager manager = adminService.findManagerByID(10000);
+        Login login = loginService.getLoginUser();
+        Manager manager = adminService.findManagerByID(login.getID());
         model.addAttribute("Manager",manager);
 
         model.addAttribute("Comment",comment);
@@ -179,7 +185,8 @@ public class MaController {
 
     @GetMapping("/manager_info")
     public String getPageManagerInfo(Model model){
-        Manager manager = adminService.findManagerByID(10000);
+        Login login = loginService.getLoginUser();
+        Manager manager = adminService.findManagerByID(login.getID());
         model.addAttribute("Manager",manager);
         return "backstage_manager_info";
     }
@@ -291,7 +298,8 @@ public class MaController {
         Integer GoodsNumber = goodsList.size();
         model.addAttribute("goodsNumber",GoodsNumber);
         model.addAttribute("UserNumber",userNumber);
-        Manager manager = adminService.findManagerByID(10000);
+        Login login = loginService.getLoginUser();
+        Manager manager = adminService.findManagerByID(login.getID());
         model.addAttribute("Manager",manager);
         return "backstage_index";
     }
@@ -363,7 +371,8 @@ public class MaController {
         model.addAttribute("FranName",FranName);
         model.addAttribute("Price",Price);
         model.addAttribute("GoodID",GoodID);
-        Manager manager = adminService.findManagerByID(10000);
+        Login login = loginService.getLoginUser();
+        Manager manager = adminService.findManagerByID(login.getID());
         model.addAttribute("Manager",manager);
         return "backstage_item_list";
     }
@@ -420,7 +429,8 @@ public class MaController {
         model.addAttribute("GoodsName",GoodsName);
         model.addAttribute("FranName",FranName);
         model.addAttribute("Price",Price);
-        Manager manager = adminService.findManagerByID(10000);
+        Login login = loginService.getLoginUser();
+        Manager manager = adminService.findManagerByID(login.getID());
         model.addAttribute("Manager",manager);
         return "backstage_item_examine";
     }
@@ -434,7 +444,8 @@ public class MaController {
         model.addAttribute("Goods",goods);
         model.addAttribute("Scenic",scenicSpot);
         model.addAttribute("FranName",FranName);
-        Manager manager = adminService.findManagerByID(10000);
+        Login login = loginService.getLoginUser();
+        Manager manager = adminService.findManagerByID(login.getID());
         model.addAttribute("Manager",manager);
         return "backstage_item_update";
     }
@@ -482,7 +493,8 @@ public class MaController {
 
     @GetMapping("/seller_add")
     public String getPageSellerAdd(Model model){
-        Manager manager = adminService.findManagerByID(10000);
+        Login login = loginService.getLoginUser();
+        Manager manager = adminService.findManagerByID(login.getID());
         model.addAttribute("Manager",manager);
         return "backstage_seller_add";
     }
@@ -511,7 +523,8 @@ public class MaController {
         Franchise franchise = franchiseService.findFranByID(FranID);
 
         model.addAttribute("Fran",franchise);
-        Manager manager = adminService.findManagerByID(10000);
+        Login login = loginService.getLoginUser();
+        Manager manager = adminService.findManagerByID(login.getID());
         model.addAttribute("Manager",manager);
         return "backstage_update_seller";
     }
@@ -595,7 +608,8 @@ public class MaController {
         model.addAttribute("FranName",FranName);
         model.addAttribute("States",States);
 
-        Manager manager = adminService.findManagerByID(10000);
+        Login login = loginService.getLoginUser();
+        Manager manager = adminService.findManagerByID(login.getID());
         model.addAttribute("Manager",manager);
 
         return "backstage_order_list";
@@ -623,7 +637,8 @@ public class MaController {
         model.addAttribute("GoodsName",GoodsName);
         model.addAttribute("States",states);
         model.addAttribute("Order",order);
-        Manager manager = adminService.findManagerByID(10000);
+        Login login = loginService.getLoginUser();
+        Manager manager = adminService.findManagerByID(login.getID());
         model.addAttribute("Manager",manager);
         return "backstage_order_details";
     }
@@ -669,14 +684,16 @@ public class MaController {
         model.addAttribute("Phone",Phone);
         model.addAttribute("Email",Email);
         model.addAttribute("CreditCard",CreditCard);
-        Manager manager = adminService.findManagerByID(10000);
+        Login login = loginService.getLoginUser();
+        Manager manager = adminService.findManagerByID(login.getID());
         model.addAttribute("Manager",manager);
         return "backstage_seller_list";
     }
 
     @GetMapping("/statistics")
     public String getPageStatistics(Model model){
-        Manager manager = adminService.findManagerByID(10000);
+        Login login = loginService.getLoginUser();
+        Manager manager = adminService.findManagerByID(login.getID());
         List<Order> orders = orderService.getAllOrder();
         Integer allOrder = orders.size();
 
@@ -752,7 +769,8 @@ public class MaController {
     public String getPageUpdateUser(@PathVariable("UserID") Integer UserID,Model model){
         User user = touristService.findUserByID(UserID);
         model.addAttribute("User",user);
-        Manager manager = adminService.findManagerByID(10000);
+        Login login = loginService.getLoginUser();
+        Manager manager = adminService.findManagerByID(login.getID());
         model.addAttribute("Manager",manager);
         return "backstage_update_user";
     }
@@ -777,7 +795,8 @@ public class MaController {
 
     @GetMapping("/user_add")
     public String getPageUserAdd(Model model){
-        Manager manager = adminService.findManagerByID(10000);
+        Login login = loginService.getLoginUser();
+        Manager manager = adminService.findManagerByID(login.getID());
         model.addAttribute("Manager",manager);
         return "backstage_user_add";
     }
@@ -837,7 +856,8 @@ public class MaController {
         model.addAttribute("QQNumber",QQNumber);
         model.addAttribute("Email",Email);
         model.addAttribute("Phone",Phone);
-        Manager manager = adminService.findManagerByID(10000);
+        Login login = loginService.getLoginUser();
+        Manager manager = adminService.findManagerByID(login.getID());
         model.addAttribute("Manager",manager);
         return "backstage_user_list";
     }

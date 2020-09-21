@@ -9,6 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface CommentMapper {
+
     @Select("SELECT * from comment")
     List<Comment> getAllComment();
 

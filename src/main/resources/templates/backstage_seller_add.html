@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>经销商添加</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="">
+
+<div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element"> <span>
+                        <img alt="image" width="50" height="50" class="img-circle" th:src="@{'http://localhost:8080/src/pic/'+${Manager.MaImage}}" />
+                         </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold" th:text="${Manager.MaName}">Admin</strong>
+                         </span> <span class="text-muted text-xs block">管理员 <b class="caret"></b></span> </span> </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="/Tourist_Backstage/manager_info">个人信息</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/Tourist/login">退出登录</a></li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                        IN+
+                    </div>
+                </li>
+                <li>
+                    <a href="/Tourist_Backstage/index"><i class="fa fa-home"></i> <span class="nav-label">首页</span></a>
+                </li>
+                <li class="active">
+                    <a href="#"><i class="fa fa-users"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/Tourist_Backstage/user_list">游客用户管理</a></li>
+                        <li><a href="/Tourist_Backstage/seller_list">经销商用户管理</a></li>
+                        <li><a href="/Tourist_Backstage/user_add">用户添加</a></li>
+                        <li class="active"><a href="/Tourist_Backstage/seller_add">经销商添加</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/Tourist_Backstage/order_list"><i class="fa fa-archive"></i> <span class="nav-label">订单管理</span></a>
+                </li>
+                <li>
+                    <a href="/Tourist_Backstage/item_list"><i class="fa fa-shopping-cart"></i> <span class="nav-label">商品管理</span></a>
+                </li>
+                <li>
+                    <a href="/Tourist_Backstage/item_examine"><i class="fa fa-upload"></i> <span class="nav-label">商品审核</span></a>
+                </li>
+                <li>
+                    <a href="/Tourist_Backstage/comment_list"><i class="fa fa-comments"></i> <span class="nav-label">评论管理</span></a>
+                </li>
+                <li>
+                    <a href="/Tourist_Backstage/statistics"><i class="fa fa-pie-chart"></i> <span class="nav-label">数据统计</span></a>
+                </li>
+                <li>
+                    <a href="/Tourist_Backstage/asset_manage"><i class="fa fa-money"></i> <span class="nav-label">资产管理</span></a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <span class="m-r-sm text-muted welcome-message">欢迎来到抱团旅游网站后台管理系统</span>
+                    </li>
+                    <li>
+                        <a href="/Tourist/login">
+                            <i class="fa fa-sign-out"></i> 退出登录
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-sm-4">
+                <h2>添加经销商</h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="backstage_index.html">首页</a>
+                    </li>
+                    <li>
+                        <a>用户管理</a>
+                    </li>
+                    <li class="active">
+                        <strong>经销商添加</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="wrapper wrapper-content">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>编辑经销商信息</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <form method="post" action="/Tourist_Backstage/seller_add" class="form-horizontal" name="add" enctype="multipart/form-data">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="FranName">经销商名</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" id="FranName" name="FranName" required="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="Password">密码</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" id="Password" name="Password" required="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="WhoInCharge">法人姓名</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" name="WhoInCharge" id="WhoInCharge" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="ChargeID">法人ID</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" name="ChargeID" id="ChargeID" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="ChargePhone">法人电话</label>
+                                            <div class="col-sm-6">
+                                                <input type="number" name="ChargePhone" id="ChargePhone" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="CreditCard">信用卡</label>
+                                            <div class="col-sm-6">
+                                                <input type="number" name="CreditCard" id="CreditCard" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="Phone">手机号</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" name="Phone" id="Phone" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="Email">邮箱</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" name="Email" id="Email" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="Introduce">个人简介</label>
+                                            <div class="col-sm-6">
+                                                <textarea class="form-control" name="Introduce" id="Introduce" rows="2"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-4 col-sm-offset-2">
+                                                <button class="btn btn-primary" type="submit">添加</button>
+                                                <button class="btn btn-white" type="button" onclick="back()">取消</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img id="imageShow" src="/img/defaultImage.jpg" width="220" height="240" class="img-thumbnail">
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">选择图片</label>
+                                            <div class="col-sm-10">
+                                                <input type="file"  class="form-control" id="upFile" name="filePic">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div>
+                <strong>Copyright</strong> 版权所有 &copy; 2014-2015
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script src="/js/jquery-2.1.1.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="/js/inspinia.js"></script>
+<script src="/js/plugins/pace/pace.min.js"></script>
+
+<script language="JavaScript">
+    $('#upFile').change(function () {
+        var file = $('#upFile').get(0).files[0];
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function (e) {
+            console.log(e);
+            $('#imageShow').get(0).src = e.target.result;
+
+        }
+    })
+
+    function back() {
+        document.add.action="/Tourist_Backstage/seller_list";
+        document.add.submit();
+    }
+</script>
+</body>
+
+</html>

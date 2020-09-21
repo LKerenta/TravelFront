@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>评论管理</title>
+
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!--FooTable-->
+    <link href="/css/plugins/footable/footable.core.css" rel="stylesheet">
+
+    <!-- Sweet Alert -->
+    <link href="/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="">
+
+    <div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element"> <span>
+                        <img alt="image" width="50" height="50" class="img-circle" th:src="@{'http://localhost:8080/src/pic/'+${Manager.MaImage}}" />
+                         </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold" th:text="${Manager.MaName}">Admin</strong>
+                         </span> <span class="text-muted text-xs block">管理员 <b class="caret"></b></span> </span> </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="/Tourist_Backstage/manager_info">个人信息</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/Tourist/login">退出登录</a></li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                        IN+
+                    </div>
+                </li>
+                <li>
+                    <a href="/Tourist_Backstage/index"><i class="fa fa-home"></i> <span class="nav-label">首页</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-users"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/Tourist_Backstage/user_list">游客用户管理</a></li>
+                        <li><a href="/Tourist_Backstage/seller_list">经销商用户管理</a></li>
+                        <li><a href="/Tourist_Backstage/user_add">用户添加</a></li>
+                        <li><a href="/Tourist_Backstage/seller_add">经销商添加</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/Tourist_Backstage/order_list"><i class="fa fa-archive"></i> <span class="nav-label">订单管理</span></a>
+                </li>
+                <li>
+                    <a href="/Tourist_Backstage/item_list"><i class="fa fa-shopping-cart"></i> <span class="nav-label">商品管理</span></a>
+                </li>
+                <li>
+                    <a href="/Tourist_Backstage/item_examine"><i class="fa fa-upload"></i> <span class="nav-label">商品审核</span></a>
+                </li>
+                <li class="active">
+                    <a href="/Tourist_Backstage/comment_list"><i class="fa fa-comments"></i> <span class="nav-label">评论管理</span></a>
+                </li>
+                <li>
+                    <a href="/Tourist_Backstage/statistics"><i class="fa fa-pie-chart"></i> <span class="nav-label">数据统计</span></a>
+                </li>
+                <li>
+                    <a href="/Tourist_Backstage/asset_manage"><i class="fa fa-money"></i> <span class="nav-label">资产管理</span></a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+        <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+        </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <span class="m-r-sm text-muted welcome-message">欢迎来到抱团旅游网站后台管理系统</span>
+                </li>
+                <li>
+                    <a href="/Tourist/login">
+                        <i class="fa fa-sign-out"></i> 退出登录
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+        </div>
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-sm-4">
+                <h2>评论管理</h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="backstage_index.html">首页</a>
+                    </li>
+                    <li class="active">
+                        <strong>评论管理</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="wrapper wrapper-content">
+            <div class="ibox-content m-b-sm border-bottom">
+                <div class="row">
+                    <form class="form-inline" action="/Tourist_Backstage/comment_list" method="post">
+                        <div class="form-group">
+                            <label for="GoodsName">商品名</label>
+                            <input type="text" id="GoodsName" name="GoodsName" th:value="${GoodsName}" placeholder="Product Name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="UserName">用户名</label>
+                            <input type="text" id="UserName" name="UserName" th:value="${UserName}" placeholder="User" class="form-control">
+                        </div>
+                        <button class="btn btn-primary btn-w-m" type="submit">搜索</button>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox">
+                        <div class="ibox-content">
+
+                            <table class="table table-stripped toggle-arrow-tiny">
+                                <tr>
+
+                                    <th data-toggle="true">评论ID</th>
+                                    <th>商品名</th>
+                                    <th>用户名</th>
+                                    <th class="hidden">评论</th>
+                                    <th class="text-right" data-sort-ignore="true">动作</th>
+
+                                </tr>
+                                <tr th:each="Comment,commentStat:${comments.list}" id="getDetail">
+                                    <td th:text="${Comment.CID}">
+                                        <input th:value="${Comment.CID}" id="commentID" hidden>
+                                        001
+                                    </td>
+                                    <td th:text="${GoodsNameList[(comments.pageNum-1)*5+commentStat.index]}" id="goodsName1">
+                                        武汉一日游
+                                    </td>
+                                    <td th:text="${UserNameList[(comments.pageNum-1)*5+commentStat.index]}"id="userName1">
+                                        user001
+                                    </td>
+                                    <td th:text="${Comment.CText}" id="cText" class="hidden">
+                                        风景很不错，导游的态度也很好，这次是和父母一起参加的旅游团，对于老人也很合适，下次出游还会考虑。
+                                    </td>
+                                    <td>
+                                    <div class="text-right">
+                                        <div class="btn-group">
+                                            <button class="btn-white btn btn-xs btn-sm"><a th:href="@{'comment_details/'+${Comment.CID}}">详情</a></button>
+                                            <button class="btn-white btn btn-xs"><a th:href="@{'delete_comment/'+${Comment.CID}}" id="button2">删除</a></button>
+                                        </div>
+                                    </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination">
+                                    <li>
+                                        <a th:href="@{/Tourist_Backstage/comment_list(PageSize=5,PageIndex=${comments.pageNum-1},GoodsName=${GoodsName},UserName=${UserName})}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <th:block th:each="nav : ${comments.navigatepageNums}">
+                                        <li th:class="${nav==comments.pageNum}?'active':''">
+                                            <a th:href="@{/Tourist_Backstage/comment_list(PageSize=5,PageIndex=${nav},GoodsName=${GoodsName},UserName=${UserName})}" th:text="${nav}"></a>
+                                        </li>
+                                    </th:block>
+                                    <li>
+                                        <a th:href="@{/Tourist_Backstage/comment_list(PageSize=5,PageIndex=${comments.pageNum+1},GoodsName=${GoodsName},UserName=${UserName})}" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div>
+                <strong>Copyright</strong> 版权所有 &copy; 2014-2015
+            </div>
+        </div>
+
+        </div>
+        </div>
+
+    <!-- Mainly scripts -->
+    <script src="/js/jquery-2.1.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="/js/inspinia.js"></script>
+    <script src="/js/plugins/pace/pace.min.js"></script>
+
+    <!-- FooTable -->
+    <script src="/js/plugins/footable/footable.all.min.js"></script>
+
+    <!-- Sweet alert -->
+    <script src="/js/plugins/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Page-Level Scripts -->
+    <script>
+        $(document).ready(function() {
+
+            $('.footable').footable();
+
+        });
+    </script>
+
+
+</body>
+
+</html>

@@ -7,12 +7,10 @@ import com.travel.front.Entity.ScenicSpot;
 import com.travel.front.Mapper.GoodsMapper;
 import com.travel.front.Service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.util.List;
 
-@Service
 public class GoodsServiceImpl implements GoodsService {
     @Autowired
     GoodsMapper goodsMapper;
@@ -273,7 +271,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public Integer deleteGoodsByGoodsID(Integer GoodsID) {
-        return goodsMapper.deleteGoods(GoodsID);
+        return goodsMapper.deleteGoodsByGoodsID(GoodsID);
     }
 
     @Override
@@ -340,4 +338,5 @@ public class GoodsServiceImpl implements GoodsService {
     public List<String> getAllExamineFranNameByPriceAndGoodsID(Integer GoodsID, String GoodsName, String FranName, Integer Price) {
         return goodsMapper.getAllExamineFranNameByPriceAndGoodsID(GoodsID,GoodsName,FranName,Price);
     }
+
 }

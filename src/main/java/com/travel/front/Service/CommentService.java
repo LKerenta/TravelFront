@@ -2,10 +2,13 @@ package com.travel.front.Service;
 
 import com.github.pagehelper.PageInfo;
 import com.travel.front.Entity.Comment;
+import com.travel.front.Entity.Order;
 
 import java.util.List;
 
+
 public interface CommentService {
+
 
     List<Comment> getAllComments();
     PageInfo<Comment> getAllComment(Integer PageSize, Integer PageIndex);
@@ -32,4 +35,7 @@ public interface CommentService {
     Integer writeComment(Comment comment);
     Integer updateComment(Comment comment);
     Integer deleteComment(Comment comment);
+    Comment findCommentByID(Integer CID);
+    String findUserNameByID(Integer CID);
+    String findGoodsNameByID(Integer CID);
 }

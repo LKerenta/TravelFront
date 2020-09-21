@@ -13,6 +13,15 @@ public class Goods {
     private String Ways;
     private Integer Meals;
     private Integer State;
+    private String IntroduceG;
+
+    public String getIntroduceG() {
+        return IntroduceG;
+    }
+
+    public void setIntroduceG(String introduceG) {
+        IntroduceG = introduceG;
+    }
 
     public Integer getGoodsID() {
         return GoodsID;

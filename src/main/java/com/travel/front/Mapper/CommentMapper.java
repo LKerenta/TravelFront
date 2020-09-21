@@ -1,7 +1,7 @@
 package com.travel.front.Mapper;
 
+
 import com.travel.front.Entity.Comment;
-import com.travel.front.Entity.Order;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;

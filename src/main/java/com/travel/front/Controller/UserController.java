@@ -18,7 +18,7 @@ public class UserController {
     @GetMapping("/order")
     public String toOrder()
     {
-        return "order_list";
+        return "order_list_f";
     }
 
     @GetMapping("/seller_list")

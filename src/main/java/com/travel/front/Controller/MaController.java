@@ -40,17 +40,21 @@ public class MaController {
     @Autowired
     private LoginService loginService;
 
+    //跳转到资产管理界面
     @GetMapping("/asset_manage")
-    public String getPageAssetManage(@RequestParam(value = "PageSize",defaultValue = "5") Integer PageSize,
-                                     @RequestParam(value = "PageIndex",defaultValue = "1") Integer PageIndex,
-                                     @RequestParam(value = "PageIndex1",defaultValue = "1") Integer PageIndex1,
+    public String getPageAssetManage(@RequestParam(value = "PageSize",defaultValue = "5") Integer PageSize,   //分页大小
+                                     @RequestParam(value = "PageIndex",defaultValue = "1") Integer PageIndex,  //第一个分页页码
+                                     @RequestParam(value = "PageIndex1",defaultValue = "1") Integer PageIndex1,  //第二个分页页码
                                      Model model){
+
+        //获取请求退款的订单列表
         PageInfo<Order> orderList = orderService.getOrdersDrawBack(PageSize,PageIndex);
         List<String> UserList = orderService.getUsersDrawBack();
         List<String> FranList = orderService.getFransDrawBack();
         List<String> GoodsList = orderService.getGoodsDrawBack();
         ArrayList<String> States = new ArrayList<String>();
 
+        //订单的各种状态
         States.add("未付款");
         States.add("已付款");
         States.add("出行中");
@@ -60,6 +64,7 @@ public class MaController {
         States.add("已结束");
         States.add("退款拒绝");
 
+        //获取状态正常的订单，出行完毕的订单管理员可将佣金转到经销商账户上
         PageInfo<Order> payOrderList = orderService.getOrdersWaitForPay(PageSize,PageIndex1);
         List<String> payUserList = orderService.getUsersWaitForPay();
         List<String> payFranList = orderService.getFransWaitForPay();
@@ -67,12 +72,13 @@ public class MaController {
         List<Order> allOrder = orderService.getAllOrder();
 
 
-
+        //计算网站所有订单的账务流水
         Integer sum = 0;
         for(int i = 0;i<allOrder.size();i++){
             sum += allOrder.get(i).getPrice();
         }
 
+        //计算网站的实际入账的流水
         Integer profit = 0;
         List<Order> doneOrderList = orderService.getAllDoneOrder();
         for(int i = 0;i<doneOrderList.size();i++){
@@ -97,6 +103,7 @@ public class MaController {
         return "backstage_asset_manage";
     }
 
+    //根据订单号支付佣金给经销商
     @GetMapping("/payToFran/{OrderID}/{MaID}")
     public String payToFranOrder(@PathVariable("OrderID") Integer OrderID,
                                  @PathVariable("MaID") Integer MaID){
@@ -105,6 +112,9 @@ public class MaController {
         return "redirect:/Tourist_Backstage/asset_manage";
     }
 
+    //根据Action决定对于退款订单是允许退款还是拒绝退款
+    //Action=1，拒绝
+    //Action=0，允许退款，用户已支付的金额退回用户的账户中
     @GetMapping("/drawback/{OrderID}/{Action}")
     public String drawbackOrders(@PathVariable("OrderID") Integer OrderID,
                                  @PathVariable("Action") Integer Action){
@@ -117,12 +127,16 @@ public class MaController {
         return "redirect:/Tourist_Backstage/asset_manage";
     }
 
+
+    //跳转到评论管理界面
     @RequestMapping("/comment_list")
     public String getPageCommentList(@RequestParam(value = "PageSize",defaultValue = "5") Integer PageSize,
                                      @RequestParam(value = "PageIndex",defaultValue = "1") Integer PageIndex,
                                      @RequestParam(value = "GoodsName",defaultValue = "") String GoodsName,
                                      @RequestParam(value = "UserName",defaultValue = "") String UserName,
                                      Model model){
+
+        //根绝搜索条件获取评论列表
         PageInfo<Comment> commentlist = null;
         List<String> usernamelist = null;
         List<String> goodsnamelist = null;
@@ -156,6 +170,8 @@ public class MaController {
         return "backstage_comment_list";
     }
 
+
+    //根据CID获取对应订单的评论详情信息
     @GetMapping("/comment_details/{CID}")
     public String commentDetails(@PathVariable("CID") Integer CID,Model model){
         Comment comment = commentService.findCommentByID(CID);
@@ -173,12 +189,14 @@ public class MaController {
         return "backstage_comment_details";
     }
 
+    //根据CID删除评论
     @GetMapping("/delete_comment/{CID}")
     public String deleteComment(@PathVariable("CID") Integer CID){
         Integer i = commentService.deleteComment(CID);
         return "redirect:/Tourist_Backstage/comment_list";
     }
 
+    //获取管理员的个人信息
     @GetMapping("/manager_info")
     public String getPageManagerInfo(Model model){
         Login login = loginService.getLoginUser();
@@ -187,6 +205,7 @@ public class MaController {
         return "backstage_manager_info";
     }
 
+    //修改管理员的个人信息
     @PostMapping("/update_manager")
     public String updateManager(Manager manager,@RequestParam("filePic") MultipartFile file){
         String fileName = file.getOriginalFilename();
@@ -204,15 +223,19 @@ public class MaController {
         return "redirect:/Tourist_Backstage/seller_list";
     }
 
+    //跳转到首页
     @GetMapping("/index")
     public String getPageIndex(Model model){
+        //获取网站所有用户的数量
         List<User> userList = touristService.getAllUser();
         Integer userNumber = userList.size();
 
+        //获取评论的数量
         List<Comment> commentList = commentService.getAllComments();
         ArrayList<Comment> newCommentList = new ArrayList<Comment>();
         List<String> userNameList = commentService.getUserNameList();
         ArrayList<String> userNameC = new ArrayList<String>();
+        //获取最新的五条评论信息展示在首页
         Integer size = commentList.size();
         if(size >=5){
             for(int i = 0;i<5;i++){
@@ -223,10 +246,12 @@ public class MaController {
             }
         }
 
+        //获取商品的数量
         List<Goods> goodsList = goodsService.getAllGoods();
         ArrayList<Goods> newGoodsList = new ArrayList<Goods>();
         List<String> franNameList = goodsService.getAllFranName();
         ArrayList<String> franNameG = new ArrayList<String>();
+        //获取最新添加的五件商品展示在首页
         Integer sizeG = goodsList.size();
         if(sizeG >=5){
             for(int i = 0;i<5;i++){
@@ -237,12 +262,14 @@ public class MaController {
             }
         }
 
+        //获取订单的数量
         List<Order> orderList = orderService.getAllOrder();
         ArrayList<Order> newOrdersList = new ArrayList<Order>();
         List<String> userNameListO = orderService.getAllUserName();
         ArrayList<String> userO = new ArrayList<String>();
         List<String> goodsListO = orderService.getAllGoodName();
         ArrayList<String> goodsO = new ArrayList<String>();
+        //获取最新的五条订单展示在首页
         Integer sizeO = orderList.size();
         if(sizeO >=5){
             for(int i = 0;i<5;i++){
@@ -255,6 +282,7 @@ public class MaController {
             }
         }
 
+        //计算网站的总流水
         Integer income = 0;
         for(int i = 0;i<sizeO;i++){
             Order order = orderList.get(i);
@@ -300,6 +328,8 @@ public class MaController {
         return "backstage_index";
     }
 
+
+    //跳转到商品管理页面
     @RequestMapping("/item_list")
     public String getPageItemList(@RequestParam(value = "PageSize",defaultValue = "5") Integer PageSize,
                                   @RequestParam(value = "PageIndex",defaultValue = "1")Integer PageIndex,
@@ -308,6 +338,8 @@ public class MaController {
                                   @RequestParam(value = "FranName",defaultValue = "") String FranName,
                                   @RequestParam(value = "Price",defaultValue = "") Integer Price,
                                   Model model){
+
+        //根据查询条件获取商品列表
         PageInfo<Goods> goodsList = null;
         List<String> franNameList = null;
         if(GoodsName.isEmpty() && FranName.isEmpty() && Price == null && GoodID == null){
@@ -373,24 +405,28 @@ public class MaController {
         return "backstage_item_list";
     }
 
+    //根据GoodsID删除商品
     @GetMapping("/delete_good/{GoodsID}")
     public String deleteGoods(@PathVariable("GoodsID") Integer GoodsID){
         Integer i = goodsService.deleteGoodsByGoodsID(GoodsID);
         return "redirect:/Tourist_Backstage/item_list";
     }
 
+    //根据GoodsID使商品审核列表中的商品通过审核
     @GetMapping("/pass_examine/{GoodsID}")
     public String passGoodsExamine(@PathVariable("GoodsID") Integer GoodsID){
         Integer i = goodsService.passExamine(GoodsID);
         return "redirect:/Tourist_Backstage/item_examine";
     }
 
+    //根据GoodsID拒绝商品审核列表里的商品通过审核
     @GetMapping("/reject_examine/{GoodsID}")
     public String rejectGoodsExamine(@PathVariable("GoodsID") Integer GoodsID){
         Integer i = goodsService.rejectExamine(GoodsID);
         return "redirect:/Tourist_Backstage/item_examine";
     }
 
+    //跳转到商品审核管理页面
     @RequestMapping("/item_examine")
     public String getPageItemExamine(@RequestParam(value = "PageSize",defaultValue = "5") Integer PageSize,
                                      @RequestParam(value = "PageIndex",defaultValue = "1")Integer PageIndex,
@@ -399,6 +435,7 @@ public class MaController {
                                      @RequestParam(value = "FranName",defaultValue = "") String FranName,
                                      @RequestParam(value = "Price",defaultValue = "") Integer Price,
                                      Model model){
+        //根据查询条件获取待审核的商品列表
         PageInfo<Goods> goodsList = null;
         List<String> franList = null;
         if(GoodsID == null && Price == null && GoodsName.isEmpty() && FranName.isEmpty()){
@@ -431,6 +468,7 @@ public class MaController {
         return "backstage_item_examine";
     }
 
+    //根据GoodsID修改商品信息
     @GetMapping("/item_update/{GoodsID}")
     public String getPageItemUpdate(@PathVariable("GoodsID") Integer GoodsID,Model model){
         Goods goods = goodsService.getGoodsByID(GoodsID);
@@ -446,6 +484,7 @@ public class MaController {
         return "backstage_item_update";
     }
 
+    //修改商品信息
     @PostMapping("/item_update")
     public String goodsUpdate(Goods goods,ScenicSpot scenicSpot,@RequestParam("filePic1") MultipartFile file1,
                               @RequestParam("filePic2") MultipartFile file2,@RequestParam("filePic3") MultipartFile file3){
@@ -487,6 +526,7 @@ public class MaController {
         return "redirect:/Tourist_Backstage/item_list";
     }
 
+    //跳转到添加经销商界面
     @GetMapping("/seller_add")
     public String getPageSellerAdd(Model model){
         Login login = loginService.getLoginUser();
@@ -495,6 +535,7 @@ public class MaController {
         return "backstage_seller_add";
     }
 
+    //添加经销商
     @PostMapping("/seller_add")
     public String addSeller(Franchise franchise,@RequestParam("filePic") MultipartFile file){
         String fileName = file.getOriginalFilename();
@@ -514,6 +555,7 @@ public class MaController {
         return "redirect:/Tourist_Backstage/seller_list";
     }
 
+    //展示经销商个人信息
     @GetMapping("/seller_update/{FranID}")
     public String updateSeller(@PathVariable("FranID") Integer FranID,Model model){
         Franchise franchise = franchiseService.findFranByID(FranID);
@@ -525,6 +567,7 @@ public class MaController {
         return "backstage_update_seller";
     }
 
+    //修改经销商个人信息
     @PostMapping("/seller_update")
     public String updateSeller(Franchise franchise,@RequestParam("filePic") MultipartFile file){
         String fileName = file.getOriginalFilename();
@@ -542,12 +585,14 @@ public class MaController {
         return "redirect:/Tourist_Backstage/seller_list";
     }
 
+    //删除经销商
     @GetMapping("/delete_seller/{FranID}")
     public String deleteSeller(@PathVariable("FranID") Integer FranID){
         Integer i = franchiseService.deleteFranByID(FranID);
         return "redirect:/Tourist_Backstage/seller_list";
     }
 
+    //跳转到订单管理界面
     @RequestMapping("/order_list")
     public String getPageOrderList(@RequestParam(value = "PageSize",defaultValue = "5") Integer PageSize,
                                    @RequestParam(value = "PageIndex",defaultValue = "1") Integer PageIndex,
@@ -571,6 +616,7 @@ public class MaController {
         States.add("已结束");
         States.add("退款拒绝");
 
+        //根据查询条件获取订单列表
         if(OrderID == null && State == null && UserName.isEmpty() && GoodsName.isEmpty() && FranName.isEmpty()){
             orderList = orderService.getAllOrder(PageSize,PageIndex);
             goodsNameList = orderService.getAllGoodName();
@@ -611,6 +657,7 @@ public class MaController {
         return "backstage_order_list";
     }
 
+    //展示订单详情
     @GetMapping("/order_details/{OrderID}")
     public String updateOrder(@PathVariable("OrderID") Integer OrderID,Model model){
         Order order = orderService.findOrderByID(OrderID);
@@ -639,18 +686,21 @@ public class MaController {
         return "backstage_order_details";
     }
 
+    //更新订单信息
     @PostMapping("/update_order")
     public String updateOrder(Order order){
         Integer i = orderService.changePrice(order);
         return "redirect:/Tourist_Backstage/order_list";
     }
 
+    //删除订单
     @GetMapping("/delete_order/{OrderID}")
     public String deleteOrder(@PathVariable("OrderID") Integer OrderID){
         Integer i = orderService.deleteOrderByID(OrderID);
         return "redirect:/Tourist_Backstage/order_list";
     }
 
+    //跳转到经销商管理界面
     @RequestMapping("/seller_list")
     public String getPageSellerList(@RequestParam(value = "PageSize",defaultValue = "5") Integer PageSize,
                                     @RequestParam(value = "PageIndex",defaultValue = "1") Integer PageIndex,
@@ -660,6 +710,7 @@ public class MaController {
                                     @RequestParam(value = "Email",defaultValue = "") String Email,
                                     @RequestParam(value = "CreditCard",defaultValue = "") Integer CreditCard,
                                     Model model){
+        //根据查询条件获取经销商列表
         PageInfo<Franchise> franList = null;
         if(FranID == null && FranName.isEmpty() && Phone.isEmpty() && Email.isEmpty() && CreditCard == null){
             franList = franchiseService.getAllFranchise(PageSize,PageIndex);
@@ -686,24 +737,30 @@ public class MaController {
         return "backstage_seller_list";
     }
 
+    //跳转到数据统计界面
     @GetMapping("/statistics")
     public String getPageStatistics(Model model){
         Login login = loginService.getLoginUser();
         Manager manager = adminService.findManagerByID(login.getID());
+        //获取所有的订单
         List<Order> orders = orderService.getAllOrder();
         Integer allOrder = orders.size();
 
+        //分别获取正常的商品，待审核的商品和未通过审核的商品列表
         List<Goods> passGoods = goodsService.getAllGoods();
         List<Goods> examineGoods = goodsService.getAllExamineGoods();
         List<Goods> notPassGoods = goodsService.getAllNotPassGoods();
 
+        //分别获取已完成的订单，待退款的订单和未完成的订单列表
         List<Order> ordersEnd = orderService.getAllDoneOrder();
         List<Order> ordersDraw = orderService.getDrawBackDoneOrders();
         List<Order> orderNotEnd = orderService.getNotEndOrders();
 
+        //获取所有的评论和商品
         List<Comment> allComment = commentService.getAllComments();
         List<Goods> allGoods = goodsService.allGoods();
 
+        //获取当前时间
         Calendar cal = Calendar.getInstance();
         Integer day = cal.get(Calendar.DATE);
         Integer month = cal.get(Calendar.MONTH)+1;
@@ -719,6 +776,7 @@ public class MaController {
             dayInComeList[i] = 0;
         }
 
+        //计算上个月的订单数目和上个月的收益
         Integer lastMonthOrders = 0;
         Integer lastMonthInCome = 0;
         ArrayList<Integer> timeList = new ArrayList<Integer>();
@@ -735,7 +793,7 @@ public class MaController {
             }
         }
 
-
+        //计算总收益
         Integer sum = 0;
         for(int i = 0;i<orders.size();i++){
             sum += orders.get(i).getPrice();
@@ -761,6 +819,7 @@ public class MaController {
         return "backstage_statistics";
     }
 
+    //展示用户的个人信息
     @GetMapping("/update_user/{UserID}")
     public String getPageUpdateUser(@PathVariable("UserID") Integer UserID,Model model){
         User user = touristService.findUserByID(UserID);
@@ -771,6 +830,7 @@ public class MaController {
         return "backstage_update_user";
     }
 
+    //修改用户的个人信息
     @PostMapping("/update_user")
     public String updateUser(User user,@RequestParam("filePic") MultipartFile file){
         String fileName = file.getOriginalFilename();
@@ -789,6 +849,7 @@ public class MaController {
         return "redirect:/Tourist_Backstage/user_list";
     }
 
+    //跳转到用户添加界面
     @GetMapping("/user_add")
     public String getPageUserAdd(Model model){
         Login login = loginService.getLoginUser();
@@ -797,6 +858,7 @@ public class MaController {
         return "backstage_user_add";
     }
 
+    //添加用户
     @PostMapping("/user_add")
     public String addUser(User user, @RequestParam("filePic") MultipartFile file){
         String fileName = file.getOriginalFilename();
@@ -819,6 +881,7 @@ public class MaController {
         return "redirect:/Tourist_Backstage/user_list";
     }
 
+    //跳转到用户管理界面
     @RequestMapping("/user_list")
     public String getPageUserList(@RequestParam(value = "PageSize",defaultValue = "5") Integer PageSize,
                                   @RequestParam(value = "PageIndex",defaultValue = "1") Integer PageIndex,
@@ -830,6 +893,7 @@ public class MaController {
                                   @RequestParam(value = "Email",defaultValue = "") String Email,
                                   @RequestParam(value = "Phone",defaultValue = "") String Phone,
                                   Model model){
+        //根据查询条件获取用户列表
         PageInfo<User> userList = null;
         if(UserID ==null && UserName.isEmpty() && IDNumber.isEmpty() && TrueName.isEmpty() && QQNumber==null && Email.isEmpty() && Phone.isEmpty()){
             userList = touristService.getAllUser(PageSize,PageIndex);
@@ -858,6 +922,7 @@ public class MaController {
         return "backstage_user_list";
     }
 
+    //将获取的date分解成年月日
     public ArrayList<Integer> splitDate(Date date){
         String dateString = date.toString();
         String[] dateList = dateString.split("-",3);
@@ -868,6 +933,7 @@ public class MaController {
         return dateTime;
     }
 
+    //删除用户
     @GetMapping("/delete_user/{UserID}")
     public String deleteUser(@PathVariable("UserID") Integer UserID){
         Integer i = touristService.deleteUserByID(UserID);

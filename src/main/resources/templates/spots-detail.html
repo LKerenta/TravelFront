@@ -18,7 +18,7 @@
 
 <!-- CSS
 ================================================== -->
-<link rel="stylesheet" href="/css/style.css" />
+<link rel="stylesheet" href="/css/style_front.css" />
 <link rel="stylesheet" href="/css/responsive.css" />
 
 <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -37,32 +37,18 @@
 		<!--start header -->
 		<header id="header">
 			<div id="logo">
-				<a href="index.html"><strong>Travel.</strong>旅游网站</a>
+				<a href="/Tourist/index"><strong>Travel.</strong>旅游网站</a>
 				<label id="session"></label>
 			</div>	
-			<div id="searchbox">
-				<form action="#">
-					<input type="text" id="userName" class="user-offline-title user-input" placeholder="账号" value=""/>
-					<input type="password" id="password" class="user-offline-title user-input" placeholder="密码" value=""/>
-					<button type="submit" class="user-offline-title user-login">登录</button>
-					<button type="submit" class="user-offline-title user-regist">注册</button>
-					<button type="submit" class="user-online-title user-logout">注销</button>
-				</form>
-			</div>
+
 			<div id="navigation">
 				<ul id="nav">
-					<li><a href="index.html">首页</a></li>
-					<li><a href="spots.html">景点</a>
-					<li class="selected"><a href="spots-recommend.html">景点推荐</a>
-						<!-- <ul>
-							<li><a href="browse-result.html">Browse Result</a></li>
-							<li><a href="browse-detail.html">Browse Detail</a></li>
-						</ul> -->
-					</li>
-					<li><a href="hotel.html">酒店</a></li>
+					<li><a href="/Tourist/index">首页</a></li>
+					<li><a href="/Tourist/spots">景点</a>
+<!--					<li><a href="hotel.html">酒店</a></li>-->
 					<!-- <li><a href="plane.html">航班</a></li> -->
-					<li><a href="line.html">旅线</a></li>
-					<li><a href="order.html">我的订单</a></li>
+					<li><a href="/Tourist/line">旅线</a></li>
+					<li><a href="/Tourist/order">我的订单</a></li>
 					<!-- <li><a href="#">关于我们</a></li> -->
 				</ul>
 			</div>
@@ -71,7 +57,7 @@
 		
 		<div class="subheader">
 			<div class="left">
-				<span class="page-title">景点推荐</span>
+				<span class="page-title">景点详情</span>
 				<span class="page-desc">网罗天下美景，助您直达完美之旅。</span>			
 			</div>
 		</div>
@@ -79,29 +65,85 @@
 		
 		
 		<div id="content">
-                <div id="searchbox" class="user-searchbox">
-					<form action="#">
-						<input type="text" id="search-spots-input" class="user-search" placeholder="搜索推荐景点" />
-						<a id="search-spots" class="button medium red searchbox-button">为我推荐</a>
-					</form>
+			<table class="footable table table-stripped toggle-arrow-tiny" data-page-size="7">
+				<tr>
+					<td><img alt="image" width="50" height="50" class="img-circle" th:src="@{'http://localhost:8080/src/pic/'+${spot.SSImage_1}}"></td>
+					<td th:text="${spot.Introduce}">
+						Price
+					</td>
+				</tr>
+			</table>
+
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="ibox">
+						<div class="ibox-content">
+							<table class="footable table table-stripped toggle-arrow-tiny" data-page-size="5">
+								<thead>
+								<tr>
+									<th>商品编号</th>
+									<th>商品名称</th>
+									<th>商品价格</th>
+									<th>抱团人数</th>
+									<th>出发日期</th>
+									<th>出行方式</th>
+									<th>是否含餐</th>
+									<th>出行地点</th>
+									<th>商户名称</th>
+									<th class="text-right" data-sort-ignore="true">动作</th>
+
+								</tr>
+								</thead>
+								<tbody>
+								<tr th:each="item,GoodsStat:${items}">
+									<td th:text="${item.GoodsID}">
+										Goods ID
+									</td>
+									<td th:text="${item.GoodsName}">
+										GoodsName
+									</td>
+									<td th:text="${item.Price}">
+										Price
+									</td>
+									<td th:text="${item.Number}">
+										Number
+									</td>
+									<td th:text="${item.LaunchDate}">
+										Date
+									</td>
+									<td th:text="${item.Ways}">
+										ways
+									</td>
+									<td th:text="${item.Meals}">
+										ways
+									</td>
+									<td th:text="${item.SSID}">
+										ways
+									</td>
+									<td th:text="${item.FranID}">
+										ways
+									</td>
+									<td class="text-right">
+										<div class="btn-group">
+											<button class="btn-white btn btn-xs"><a href="@{'/Tourist/create_order/+${item.GoodsID}'}"></a></button>
+										</div>
+									</td>
+								</tr>
+
+
+								</tbody>
+								<tfoot>
+								<tr>
+									<td colspan="6">
+										<ul class="pagination pull-right"></ul>
+									</td>
+								</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
 				</div>
-
-
-				<div class="post-item post-thumb-hor" id="own-spots">
-					
-				</div>
-				<!--post item -->
-
-
-			
-			<div class="tag-filter-container" id="post-content">
-				
-				
 			</div>
-
-			<!--tag container -->
-			
-			<br class="clear" />	
 		</div>
 		<!--content -->
 	

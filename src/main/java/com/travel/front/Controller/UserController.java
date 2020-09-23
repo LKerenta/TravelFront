@@ -1,11 +1,21 @@
 package com.travel.front.Controller;
 
 
+import com.travel.front.Entity.Goods;
+import com.travel.front.Entity.Login;
+import com.travel.front.Entity.ScenicSpot;
+import com.travel.front.Entity.User;
+import com.travel.front.Service.GoodsService;
+import com.travel.front.Service.LoginService;
 import com.travel.front.Service.ScenicSpotService;
+import com.travel.front.Service.TouristService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Controller
@@ -13,6 +23,13 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @Autowired
     private ScenicSpotService SSService;
+    @Autowired
+    private GoodsService goodsService;
+    @Autowired
+    private LoginService loginService;
+    @Autowired
+    private TouristService touristService;
+
 
 
     @GetMapping("/order")
@@ -34,15 +51,26 @@ public class UserController {
     }
 
     @GetMapping("/spots")
-    public String toSpots()
-    {
+    public String toSpots(Model model) {
+        Login loginUser = loginService.getLoginUser();
+        User user = touristService.getUserByName(loginUser.getName());
+        List<ScenicSpot> scenicSpots=SSService.getAllSpot();
+        model.addAttribute("Info",user);
+        model.addAttribute("SS",scenicSpots);
+
         return "spots";
     }
 
-    @GetMapping("/spots-recommend")
-    public String toSpotsRecommend()
-    {
-        return "spots-recommend";
+    @GetMapping("/spots/{SSID}")
+    public String toSpotsRecommend(@PathVariable("SSID") Integer SSID, Model model) {
+        Login loginUser = loginService.getLoginUser();
+        User user = touristService.getUserByName(loginUser.getName());
+        ScenicSpot ss = SSService.getSpotByID(SSID);
+        List<Goods> items = goodsService.getGoodsBySSID(ss);
+        model.addAttribute("Info",user);
+        model.addAttribute("spot",ss);
+        model.addAttribute("items",items);
+        return "spots-detail";
     }
 
     @GetMapping("/line")

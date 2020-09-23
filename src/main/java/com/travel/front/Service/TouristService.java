@@ -17,4 +17,5 @@ public interface TouristService {
     Integer updateUserByID(User user);
     List<User> getAllUser();
     Integer deleteUserByID(Integer UserID);
+    User getUserByName(String UserName);
 }

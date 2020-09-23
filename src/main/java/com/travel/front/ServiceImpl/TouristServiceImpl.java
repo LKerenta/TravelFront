@@ -80,4 +80,9 @@ public class TouristServiceImpl  implements TouristService {
     public Integer deleteUserByID(Integer UserID) {
         return touristMapper.deleteUserByID(UserID);
     }
+
+    @Override
+    public User getUserByName(String UserName) {
+        return touristMapper.getUserByName(UserName);
+    }
 }

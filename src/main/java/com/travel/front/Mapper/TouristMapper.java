@@ -33,4 +33,7 @@ public interface TouristMapper {
 
     @Delete("DELETE FROM `user` WHERE UserID=#{UserID}")
     Integer deleteUserByID(Integer UserID);
+
+    @Select("select * from `user` where UserName=#{UserName}")
+    User getUserByName(String UserName);
 }

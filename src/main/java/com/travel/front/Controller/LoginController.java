@@ -55,7 +55,7 @@ public class LoginController {
             model.addAttribute("Info",login);
             model.addAttribute("items",items);
             model.addAttribute("orders",orders);
-            return "index_F";
+            return "redirect:/Franchise/index";
         }
         else if(i == 2)
         {

@@ -85,4 +85,9 @@ public class TouristServiceImpl  implements TouristService {
     public Integer payOrder(Integer Price, Integer UserID) {
         return touristMapper.payOrder(Price,UserID);
     }
+
+    @Override
+    public User getUserByName(String UserName) {
+        return touristMapper.getUserByName(UserName);
+    }
 }

@@ -18,4 +18,5 @@ public interface TouristService {
     List<User> getAllUser();
     Integer deleteUserByID(Integer UserID);
     Integer payOrder(Integer Price,Integer UserID);
+    User getUserByName(String UserName);
 }

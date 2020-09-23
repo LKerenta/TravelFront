@@ -1,12 +1,15 @@
 package com.travel.front.Controller;
 
 
+
+import com.travel.front.Service.ScenicSpotService;
 import com.github.pagehelper.PageInfo;
 import com.travel.front.Entity.*;
 import com.travel.front.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -18,7 +21,10 @@ import java.util.List;
 public class UserController {
     @Autowired
     private ScenicSpotService SSService;
-
+    @Autowired
+    private GoodsService goodsService;
+    @Autowired
+    private LoginService loginService;
     @Autowired
     private TouristService touristService;
 
@@ -26,14 +32,17 @@ public class UserController {
     private OrderService orderService;
 
     @Autowired
-    private LoginService loginService;
-
-    @Autowired
-    private GoodsService goodsService;
-
-    @Autowired
     private ScenicSpotService scenicSpotService;
 
+    @GetMapping("/index")
+    public String toIndex(Model model){
+        Login loginUser = loginService.getLoginUser();
+        User user = touristService.getUserByName(loginUser.getName());
+        model.addAttribute("Info",user);
+        List<ScenicSpot> scenicSpots=SSService.getAllSpot();
+        model.addAttribute("SS",scenicSpots);
+        return "index_T";
+    }
 
     @RequestMapping("/order")
     public String toOrder(@RequestParam(value = "PageSize",defaultValue = "5") Integer PageSize,
@@ -127,15 +136,26 @@ public class UserController {
     }
 
     @GetMapping("/spots")
-    public String toSpots()
-    {
+    public String toSpots(Model model) {
+        Login loginUser = loginService.getLoginUser();
+        User user = touristService.getUserByName(loginUser.getName());
+        List<ScenicSpot> scenicSpots=SSService.getAllSpot();
+        model.addAttribute("Info",user);
+        model.addAttribute("SS",scenicSpots);
+
         return "spots";
     }
 
-    @GetMapping("/spots-recommend")
-    public String toSpotsRecommend()
-    {
-        return "spots-recommend";
+    @GetMapping("/spots/{SSID}")
+    public String toSpotsRecommend(@PathVariable("SSID") Integer SSID, Model model) {
+        Login loginUser = loginService.getLoginUser();
+        User user = touristService.getUserByName(loginUser.getName());
+        ScenicSpot ss = SSService.getSpotByID(SSID);
+        List<Goods> items = goodsService.getGoodsBySSID(ss);
+        model.addAttribute("Info",user);
+        model.addAttribute("spot",ss);
+        model.addAttribute("items",items);
+        return "spots-detail";
     }
 
     @GetMapping("/line")
@@ -143,8 +163,5 @@ public class UserController {
     {
         return "line";
     }
-
-    @GetMapping("/index_T")
-    public String toIndex(){return "index_T";}
 
 }

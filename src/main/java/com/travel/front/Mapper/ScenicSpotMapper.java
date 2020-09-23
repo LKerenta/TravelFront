@@ -15,4 +15,10 @@ public interface ScenicSpotMapper {
 
     @Select("select * from scenicspot where Introduce=#{Introduce} or Introduce like '%,#{Introduce},%'")
     public List<ScenicSpot> getSSSortedByBrief(String keyword);
+
+    @Select("select * from scenicspot where SSID=#{SSID}")
+    ScenicSpot getSpotByID(Integer SSID);
+
+    @Select("select * from scenicspot")
+    List<ScenicSpot> getAllSpots();
 }

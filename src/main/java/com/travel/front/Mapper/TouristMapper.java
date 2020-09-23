@@ -36,4 +36,7 @@ public interface TouristMapper {
 
     @Update("UPDATE `user` SET Balance=Balance-#{Price} WHERE UserID=#{UserID}")
     Integer payOrder(Integer Price,Integer UserID);
+
+    @Select("select * from `user` where UserName=#{UserName}")
+    User getUserByName(String UserName);
 }

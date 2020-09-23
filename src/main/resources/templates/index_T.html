@@ -84,15 +84,11 @@
 		<!--start header -->
 		<header id="header">
 			<div id="logo">
-				<a href="index.html"><strong>Travel.</strong>旅游网站</a>
+				<a href="index"><strong>Travel.</strong>旅游网站</a>
 				<label id="session"></label>
 			</div>	
 			<div id="searchbox">
-					<input type="text" id="userName" class="user-offline-title user-input" placeholder="账号" value=""/>
-					<input type="password" id="password" class="user-offline-title user-input" placeholder="密码" value=""/>
-					<button type="submit" class="user-offline-title user-login">登录</button>
-					<button type="submit" class="user-offline-title user-regist">注册</button>
-					<button type="submit" class="user-online-title user-logout">注销</button>
+				<strong class="font-bold" th:text="${Info.UserName}">Tourist</strong>
 			</div>
 			<div id="navigation">
 				<ul id="nav">
@@ -113,132 +109,59 @@
 			</div>
 		</header>
 		<!--end header -->
-		
-		<!--start content -->
-		<section id="content">
+		<div class="hr"><hr /></div>
 
-			<div class="one-third last">
-				<div id="newsletter" class="module">
-					<div class="module-content">
-						<div class="module-content-wrap">
-							<a href="www.baidu.com"><img width="100%" height="auto" src="https://source.qunarzz.com/site/images/wns/20171019_pc_464x320_7667.jpg"/></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--newsletter -->
-			
-			<div class="hr"><hr /></div>
-			
-			<div class="one-third">
-				<h3 class="icon32 icon-tick thin">技术领先</h3>
-				<p>我们一直将技术创新视为企业的活力源泉，在提升研发能力方面不遗余力。我们建立了一整套现代化服务系统，包括：国际机票、酒店预订平台、客户管理系统、房量管理系统、呼叫排队系统、订单处理系统、服务质量监控系统等。依靠这些先进的服务和管理系统，我们为会员提供更加便捷和高效的服务。</p>
-			</div>
-			
-			<div class="one-third">
-				<h3 class="icon32 icon-tick thin">规模经营</h3>
-				<p>服务规模化和资源规模化是我们的核心优势之一。我们在全球200个国家和地区与近80万家酒店建立了长期稳定的合作关系，其机票预订网络已覆盖国际国内绝大多数航线。规模化的运营不仅可以为会员提供更多优质的旅行选择，还保障了服务的标准化，确保服务质量，并降低运营成本。</p>
-			</div>
-			
-			<div class="one-third last">
-				<h3 class="icon32 icon-tick thin">体系规范</h3>
-				<p>先进的管理和控制体系是我们的又一核心优势。我们将服务过程分割成多个环节，以细化的指标控制不同环节，并建立起一套精益服务体系。同时，我们还将制造业的质量管理方法——六西格玛体系成功运用于旅行业。目前，我们各项服务指标均已接近国际领先水平，服务质量和客户满意度也随之大幅提升。</p>
-			</div>
-			
-			<div class="hr"><hr /></div>			
-			
-			<!--newsection -->
-			<div class="section-title">
-				<span class="h3">热门目的地</span>
-				<a class="right" href="spots.html">查看所有目的地</a>		
-			</div>
-			
-			<div class="fourth-spots">
-				<!-- <div class="one-fourth">
-					<div class="post-item">
-						<div class="image-place">
-							<img src="images/uploads/220x135/auckland-city.jpg" alt="image" />
-						</div>
-						<div class="post-content">
-							<h4 class="post-title">马尔代夫旅行</h4>
-							<p class="post-excerpt">坐落于马尔代夫的emboodhufinolhu岛——马尔代夫的最大岛屿之一。</p>
-						</div>
-						<div class="post-meta">
-							<span class="comment-count">12条留言</span>
-							<a class="read-more" href="#">了解更多</a>
-						</div>
-					</div>
-				</div>
-				
-				<div class="one-fourth">
-					<div class="post-item">
-						<div class="image-place">
-							<img src="images/uploads/220x135/rio-de-jainero.jpg" alt="image" />
-						</div>
-						<div class="post-content">
-							<h4 class="post-title">巴西旅行</h4>
-							<p class="post-excerpt">激情热辣的里约热内卢奔放刺激的伊瓜苏大瀑布热情火辣的桑巴表演。</p>
-						</div>
-						<div class="post-meta">
-							<span class="comment-count">27条留言</span>
-							<a class="read-more" href="#">了解更多</a>
-						</div>
-					</div>
-				</div>
-				
-				<div class="one-fourth">
-					<div class="post-item">
-						<div class="image-place">
-							<img src="images/uploads/220x135/stupa.jpg" alt="image" />
-						</div>
-						<div class="post-content">
-							<h4 class="post-title">婆罗浮屠寺庙群</h4>
-							<p class="post-excerpt">婆罗浮屠位于东南亚的印度尼西亚，大约于公元750年至850年间，由...</p>
-						</div>
-						<div class="post-meta">
-							<span class="comment-count">51条留言</span>
-							<a class="read-more" href="#">了解更多</a>
-						</div>
-					</div>
-				</div>
-				
-				<div class="one-fourth last">
-					<div class="post-item">
-						<div class="image-place">
-							<img src="images/uploads/220x135/st-basil-2.jpg" alt="image" />
-						</div>
-						<div class="post-content">
-							<h4 class="post-title">莫斯科圣彼得堡</h4>
-							<p class="post-excerpt">位于俄罗斯西北部，波罗的海沿岸，涅瓦河口，是俄罗斯的中央直辖市。</p>
-						</div>
-						<div class="post-meta">
-							<span class="comment-count">32条留言</span>
-							<a class="read-more" href="#">Read More</a>
-						</div>
-					</div>
-				</div> -->
-				
-				<!-- <br class="clear" /> -->
-			</div>
-			
-			
-			<div class="action-box">
-				<div class="left">
-					<div class="action-title">30％的折扣：3晚豪华逃生到巴厘岛库塔</div>
-					<div class="action-desc">一场前所未有的旅途体验，带上你的好友们快来体验吧！点击现在预定获取最低优惠，我们等你哦~</div>
-				</div>
-				<div class="right">
-					<a class="button">
-						现在预定
-					</a>
-				</div>
-			</div>
-			<!--action-box -->
-			
-			
-			<br class="clear" />
-		</section>
-		<!--end content -->
+		<div class="one-third">
+			<h3 class="icon32 icon-tick thin">技术领先</h3>
+			<p>我们一直将技术创新视为企业的活力源泉，在提升研发能力方面不遗余力。我们建立了一整套现代化服务系统，包括：国际机票、酒店预订平台、客户管理系统、房量管理系统、呼叫排队系统、订单处理系统、服务质量监控系统等。依靠这些先进的服务和管理系统，我们为会员提供更加便捷和高效的服务。</p>
+		</div>
+
+		<div class="one-third">
+			<h3 class="icon32 icon-tick thin">规模经营</h3>
+			<p>服务规模化和资源规模化是我们的核心优势之一。我们在全球200个国家和地区与近80万家酒店建立了长期稳定的合作关系，其机票预订网络已覆盖国际国内绝大多数航线。规模化的运营不仅可以为会员提供更多优质的旅行选择，还保障了服务的标准化，确保服务质量，并降低运营成本。</p>
+		</div>
+
+		<div class="one-third last">
+			<h3 class="icon32 icon-tick thin">体系规范</h3>
+			<p>先进的管理和控制体系是我们的又一核心优势。我们将服务过程分割成多个环节，以细化的指标控制不同环节，并建立起一套精益服务体系。同时，我们还将制造业的质量管理方法——六西格玛体系成功运用于旅行业。目前，我们各项服务指标均已接近国际领先水平，服务质量和客户满意度也随之大幅提升。</p>
+		</div>
+
+		<div class="hr"><hr /></div>
+
+		<!--newsection -->
+		<div class="section-title">
+			<span class="h3">热门目的地</span>
+			<a class="right" href="/Tourist/spots">查看所有目的地</a>
+			<table class="footable table table-stripped toggle-arrow-tiny" data-page-size="7">
+				<tbody>
+				<tr th:each="View,SSstat:${SS}">
+					<td th:text="${View.SSID}">SSID</td>
+					<td th:text="${View.SSName}">
+						ssname
+					</td>
+					<td><img alt="image" width="50" height="50" class="img-circle" th:src="@{'http://localhost:8080/src/pic/'+${View.SSImage_1}}"></td>
+
+					<td th:text="${View.Introduce}">
+						Price
+					</td>
+					<td class="text-right">
+						<button class="btn-white btn btn-xs"><a th:href="@{'/Tourist/spots/'+${View.SSID}}">详情</a></button>
+					</td>
+
+				</tr>
+
+				</tbody>
+				<tfoot>
+				<tr>
+					<td colspan="9">
+						<ul class="pagination pull-right"></ul>
+					</td>
+				</tr>
+				</tfoot>
+			</table>
+		</div>
+
+
 	
 	</div>
 	<!--container -->

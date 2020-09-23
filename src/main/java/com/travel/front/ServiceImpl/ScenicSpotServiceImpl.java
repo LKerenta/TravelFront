@@ -23,5 +23,15 @@ public class ScenicSpotServiceImpl implements ScenicSpotService {
         return ssMapper.getSSSortedByBrief(brief);
     }
 
+    @Override
+    public ScenicSpot getSpotByID(Integer SSID) {
+        return ssMapper.getSpotByID(SSID);
+    }
+
+    @Override
+    public List<ScenicSpot> getAllSpot() {
+        return ssMapper.getAllSpots();
+    }
+
 
 }

@@ -31,6 +31,13 @@ public class UserController {
     private TouristService touristService;
 
 
+    @GetMapping("/index")
+    public String toIndex(Model model){
+        Login loginUser = loginService.getLoginUser();
+        User user = touristService.getUserByName(loginUser.getName());
+        model.addAttribute("Info",user);
+        return "index_T";
+    }
 
     @GetMapping("/order")
     public String toOrder()

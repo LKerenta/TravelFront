@@ -1,15 +1,14 @@
 package com.travel.front.Controller;
 
 
+import com.github.pagehelper.PageInfo;
 import com.travel.front.Entity.*;
 
 import com.travel.front.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -185,6 +184,32 @@ public class FranchiseController {
     public String Asset(Model model){
         Login userType = loginService.getLoginUser();
         model.addAttribute("Info",userType);
+
+        List<Order> orderList = orderService.getAllOrder();
+        ArrayList<Order> newOrdersList = new ArrayList<Order>();
+        List<String> userNameListO = orderService.getAllUserName();
+        ArrayList<String> userO = new ArrayList<String>();
+        List<String> goodsListO = orderService.getAllGoodName();
+        ArrayList<String> goodsO = new ArrayList<String>();
+        Integer sizeO = orderList.size();
+        if(sizeO >=5){
+            for(int i = 0;i<5;i++){
+                Order order = orderList.get(sizeO -1 - i);
+                String user = userNameListO.get(sizeO -1 -i);
+                String good = goodsListO.get(sizeO -1 -i);
+                goodsO.add(good);
+                userO.add(user);
+                newOrdersList.add(order);
+            }
+        }
+
+        Integer income = 0;
+        for(int i = 0;i<sizeO;i++){
+            Order order = orderList.get(i);
+            if(order.getState() != 0)
+                income += order.getPrice();
+        }
+        model.addAttribute("Income",income);
         return "asset_manage_f";
     }
 
@@ -264,12 +289,68 @@ public class FranchiseController {
     }
 
     @GetMapping("/comment")
-    public String ViewComment(Model model){
+    public String ViewComment(@RequestParam(value = "PageSize",defaultValue = "5") Integer PageSize,
+                              @RequestParam(value = "PageIndex",defaultValue = "1") Integer PageIndex,
+                              @RequestParam(value = "GoodsName",defaultValue = "") String GoodsName,
+                              @RequestParam(value = "UserName",defaultValue = "") String UserName,
+                              Model model){
         Login login = loginService.getLoginUser();
         Franchise franchise = franchiseService.findFranByID(login.getID());
         model.addAttribute("Info",franchise);
+
+        PageInfo<Comment> commentlist = null;
+        List<String> usernamelist = null;
+        List<String> goodsnamelist = null;
+        if(GoodsName.isEmpty()&&UserName.isEmpty()){
+            commentlist = commentService.getAllComment(PageSize,PageIndex);
+            usernamelist = commentService.getUserNameList();
+            goodsnamelist = commentService.getGoodsNameList();
+        }else if(GoodsName.isEmpty() && !UserName.isEmpty()){
+            commentlist = commentService.getCommentsByUserName(PageSize,PageIndex,UserName);
+            usernamelist = commentService.getUserNameListByUserName(UserName);
+            goodsnamelist = commentService.getGoodsNameListByUserName(UserName);
+        }else if(!GoodsName.isEmpty() && UserName.isEmpty()){
+            commentlist = commentService.getCommentsByGoodsName(PageSize,PageIndex,GoodsName);
+            usernamelist = commentService.getUserNameListByGoodsName(GoodsName);
+            goodsnamelist = commentService.getGoodsNameListByGoodsName(GoodsName);
+        }else{
+            commentlist = commentService.getCommentByGoodsNameAndUserName(PageSize,PageIndex,GoodsName,UserName);
+            usernamelist = commentService.getUserNameListByGoodsNameAndUserName(GoodsName,UserName);
+            goodsnamelist = commentService.getGoodsNameListByGoodsNameAndUserName(GoodsName,UserName);
+        }
+
+        model.addAttribute("comments",commentlist);
+        model.addAttribute("UserNameList",usernamelist);
+        model.addAttribute("GoodsNameList",goodsnamelist);
+        model.addAttribute("GoodsName",GoodsName);
+        model.addAttribute("UserName",UserName);
         return "comment_list_f";
     }
+
+    @GetMapping("/comment_details/{CID}")
+    public String commentDetails(@PathVariable("CID") Integer CID, Model model){
+        Comment comment = commentService.findCommentByID(CID);
+        String UserName = commentService.findUserNameByID(CID);
+        String GoodsName = commentService.findGoodsNameByID(CID);
+
+        Login login = loginService.getLoginUser();
+        Franchise franchise = franchiseService.findFranByID(login.getID());
+        model.addAttribute("Info",franchise);
+
+        model.addAttribute("Comment",comment);
+        model.addAttribute("UserName",UserName);
+        model.addAttribute("GoodsName",GoodsName);
+
+        return "comment_details_f";
+    }
+
+    @GetMapping("/delete_comment/{CID}")
+    public String deleteComment(@PathVariable("CID") Integer CID){
+        Integer i = commentService.deleteComment(CID);
+        return "redirect:/Tourist_Backstage/comment_list";
+    }
+
+
     @GetMapping("/profile")
     public String UpdateProfile(Model model){
         Login userType = loginService.getLoginUser();

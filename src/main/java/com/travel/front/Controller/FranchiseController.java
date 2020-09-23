@@ -185,6 +185,32 @@ public class FranchiseController {
     public String Asset(Model model){
         Login userType = loginService.getLoginUser();
         model.addAttribute("Info",userType);
+
+        List<Order> orderList = orderService.getAllOrder();
+        ArrayList<Order> newOrdersList = new ArrayList<Order>();
+        List<String> userNameListO = orderService.getAllUserName();
+        ArrayList<String> userO = new ArrayList<String>();
+        List<String> goodsListO = orderService.getAllGoodName();
+        ArrayList<String> goodsO = new ArrayList<String>();
+        Integer sizeO = orderList.size();
+        if(sizeO >=5){
+            for(int i = 0;i<5;i++){
+                Order order = orderList.get(sizeO -1 - i);
+                String user = userNameListO.get(sizeO -1 -i);
+                String good = goodsListO.get(sizeO -1 -i);
+                goodsO.add(good);
+                userO.add(user);
+                newOrdersList.add(order);
+            }
+        }
+
+        Integer income = 0;
+        for(int i = 0;i<sizeO;i++){
+            Order order = orderList.get(i);
+            if(order.getState() != 0)
+                income += order.getPrice();
+        }
+        model.addAttribute("Income",income);
         return "asset_manage_f";
     }
 

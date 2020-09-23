@@ -47,6 +47,13 @@ public interface OrderMapper {
     @Select("SELECT GoodsName from `order` JOIN goods WHERE goods.GoodsID=`order`.GoodsID AND OrderID=#{OrderID} AND `order`.State!=-1")
     String findGoodNameByID(Integer OrderID);
 
+    @Select("SELECT * from `order` WHERE UserID=#{UserID} AND State!=-1")
+    List<Order> findOrderByUserID(Integer UserID);
+    @Select("SELECT FranName from `order` JOIN franchise WHERE franchise.FranID=`order`.FranID AND UserID=#{UserID} AND `order`.State!=-1")
+    List<String> findFranNameByUserID(Integer UserID);
+    @Select("SELECT GoodsName from `order` JOIN goods WHERE goods.GoodsID=`order`.GoodsID AND UserID=#{UserID} AND `order`.State!=-1")
+    List<String> findGoodNameByUserID(Integer UserID);
+
     @Update("UPDATE `order` SET State=-1 WHERE OrderID=#{OrderID}")
     Integer deleteOrderByID(Integer OrderID);
 
@@ -94,8 +101,7 @@ public interface OrderMapper {
 
 
     //    INSERT
-    @Insert("INSERT INTO `order` (OrderID,GoodsID,Price,UserID,State,FranID) " +
-            "VALUES(#{OrderID},#{GoodsID},#{Price},#{UserID},#{State},#{FranID})")
+    @Insert("INSERT INTO `order` (GoodsID,Price,UserID,State,FranID) VALUES(#{GoodsID},#{Price},#{UserID},#{State},#{FranID})")
     Integer CreateOrder(Order order);
 
     //    Update

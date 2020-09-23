@@ -33,4 +33,7 @@ public interface TouristMapper {
 
     @Delete("DELETE FROM `user` WHERE UserID=#{UserID}")
     Integer deleteUserByID(Integer UserID);
+
+    @Update("UPDATE `user` SET Balance=Balance-#{Price} WHERE UserID=#{UserID}")
+    Integer payOrder(Integer Price,Integer UserID);
 }

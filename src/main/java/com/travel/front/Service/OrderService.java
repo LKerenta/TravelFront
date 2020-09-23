@@ -2,6 +2,7 @@ package com.travel.front.Service;
 
 import com.github.pagehelper.PageInfo;
 import com.travel.front.Entity.Order;
+import org.springframework.jmx.export.naming.IdentityNamingStrategy;
 
 import java.util.List;
 
@@ -46,4 +47,10 @@ public interface OrderService {
     List<Order> getNotEndOrders();
     List<Order> getDrawBackDoneOrders();
     Integer deleteOrderByID(Integer OrderID);
+
+    PageInfo<Order> findOrderByUserID(Integer PageSize,Integer PageIndex,Integer UserID);
+    List<String> findFranNameByUserID(Integer UserID);
+    List<String> findGoodNameByUserID(Integer UserID);
+
+    Integer CreateOrder(Order order);
 }

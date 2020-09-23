@@ -200,5 +200,28 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.deleteOrderByID(OrderID);
     }
 
+    @Override
+    public PageInfo<Order> findOrderByUserID(Integer PageSize, Integer PageIndex, Integer UserID) {
+        PageHelper.startPage(PageIndex,PageSize);
+        List<Order> orders = orderMapper.findOrderByUserID(UserID);
+        PageInfo<Order> list = new PageInfo<Order>(orders);
+        return list;
+    }
+
+    @Override
+    public List<String> findFranNameByUserID(Integer UserID) {
+        return orderMapper.findFranNameByUserID(UserID);
+    }
+
+    @Override
+    public List<String> findGoodNameByUserID(Integer UserID) {
+        return orderMapper.findGoodNameByUserID(UserID);
+    }
+
+    @Override
+    public Integer CreateOrder(Order order) {
+        return orderMapper.CreateOrder(order);
+    }
+
 
 }

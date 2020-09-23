@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--[if IE 7 ]><html class="ie ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
+<head>
+    <meta charset="UTF-8">
+    <title>我的订单</title>
+    <link rel="icon" type="image/x-icon" href="index_T.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="/css/style_front.css" rel="stylesheet" >
+    <link href="/css/responsive.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+</head>
+<body class="home">
+<div id="wrapper">
+    <div id="container">
+
+        <!--start header -->
+        <header id="header">
+            <div id="logo">
+                <a href="/Tourist_T/index_T"><strong>Travel.</strong>旅游网站</a>
+                <label id="session"></label>
+            </div>
+            <div id="searchbox">
+                <input type="text" id="userName" class="user-offline-title user-input" placeholder="账号" value=""/>
+                <input type="password" id="password" class="user-offline-title user-input" placeholder="密码" value=""/>
+                <button type="submit" class="user-offline-title user-login">登录</button>
+                <button type="submit" class="user-offline-title user-regist">注册</button>
+                <button type="submit" class="user-online-title user-logout">注销</button>
+            </div>
+            <div id="navigation">
+                <ul id="nav">
+                    <li class="selected"><a href="/Tourist_T/index_T">首页</a></li>
+                    <li><a href="/Tourist_T/spots">景点</a>
+                    <li><a href="/Tourist_T/spots-recommend">景点推荐</a>
+                        <!-- <ul>
+                            <li><a href="browse-result.html">Browse Result</a></li>
+                            <li><a href="browse-detail.html">Browse Detail</a></li>
+                        </ul> -->
+                    </li>
+                    <!--<li><a href="hotel.html">酒店</a></li>-->
+                    <!-- <li><a href="plane.html">航班</a></li> -->
+                    <li><a href="/Tourist_T/line">旅线</a></li>
+                    <li><a href="/Tourist_T/order">我的订单</a></li>
+                    <!-- <li><a href="#">关于我们</a></li> -->
+                </ul>
+            </div>
+        </header>
+        <!--end header -->
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight ecommerce">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2"  style="border: 1px solid #a7aaab">
+                <div class="ibox">
+                    <div class="ibox-content">
+                    <table class="table table-stripped toggle-arrow-tiny">
+                    <tr>
+
+                        <th>订单 ID</th>
+                        <th>商品名</th>
+                        <th>价格</th>
+                        <th>经销商名</th>
+                        <th>状态</th>
+                        <th>创建日期</th>
+                        <th class="text-right">操作</th>
+                    </tr>
+                    <tr th:each="Order,OrderStat:${orderList.list}">
+                        <td th:text="${Order.OrderID}">
+                            3214
+                        </td>
+                        <td th:text="${GoodsNames[(orderList.PageNum-1)*5+OrderStat.index]}">
+                            Customer example
+                        </td>
+                        <td th:text="${Order.Price}">
+                            Seller example
+                        </td>
+                        <td th:text="${FranNames[(orderList.PageNum-1)*5+OrderStat.index]}">
+                            $500.00
+                        </td>
+                        <td th:text="${States[Order.State]}">
+                            <span class="label label-primary">Pending</span>
+                        </td>
+                        <td th:text="${Order.Date}">
+                            03/05/2015
+                        </td>
+                        <td class="text-right">
+                            <div class="btn-group">
+                                <button class="btn-white btn btn-xs"><a th:href="@{'order_details/'+${Order.OrderID}}">修改</a></button>
+                                <button class="btn-white btn btn-xs"><a th:href="@{'delete_order/'+${Order.OrderID}}">删除</a></button>
+                            </div>
+                        </td>
+                    </tr>
+                    </table>
+
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li>
+                            <a th:href="@{/Tourist_T/order(PageSize=5,PageIndex=${orderList.pageNum-1})}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <th:block th:each="nav : ${orderList.navigatepageNums}">
+                            <li th:class="${nav==orderList.pageNum}?'active':''">
+                                <a th:href="@{/Tourist_T/order(PageSize=5,PageIndex=${nav})}" th:text="${nav}"></a>
+                            </li>
+                        </th:block>
+                        <li>
+                            <a th:href="@{/Tourist_T/order(PageSize=5,PageIndex=${orderList.pageNum+1})}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

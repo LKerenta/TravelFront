@@ -53,4 +53,5 @@ public interface OrderService {
     List<String> findGoodNameByUserID(Integer UserID);
 
     Integer CreateOrder(Order order);
+    Integer requestDrawBack(Order order);
 }

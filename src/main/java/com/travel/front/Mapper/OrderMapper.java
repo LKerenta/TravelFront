@@ -80,6 +80,9 @@ public interface OrderMapper {
     @Update("UPDATE `order` SET State=7 WHERE OrderID=#{OrderID}")
     Integer rejectDrawBackByID(Integer OrderID);
 
+    @Update("UPDATE `order` SET State=4 WHERE OrderID=#{OrderID}")
+    Integer requestDrawBack(Order order);
+
     @Select("SELECT * from `order` WHERE State=6")
     List<Order> getAllDoneOrder();
     @Select("SELECT * FROM `order` WHERE (State>=0 AND State<5) OR State=7")
@@ -101,7 +104,7 @@ public interface OrderMapper {
 
 
     //    INSERT
-    @Insert("INSERT INTO `order` (GoodsID,Price,UserID,State,FranID) VALUES(#{GoodsID},#{Price},#{UserID},#{State},#{FranID})")
+    @Insert("INSERT INTO `order` (GoodsID,Price,UserID,State,FranID,Date) VALUES(#{GoodsID},#{Price},#{UserID},#{State},#{FranID},#{Date})")
     Integer CreateOrder(Order order);
 
     //    Update

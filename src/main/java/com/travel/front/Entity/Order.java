@@ -9,7 +9,7 @@ public class Order {
     private int UserID;
     private int State;
     private int FranID;
-    private Date date;
+    private Date Date;
 
     public int getOrderID() {
         return OrderID;
@@ -60,10 +60,10 @@ public class Order {
     }
 
     public Date getDate() {
-        return date;
+        return Date;
     }
 
     public void setDate(Date date) {
-        this.date = date;
+        this.Date = date;
     }
 }

@@ -223,5 +223,10 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.CreateOrder(order);
     }
 
+    @Override
+    public Integer requestDrawBack(Order order) {
+        return orderMapper.requestDrawBack(order);
+    }
+
 
 }

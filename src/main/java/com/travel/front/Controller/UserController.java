@@ -215,6 +215,15 @@ public class UserController {
         return "spots-detail";
     }
 
+    @GetMapping("/drawback/{OrderID}")
+    public String drawBack(@PathVariable("OrderID") Integer OrderID){
+        Order order = orderService.findOrderByID(OrderID);
+        if(order.getState() >0 && order.getState()<4){
+            Integer i = orderService.requestDrawBack(order);
+        }
+        return "redirect:/Tourist_T/order";
+    }
+
     @GetMapping("/goods_details/{GoodsID}")
     public String toGoodsDetails(Model model,@PathVariable("GoodsID") Integer GoodsID){
         Goods goods = goodsService.getGoodsByID(GoodsID);

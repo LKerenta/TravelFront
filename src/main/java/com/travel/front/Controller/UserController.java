@@ -36,6 +36,8 @@ public class UserController {
         Login loginUser = loginService.getLoginUser();
         User user = touristService.getUserByName(loginUser.getName());
         model.addAttribute("Info",user);
+        List<ScenicSpot> scenicSpots=SSService.getAllSpot();
+        model.addAttribute("SS",scenicSpots);
         return "index_T";
     }
 

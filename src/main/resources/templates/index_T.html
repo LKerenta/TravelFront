@@ -131,7 +131,34 @@
 		<!--newsection -->
 		<div class="section-title">
 			<span class="h3">热门目的地</span>
-			<a class="right" href="spots.html">查看所有目的地</a>
+			<a class="right" href="/Tourist/spots">查看所有目的地</a>
+			<table class="footable table table-stripped toggle-arrow-tiny" data-page-size="7">
+				<tbody>
+				<tr th:each="View,SSstat:${SS}">
+					<td th:text="${View.SSID}">SSID</td>
+					<td th:text="${View.SSName}">
+						ssname
+					</td>
+					<td><img alt="image" width="50" height="50" class="img-circle" th:src="@{'http://localhost:8080/src/pic/'+${View.SSImage_1}}"></td>
+
+					<td th:text="${View.Introduce}">
+						Price
+					</td>
+					<td class="text-right">
+						<button class="btn-white btn btn-xs"><a th:href="@{'/Tourist/spots/'+${View.SSID}}">详情</a></button>
+					</td>
+
+				</tr>
+
+				</tbody>
+				<tfoot>
+				<tr>
+					<td colspan="9">
+						<ul class="pagination pull-right"></ul>
+					</td>
+				</tr>
+				</tfoot>
+			</table>
 		</div>
 		
 

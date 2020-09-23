@@ -33,5 +33,10 @@ public class ScenicSpotServiceImpl implements ScenicSpotService {
         return ssMapper.getAllSpots();
     }
 
+    @Override
+    public List<ScenicSpot> getSpots(String search) {
+        return ssMapper.getSpots(search);
+    }
+
 
 }

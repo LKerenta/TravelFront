@@ -9,7 +9,7 @@
 ================================================== -->
 	<meta charset="utf-8">
 	<title>首页</title>
-	<link rel="icon" type="image/x-icon" href="/Tourist_T/index_T">
+	<link rel="icon" type="image/x-icon" href="/Tourist_T/index">
 
 
 
@@ -28,7 +28,12 @@
 	<link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
 	<link href="/css/animate.css" rel="stylesheet">
 
-
+	<style type="text/css">
+		html,body{
+			background: url(/img/background.jpg) no-repeat center top;
+			background-size: cover;
+		}
+	</style>
 
 <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
@@ -92,9 +97,8 @@
 			</div>
 			<div id="navigation">
 				<ul id="nav">
-					<li class="selected"><a href="/Tourist_T/index_T">首页</a></li>
+					<li class="selected"><a href="/Tourist_T/index">首页</a></li>
 					<li><a href="/Tourist_T/spots">景点</a>
-					<li><a href="/Tourist_T/spots-recommend">景点推荐</a>
 						<!-- <ul>
 							<li><a href="browse-result.html">Browse Result</a></li>
 							<li><a href="browse-detail.html">Browse Detail</a></li>
@@ -102,13 +106,15 @@
 					</li>
 					<!--<li><a href="hotel.html">酒店</a></li>-->
 					<!-- <li><a href="plane.html">航班</a></li> -->
-					<li><a href="/Tourist_T/line">旅线</a></li>
 					<li><a href="/Tourist_T/order">我的订单</a></li>
+					<li><a href="/Tourist_T/user_info">个人中心</a></li>
+					<li><a href="/Tourist_T/logout">登出</a></li>
 					<!-- <li><a href="#">关于我们</a></li> -->
 				</ul>
 			</div>
 		</header>
 		<!--end header -->
+		<div style="background-color: #FFFFFF">
 		<div class="hr"><hr /></div>
 
 		<div class="one-third">
@@ -127,11 +133,13 @@
 		</div>
 
 		<div class="hr"><hr /></div>
+		</div>
 
 		<!--newsection -->
-		<div class="section-title">
+		<div class="section-title col-md-10 col-md-offset-1"  style="background-color: #FFFFFF">
+			<br/>
 			<span class="h3">热门目的地</span>
-			<a class="right" href="/Tourist/spots">查看所有目的地</a>
+			<a class="right" href="/Tourist_T/spots">查看所有目的地</a>
 			<table class="footable table table-stripped toggle-arrow-tiny" data-page-size="7">
 				<tbody>
 				<tr th:each="View,SSstat:${SS}">
@@ -145,7 +153,7 @@
 						Price
 					</td>
 					<td class="text-right">
-						<button class="btn-white btn btn-xs"><a th:href="@{'/Tourist/spots/'+${View.SSID}}">详情</a></button>
+						<button class="btn-white btn btn-xs"><a th:href="@{'/Tourist_T/spots/'+${View.SSID}}">详情</a></button>
 					</td>
 
 				</tr>

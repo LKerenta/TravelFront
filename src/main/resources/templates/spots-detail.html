@@ -43,18 +43,21 @@
 		<!--start header -->
 		<header id="header">
 			<div id="logo">
-				<a href="/Tourist/index"><strong>Travel.</strong>旅游网站</a>
+				<a href="/Tourist_T/index"><strong>Travel.</strong>旅游网站</a>
 				<label id="session"></label>
-			</div>	
-
+			</div>
+			<div id="searchbox">
+				<strong class="font-bold" th:text="${Info.UserName}">Tourist</strong>
+			</div>
 			<div id="navigation">
 				<ul id="nav">
-					<li><a href="/Tourist/index">首页</a></li>
-					<li><a href="/Tourist/spots">景点</a>
+					<li><a href="/Tourist_T/index">首页</a></li>
+					<li><a href="/Tourist_T/spots">景点</a>
 <!--					<li><a href="hotel.html">酒店</a></li>-->
 					<!-- <li><a href="plane.html">航班</a></li> -->
-					<li><a href="/Tourist/line">旅线</a></li>
-					<li><a href="/Tourist/order">我的订单</a></li>
+					<li><a href="/Tourist_T/order">我的订单</a></li>
+					<li><a href="/Tourist_T/user_info">个人中心</a></li>
+					<li><a href="/Tourist_T/logout">登出</a></li>
 					<!-- <li><a href="#">关于我们</a></li> -->
 				</ul>
 			</div>
@@ -95,8 +98,6 @@
 										<th>出发日期</th>
 										<th>出行方式</th>
 										<th>是否含餐</th>
-										<th>出行地点</th>
-										<th>商户名称</th>
 										<th class="text-right" data-sort-ignore="true">动作</th>
 
 									</tr>
@@ -124,16 +125,9 @@
 										<td th:text="${item.Meals}">
 											ways
 										</td>
-										<td th:text="${item.SSID}">
-											ways
-										</td>
-										<td th:text="${item.FranID}">
-											ways
-										</td>
 										<td class="text-right">
-											<div class="btn-group">
-												<button class="btn-white btn btn-xs"><a href="@{'/Tourist/create_order/+${item.GoodsID}'}"></a></button>
-											</div>
+											<button class="btn-white btn btn-xs"><a th:href="@{'/Tourist_T/goods_details/'+${item.GoodsID}}">详情</a></button>
+											<button class="btn-white btn btn-xs"><a th:href="@{'/Tourist_T/view_order/'+${item.GoodsID}}">下单</a></button>
 										</td>
 									</tr>
 

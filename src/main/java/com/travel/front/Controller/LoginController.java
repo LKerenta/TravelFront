@@ -62,7 +62,7 @@ public class LoginController {
             User user = loginService.RT(userType);
             Login login = loginService.getLoginUser();
             model.addAttribute("Info",login);
-            return "redirect:/Tourist_T/index_T";
+            return "redirect:/Tourist_T/index";
         }
         else return "login";
     }

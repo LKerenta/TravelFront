@@ -31,6 +31,7 @@ public interface CommentService {
 
     List<Comment> getCommentByUser(Integer ID);
     List<Comment> getCommentByItem(Integer ID);
+    List<String> getUserNameByItem(Integer ID);
     List<Comment> getCommentByKeyword(String search);
     Integer writeComment(Comment comment);
     Integer updateComment(Comment comment);

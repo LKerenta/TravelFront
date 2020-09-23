@@ -6,13 +6,16 @@ import com.travel.front.Service.ScenicSpotService;
 import com.github.pagehelper.PageInfo;
 import com.travel.front.Entity.*;
 import com.travel.front.Service.*;
+import com.travel.front.utils.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -27,6 +30,9 @@ public class UserController {
     private LoginService loginService;
     @Autowired
     private TouristService touristService;
+
+    @Autowired
+    private CommentService commentService;
 
     @Autowired
     private OrderService orderService;
@@ -72,9 +78,46 @@ public class UserController {
         return "order_list_t";
     }
 
+    @GetMapping("/user_info")
+    public String getUserInfo(Model model){
+        Login login = loginService.getLoginUser();
+        User user = touristService.findUserByID(login.getID());
+        model.addAttribute("User",user);
+        return "tourist_info";
+    }
+
+    @PostMapping("/update_user")
+    public String updateUser(User user,@RequestParam("filePic") MultipartFile file){
+        String fileName = file.getOriginalFilename();
+        String filePath = FileUtil.getUploadFilePath();
+        fileName = user.getUserName() + fileName;
+
+        try{
+            FileUtil.uploadFile(file.getBytes(),filePath,fileName);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        user.setUserImage(fileName);
+
+        Integer i = touristService.updateUserByID(user);
+
+        return "redirect:/Tourist_T/user_info";
+    }
+
+
     @GetMapping("/delete_order/{OrderID}")
     public String deleteOrder(@PathVariable("OrderID") Integer OrderID){
         Integer i = orderService.deleteOrderByID(OrderID);
+        return "redirect:/Tourist_T/order";
+    }
+
+    @PostMapping("/update_order")
+    public String updateOrder(Order order){
+        Login login = loginService.getLoginUser();
+        User user = touristService.findUserByID(login.getID());
+        if(user.getBalance()>order.getPrice()) {
+            Integer i = touristService.payOrder(order.getPrice(), login.getID());
+        }
         return "redirect:/Tourist_T/order";
     }
 
@@ -100,6 +143,9 @@ public class UserController {
         model.addAttribute("GoodsName",GoodsName);
         model.addAttribute("States",states);
         model.addAttribute("Order",order);
+        Login loginUser = loginService.getLoginUser();
+        User user = touristService.getUserByName(loginUser.getName());
+        model.addAttribute("Info",user);
         return "tourist_order_details";
     }
 
@@ -111,11 +157,14 @@ public class UserController {
         model.addAttribute("Goods",goods);
         model.addAttribute("FranName",FranName);
         model.addAttribute("Scenic",scenicSpot);
+        Login loginUser = loginService.getLoginUser();
+        User user = touristService.getUserByName(loginUser.getName());
+        model.addAttribute("Info",user);
         return "tourist_view_order";
     }
 
 
-    @PostMapping("/create_order/{GoodsID}")
+    @GetMapping("/create_order/{GoodsID}")
     public String createOrder(@PathVariable("GoodsID") Integer GoodsID){
         Goods goods = goodsService.getGoodsByID(GoodsID);
         Login login = loginService.getLoginUser();
@@ -125,6 +174,9 @@ public class UserController {
         order.setFranID(goods.getFranID());
         order.setPrice(goods.getPrice());
         order.setUserID(user.getUserID());
+        Date t = new Date();
+        java.sql.Date date = new java.sql.Date(t.getTime());
+        order.setDate(date);
         if(goods.getPrice().intValue() < user.getBalance()){
             order.setState(1);
             Integer i = touristService.payOrder(goods.getPrice(),user.getUserID());
@@ -132,14 +184,19 @@ public class UserController {
             order.setState(0);
         }
         Integer i = orderService.CreateOrder(order);
-        return "tourist_create_order";
+        return "redirect:/Tourist_T/order";
     }
 
-    @GetMapping("/spots")
-    public String toSpots(Model model) {
+    @RequestMapping("/spots")
+    public String toSpots(Model model,@RequestParam(value = "search",defaultValue = "") String search) {
+        List<ScenicSpot> scenicSpots= null;
+        if(search.isEmpty()){
+            scenicSpots = scenicSpotService.getAllSpot();
+        }else{
+            scenicSpots = scenicSpotService.getSpots(search);
+        }
         Login loginUser = loginService.getLoginUser();
         User user = touristService.getUserByName(loginUser.getName());
-        List<ScenicSpot> scenicSpots=SSService.getAllSpot();
         model.addAttribute("Info",user);
         model.addAttribute("SS",scenicSpots);
 
@@ -158,10 +215,28 @@ public class UserController {
         return "spots-detail";
     }
 
-    @GetMapping("/line")
-    public String toLine()
-    {
-        return "line";
+    @GetMapping("/goods_details/{GoodsID}")
+    public String toGoodsDetails(Model model,@PathVariable("GoodsID") Integer GoodsID){
+        Goods goods = goodsService.getGoodsByID(GoodsID);
+        ScenicSpot scenicSpot = goodsService.getScenicByID(goods.getSSID());
+        String FranName = goodsService.getFranName(GoodsID);
+        List<Comment> commentList = commentService.getCommentByItem(goods.getGoodsID());
+        List<String> userNameList = commentService.getUserNameByItem(goods.getGoodsID());
+
+        model.addAttribute("Goods",goods);
+        model.addAttribute("Scenic",scenicSpot);
+        model.addAttribute("FranName",FranName);
+        Login login = loginService.getLoginUser();
+        User user = touristService.findUserByID(login.getID());
+        model.addAttribute("Info",user);
+        model.addAttribute("comments",commentList);
+        model.addAttribute("UserNameList",userNameList);
+        return "tourist_goods_details";
     }
 
+    @GetMapping("/logout")
+    public String LogOut(){
+        Integer i = loginService.logOut();
+        return "redirect:/Tourist/login";
+    }
 }

@@ -34,7 +34,7 @@
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="/Tourist_Backstage/manager_info">个人信息</a></li>
                             <li class="divider"></li>
-                            <li><a href="/Tourist/login">退出登录</a></li>
+                            <li><a href="/Tourist_Backstage/logout">退出登录</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
@@ -145,13 +145,6 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="UserName">用户名</label>
-                                            <input type="hidden" th:value="${Order.UserID}" name="UserID">
-                                            <div class="col-sm-6">
-                                                <input type="text" class="form-control" id="UserName" th:value="${UserName}" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
                                             <label class="col-sm-2 control-label" for="State">状态</label>
                                             <input type="hidden" th:value="${Order.State}" name="State">
                                             <div class="col-sm-6">
@@ -234,7 +227,7 @@
 
     });
     function back() {
-        document.add.action="/Tourist_Backstage/seller_list";
+        document.add.action="/Tourist_Backstage/order_list";
         document.add.submit();
     }
 

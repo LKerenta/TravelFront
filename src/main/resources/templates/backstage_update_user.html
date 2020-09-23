@@ -33,7 +33,7 @@
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="/Tourist_Backstage/manager_info">个人信息</a></li>
                             <li class="divider"></li>
-                            <li><a href="/Tourist/login">退出登录</a></li>
+                            <li><a href="/Tourist_Backstage/logout">退出登录</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
@@ -123,7 +123,7 @@
                                 <h5>编辑用户信息</h5>
                             </div>
                             <div class="ibox-content">
-                                <form action="/Tourist_Backstage/update_order" method="post" class="form-horizontal" name="add" enctype="multipart/form-data">
+                                <form action="/Tourist_Backstage/update_user" method="post" class="form-horizontal" name="add" enctype="multipart/form-data">
                                     <div class="col-md-8">
                                         <input  type="hidden" name="UserID" th:value="${User.UserID}">
                                         <div class="form-group">
@@ -229,7 +229,7 @@
         })
 
         function back() {
-            document.add.action="/Tourist_Backstage/order_list";
+            document.add.action="/Tourist_Backstage/user_list";
             document.add.submit();
         }
     </script>

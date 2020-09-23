@@ -21,4 +21,7 @@ public interface ScenicSpotMapper {
 
     @Select("select * from scenicspot")
     List<ScenicSpot> getAllSpots();
+
+    @Select("SELECT * FROM scenicspot WHERE SSName LIKE CONCAT('%',#{search},'%')")
+    List<ScenicSpot> getSpots(String search);
 }

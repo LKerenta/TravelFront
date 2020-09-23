@@ -1,0 +1,195 @@
+<head>
+    <meta charset="UTF-8">
+    <title>查看订单</title>
+    <link rel="icon" type="image/x-icon" href="index_T.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="/css/style_front.css" rel="stylesheet" >
+    <link href="/css/responsive.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <style type="text/css">
+        html,body{
+            background: url(/img/background.jpg) no-repeat center top;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="blog">
+<div id="wrapper">
+    <div id="container">
+
+        <!--start header -->
+        <header id="header">
+            <div id="logo">
+                <a href="index"><strong>Travel.</strong>旅游网站</a>
+                <label id="session"></label>
+            </div>
+            <div id="searchbox">
+                <strong class="font-bold" th:text="${Info.UserName}">Tourist</strong>
+            </div>
+            <div id="navigation">
+                <ul id="nav">
+                    <li class="selected"><a href="/Tourist_T/index">首页</a></li>
+                    <li><a href="/Tourist_T/spots">景点</a>
+                        <!-- <ul>
+                            <li><a href="browse-result.html">Browse Result</a></li>
+                            <li><a href="browse-detail.html">Browse Detail</a></li>
+                        </ul> -->
+                    </li>
+                    <!--<li><a href="hotel.html">酒店</a></li>-->
+                    <!-- <li><a href="plane.html">航班</a></li> -->
+                    <li><a href="/Tourist_T/order">我的订单</a></li>
+                    <li><a href="/Tourist_T/user_info">个人中心</a></li>
+                    <li><a href="/Tourist_T/logout">登出</a></li>
+                    <!-- <li><a href="#">关于我们</a></li> -->
+                </ul>
+            </div>
+        </header>
+        <!--end header -->
+
+        <div class="subheader">
+            <div class="left">
+                <span class="page-title">商品详情</span>
+            </div>
+        </div>
+
+        <div class="wrapper wrapper-content animated fadeInRight ecommerce">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1" style="border: 1px solid #a7aaab;background: #FFFFFF">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <div class="form-horizontal">
+                                <br/>
+                                <input type="hidden" name="GoodsID" th:value="${Goods.GoodsID}">
+                                <input type="hidden" name="SSID" th:value="${Scenic.SSID}">
+                                <div class="form-group"><label class="col-sm-2 control-label">商品名:</label>
+                                    <div class="col-sm-10"><p class="form-control-static" name="GoodsName" th:text="${Goods.GoodsName}"></p></div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">价格:</label>
+                                    <div class="col-sm-10"><p class="form-control-static" name="Price" th:text="${Goods.Price}"></p></div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">描述:</label>
+                                    <div class="col-sm-10"><p class="form-control-static" name="IntroduceG" th:text="${Goods.IntroduceG}"></p></div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">目的地:</label>
+                                    <input type="hidden" name="SSName" th:value="${Scenic.SSName}">
+                                    <div class="col-sm-10"><p class="form-control-static" name="SSName" th:text="${Scenic.SSName}"></p></div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">目的地描述:</label>
+                                    <div class="col-sm-10"><p class="form-control-static" th:text="${Scenic.Introduce}" name="Introduce"></p></div>
+                                </div>
+                                <input type="hidden" name="FranID" th:value="${Goods.FranID}">
+                                <input type="hidden" name="State" th:value="${Goods.State}">
+                                <div class="form-group"><label class="col-sm-2 control-label">经销商:</label>
+                                    <div class="col-sm-10"><p class="form-control-static" th:text="${FranName}"></p></div>
+                                </div>
+                                <input type="hidden" name="SSName" th:value="${Scenic.SSName}">
+                                <div class="form-group"><label class="col-sm-2 control-label">位置:</label>
+                                    <div class="col-sm-10"><p class="form-control-static" th:text="${Scenic.SSName}"></p></div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">出行方式:</label>
+                                    <div class="col-sm-10"><p class="form-control-static" name="Ways" th:text="${Goods.Ways}"></p></div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">含餐:</label>
+                                    <div class="col-sm-10"><p class="form-control-static" name="Meals" th:text="${Goods.Meals}"></p></div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">出发时间:</label>
+                                    <div class="col-sm-10"><p class="form-control-static" name="LaunchDate" th:text="${Goods.LaunchDate}"></p></div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">计划参团人数:</label>
+                                    <div class="col-sm-10"><p class="form-control-static" name="Number" th:text="${Goods.Number}"></p></div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">景点风光展示</label>
+                                    <div class="col-sm-10"><img id="imageShow1" th:src="@{'http://localhost:8080/src/pic/'+${Scenic.SSImage_1}}" width="600" height="480"></div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-10 col-sm-offset-2"><img id="imageShow2" th:src="@{'http://localhost:8080/src/pic/'+${Scenic.SSImage_2}}" width="600" height="480"></div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-10 col-sm-offset-2"><img id="imageShow3" th:src="@{'http://localhost:8080/src/pic/'+${Scenic.SSImage_3}}" width="600" height="480"></div>
+                                </div>
+                                <div class="ibox">
+                                    <div class="ibox-title">
+                                        评论列表
+                                    </div>
+                                    <div class="ibox-content">
+                                        <table class="table table-stripped toggle-arrow-tiny">
+                                            <tr>
+                                                <th>用户名</th>
+                                                <th>评论</th>
+                                            </tr>
+                                            <tr th:each="Comment,commentStat:${comments}">
+                                                <td th:text="${UserNameList[commentStat.index]}">
+                                                    user001
+                                                </td>
+                                                <td th:text="${Comment.CText}">
+                                                    风景很不错，导游的态度也很好，这次是和父母一起参加的旅游团，对于老人也很合适，下次出游还会考虑。
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                            </div>
+                            <div class="col-md-offset-5">
+                                <button class="btn btn-success btn-w-m"><a th:href="@{'/Tourist_T/view_order/'+${Goods.GoodsID}}">下单</a></button>
+                                <button class="btn btn-default btn-w-m" onclick="back()">返回</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<script src="/js/jquery-2.1.1.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="/js/inspinia.js"></script>
+<script src="/js/plugins/pace/pace.min.js"></script>
+
+<!-- Data picker -->
+<script src="/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+
+<!-- FooTable -->
+<script src="/js/plugins/footable/footable.all.min.js"></script>
+
+<!-- Page-Level Scripts -->
+<script language="JavaScript">
+    $(document).ready(function() {
+
+        $('.footable').footable();
+
+        $('#date_added').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true
+        });
+
+        $('#date_modified').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true
+        });
+
+    });
+    function back() {
+        document.add.action="/Tourist_T/spots";
+        document.add.submit();
+    }
+
+</script>
+
+</body>
+</html>

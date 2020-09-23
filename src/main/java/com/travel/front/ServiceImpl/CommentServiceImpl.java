@@ -103,7 +103,12 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<Comment> getCommentByItem(Integer ID) {
-        return null;
+        return commentMapper.getCommentByItem(ID);
+    }
+
+    @Override
+    public List<String> getUserNameByItem(Integer ID) {
+        return commentMapper.getUserNameByItem(ID);
     }
 
     @Override

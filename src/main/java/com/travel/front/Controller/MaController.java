@@ -940,4 +940,10 @@ public class MaController {
         return "redirect:/Tourist_Backstage/user_list";
     }
 
+    @GetMapping("/logout")
+    public String logout(){
+        Integer i = loginService.logOut();
+        return "redirect:/Tourist/login";
+    }
+
 }

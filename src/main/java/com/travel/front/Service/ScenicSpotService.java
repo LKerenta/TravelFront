@@ -10,4 +10,5 @@ public interface ScenicSpotService {
     List<ScenicSpot> SearchByBrief(String brief);
     ScenicSpot getSpotByID(Integer SSID);
     List<ScenicSpot> getAllSpot();
+    List<ScenicSpot> getSpots(String search);
 }

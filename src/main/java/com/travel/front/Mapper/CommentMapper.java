@@ -75,6 +75,8 @@ public interface CommentMapper {
 
     @Select("select * from comment where GoodsID=#{ID}")
     List<Comment> getCommentByItem(Integer ID);
+    @Select("SELECT UserName from `comment` JOIN `user` WHERE `user`.UserID=`comment`.UserID AND GoodsID=#{ID}")
+    List<String> getUserNameByItem(Integer ID);
 
     @Select("select * from comment where CText like '%${search}%'")
     List<Comment> getCommentByKeyword(String search);

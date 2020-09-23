@@ -13,29 +13,31 @@
     <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="/css/animate.css" rel="stylesheet">
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+    <style type="text/css">
+        html,body{
+            background: url(/img/background.jpg) no-repeat center top;
+            background-size: cover;
+        }
+    </style>
 </head>
-<body class="home">
+<body class="blog">
 <div id="wrapper">
     <div id="container">
 
         <!--start header -->
         <header id="header">
             <div id="logo">
-                <a href="/Tourist_T/index_T"><strong>Travel.</strong>旅游网站</a>
+                <a href="index"><strong>Travel.</strong>旅游网站</a>
                 <label id="session"></label>
             </div>
             <div id="searchbox">
-                <input type="text" id="userName" class="user-offline-title user-input" placeholder="账号" value=""/>
-                <input type="password" id="password" class="user-offline-title user-input" placeholder="密码" value=""/>
-                <button type="submit" class="user-offline-title user-login">登录</button>
-                <button type="submit" class="user-offline-title user-regist">注册</button>
-                <button type="submit" class="user-online-title user-logout">注销</button>
+                <strong class="font-bold" th:text="${Info.UserName}">Tourist</strong>
             </div>
             <div id="navigation">
                 <ul id="nav">
-                    <li class="selected"><a href="/Tourist_T/index_T">首页</a></li>
+                    <li class="selected"><a href="/Tourist_T/index">首页</a></li>
                     <li><a href="/Tourist_T/spots">景点</a>
-                    <li><a href="/Tourist_T/spots-recommend">景点推荐</a>
                         <!-- <ul>
                             <li><a href="browse-result.html">Browse Result</a></li>
                             <li><a href="browse-detail.html">Browse Detail</a></li>
@@ -43,82 +45,97 @@
                     </li>
                     <!--<li><a href="hotel.html">酒店</a></li>-->
                     <!-- <li><a href="plane.html">航班</a></li> -->
-                    <li><a href="/Tourist_T/line">旅线</a></li>
                     <li><a href="/Tourist_T/order">我的订单</a></li>
+                    <li><a href="/Tourist_T/user_info">个人中心</a></li>
+                    <li><a href="/Tourist_T/logout">登出</a></li>
                     <!-- <li><a href="#">关于我们</a></li> -->
                 </ul>
             </div>
         </header>
         <!--end header -->
-    </div>
-    <div class="wrapper wrapper-content animated fadeInRight ecommerce">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2"  style="border: 1px solid #a7aaab">
-                <h3>创建订单</h3>
-            </div>
-            <div class="col-lg-8 col-lg-offset-2"  style="border: 1px solid #a7aaab">
-                <form action="/Tourist_T/create_order/" method="post" enctype="multipart/form-data" name="update">
-                    <div class="form-horizontal">
-                        <br/>
-                        <input type="hidden" name="GoodsID" th:value="${Goods.GoodsID}">
-                        <input type="hidden" name="SSID" th:value="${Scenic.SSID}">
-                        <div class="form-group"><label class="col-sm-2 control-label">商品名:</label>
-                            <div class="col-sm-10"><p class="form-control-static" name="GoodsName" th:text="${Goods.GoodsName}"></p></div>
-                        </div>
-                        <div class="form-group"><label class="col-sm-2 control-label">价格:</label>
-                            <div class="col-sm-10"><p class="form-control-static" name="Price" th:text="${Goods.Price}"></p></div>
-                        </div>
-                        <div class="form-group"><label class="col-sm-2 control-label">描述:</label>
-                            <div class="col-sm-10"><p class="form-control-static" name="IntroduceG" th:text="${Goods.IntroduceG}"></p></div>
-                        </div>
-                        <div class="form-group"><label class="col-sm-2 control-label">目的地:</label>
-                            <input type="hidden" name="SSName" th:value="${Scenic.SSName}">
-                            <div class="col-sm-10"><p class="form-control-static" name="SSName" th:text="${Scenic.SSName}"></p></div>
-                        </div>
-                        <div class="form-group"><label class="col-sm-2 control-label">目的地描述:</label>
-                            <div class="col-sm-10"><p class="form-control-static" th:text="${Scenic.Introduce}" name="Introduce"></p></div>
-                        </div>
-                        <input type="hidden" name="FranID" th:value="${Goods.FranID}">
-                        <input type="hidden" name="State" th:value="${Goods.State}">
-                        <div class="form-group"><label class="col-sm-2 control-label">经销商:</label>
-                            <div class="col-sm-10"><p class="form-control-static" th:text="${FranName}"></p></div>
-                        </div>
-                        <input type="hidden" name="SSName" th:value="${Scenic.SSName}">
-                        <div class="form-group"><label class="col-sm-2 control-label">位置:</label>
-                            <div class="col-sm-10"><p class="form-control-static" th:text="${Scenic.SSName}"></p></div>
-                        </div>
-                        <div class="form-group"><label class="col-sm-2 control-label">出行方式:</label>
-                            <div class="col-sm-10"><p class="form-control-static" name="Ways" th:text="${Goods.Ways}"></p></div>
-                        </div>
-                        <div class="form-group"><label class="col-sm-2 control-label">含餐:</label>
-                            <div class="col-sm-10"><p class="form-control-static" name="Meals" th:text="${Goods.Meals}"></p></div>
-                        </div>
-                        <div class="form-group"><label class="col-sm-2 control-label">出发时间:</label>
-                            <div class="col-sm-10"><p class="form-control-static" name="LaunchDate" th:text="${Goods.LaunchDate}"></p></div>
-                        </div>
-                        <div class="form-group"><label class="col-sm-2 control-label">计划参团人数:</label>
-                            <div class="col-sm-10"><p class="form-control-static" name="Number" th:text="${Goods.Number}"></p></div>
-                        </div>
-                        <div class="form-group"><label class="col-sm-2 control-label">景点风光展示</label>
-                            <div class="col-sm-10"><img id="imageShow1" th:src="@{'http://localhost:8080/src/pic/'+${Scenic.SSImage_1}}" width="600" height="480"></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-10 col-sm-offset-2"><img id="imageShow2" th:src="@{'http://localhost:8080/src/pic/'+${Scenic.SSImage_2}}" width="600" height="480"></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-10 col-sm-offset-2"><img id="imageShow3" th:src="@{'http://localhost:8080/src/pic/'+${Scenic.SSImage_3}}" width="600" height="480"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-offset-5">
-                        <button class="btn btn-success btn-w-m" type="submit">提交</button>
-                        <button class="btn btn-default btn-w-m" onclick="back()">返回</a></button>
-                    </div>
-                </form>
+
+        <div class="subheader">
+            <div class="left">
+                <span class="page-title">创建订单</span>
             </div>
         </div>
-    </div>
 
+        <div id="content" style="background: #FFFFFF">
+        <div class="wrapper wrapper-content animated fadeInRight ecommerce">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                        <form>
+                        <div class="form-horizontal">
+                            <br/>
+                            <input type="hidden" name="GoodsID" th:value="${Goods.GoodsID}">
+                            <input type="hidden" name="SSID" th:value="${Scenic.SSID}">
+                            <div class="form-group"><label class="col-sm-2 control-label">商品名:</label>
+                                <div class="col-sm-10"><p class="form-control-static" name="GoodsName" th:text="${Goods.GoodsName}"></p></div>
+                            </div>
+                            <div class="form-group"><label class="col-sm-2 control-label">价格:</label>
+                                <div class="col-sm-10"><p class="form-control-static" name="Price" th:text="${Goods.Price}"></p></div>
+                            </div>
+                            <div class="form-group"><label class="col-sm-2 control-label">描述:</label>
+                                <div class="col-sm-10"><p class="form-control-static" name="IntroduceG" th:text="${Goods.IntroduceG}"></p></div>
+                            </div>
+                            <div class="form-group"><label class="col-sm-2 control-label">目的地:</label>
+                                <input type="hidden" name="SSName" th:value="${Scenic.SSName}">
+                                <div class="col-sm-10"><p class="form-control-static" name="SSName" th:text="${Scenic.SSName}"></p></div>
+                            </div>
+                            <div class="form-group"><label class="col-sm-2 control-label">目的地描述:</label>
+                                <div class="col-sm-10"><p class="form-control-static" th:text="${Scenic.Introduce}" name="Introduce"></p></div>
+                            </div>
+                            <input type="hidden" name="FranID" th:value="${Goods.FranID}">
+                            <input type="hidden" name="State" th:value="${Goods.State}">
+                            <div class="form-group"><label class="col-sm-2 control-label">经销商:</label>
+                                <div class="col-sm-10"><p class="form-control-static" th:text="${FranName}"></p></div>
+                            </div>
+                            <input type="hidden" name="SSName" th:value="${Scenic.SSName}">
+                            <div class="form-group"><label class="col-sm-2 control-label">位置:</label>
+                                <div class="col-sm-10"><p class="form-control-static" th:text="${Scenic.SSName}"></p></div>
+                            </div>
+                            <div class="form-group"><label class="col-sm-2 control-label">出行方式:</label>
+                                <div class="col-sm-10"><p class="form-control-static" name="Ways" th:text="${Goods.Ways}"></p></div>
+                            </div>
+                            <div class="form-group"><label class="col-sm-2 control-label">含餐:</label>
+                                <div class="col-sm-10"><p class="form-control-static" name="Meals" th:text="${Goods.Meals}"></p></div>
+                            </div>
+                            <div class="form-group"><label class="col-sm-2 control-label">出发时间:</label>
+                                <div class="col-sm-10"><p class="form-control-static" name="LaunchDate" th:text="${Goods.LaunchDate}"></p></div>
+                            </div>
+                            <div class="form-group"><label class="col-sm-2 control-label">计划参团人数:</label>
+                                <div class="col-sm-10"><p class="form-control-static" name="Number" th:text="${Goods.Number}"></p></div>
+                            </div>
+                            <div class="form-group"><label class="col-sm-2 control-label">景点风光展示</label>
+                                <div class="col-sm-10"><img id="imageShow1" th:src="@{'http://localhost:8080/src/pic/'+${Scenic.SSImage_1}}" width="600" height="480"></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2"><img id="imageShow2" th:src="@{'http://localhost:8080/src/pic/'+${Scenic.SSImage_2}}" width="600" height="480"></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2"><img id="imageShow3" th:src="@{'http://localhost:8080/src/pic/'+${Scenic.SSImage_3}}" width="600" height="480"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-offset-5">
+                            <button class="btn btn-success btn-w-m"><a th:href="@{'/Tourist_T/create_order/'+${Goods.GoodsID}}">提交</a></button>
+                            <button class="btn btn-default btn-w-m"><a th:href="@{'/Tourist_T/spots'}">返回</a></button>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
 </div>
+<script language="JavaScript">
+    function back() {
+        window.location.href = "/Tourist_T/spots";
+    }
+</script>
 
 </body>
 </html>

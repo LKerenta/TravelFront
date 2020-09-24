@@ -117,7 +117,7 @@
                                     <div class="ibox-content col-md-10">
                                         <table class="table table-stripped toggle-arrow-tiny">
                                             <tr th:each="Comment,commentStat:${comments}">
-                                                <td style="color: #0d8ddb" th:text="@{'@+'${UserNameList[commentStat.index]}}">
+                                                <td style="color: #0d8ddb" th:text="@{'@'+${UserNameList[commentStat.index]}}">
                                                     user001
                                                 </td>
                                                 <td th:text="${Comment.CText}">

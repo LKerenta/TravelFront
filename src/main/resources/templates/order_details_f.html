@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>订单详情</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/plugins/footable/footable.core.css" rel="stylesheet">
+
+</head>
+
+<body class="">
+
+<div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element"> <span>
+                        <img alt="image" width="50" height="50" class="img-circle" th:src="@{'http://localhost:8080/src/pic/'+${Info.FranImage}}" />
+                         </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold" th:text="${Info.FranName}">Admin</strong>
+                         </span> <span class="text-muted text-xs block">经销商<b class="caret"></b></span> </span> </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="/Franchise/profile">个人信息</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/Tourist/login">退出登录</a></li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                        IN+
+                    </div>
+                </li>
+                <li class="active">
+                    <a href="/Franchise/index"><i class="fa fa-home"></i> <span class="nav-label">首页</span></a>
+                </li>
+                <!--<li>
+                    <a href="#"><i class="fa fa-users"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="user_list.html">游客用户管理</a></li>
+                        <li><a href="seller_list.html">经销商用户管理</a></li>
+                        <li><a href="user_add.html">用户添加</a></li>
+                    </ul>
+                </li>-->
+                <li>
+                    <a href="/Franchise/Order"><i class="fa fa-archive"></i> <span class="nav-label">订单管理</span></a>
+                </li>
+                <li>
+                    <a href="/Franchise/item"><i class="fa fa-shopping-cart"></i> <span class="nav-label">商品管理</span></a>
+                </li>
+                <!--<li>
+                    <a href="item_examine.html"><i class="fa fa-upload"></i> <span class="nav-label">商品审核</span></a>
+                </li>-->
+                <li>
+                    <a href="/Franchise/comment"><i class="fa fa-comments"></i> <span class="nav-label">评论管理</span></a>
+                </li>
+                <li>
+                    <a href="/Franchise/statistics"><i class="fa fa-pie-chart"></i> <span class="nav-label">数据统计</span></a>
+                </li>
+                <li>
+                    <a href="/Franchise/asset"><i class="fa fa-money"></i> <span class="nav-label">资产管理</span></a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <span class="m-r-sm text-muted welcome-message">欢迎来到抱团旅游网站后台管理系统</span>
+                    </li>
+                    <li>
+                        <a href="/Tourist/login">
+                            <i class="fa fa-sign-out"></i> 退出登录
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>订单</h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="/Franchise/index">首页</a>
+                    </li>
+                    <li>
+                        <a>订单管理</a>
+                    </li>
+                    <li class="active">
+                        <strong>订单详情</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="wrapper wrapper-content">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>编辑用户信息</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <form action="/Franchise/update_order" method="post" class="form-horizontal" name="add" enctype="multipart/form-data">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="OrderID">订单号</label>
+                                            <input type="hidden" th:value="${Order.OrderID}" name="OrderID">
+                                            <div class="col-sm-6">
+                                                <input type="number" class="form-control" th:value="${Order.OrderID}" id="OrderID" name="OrderID" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="GoodsName">商品名</label>
+                                            <input type="hidden" th:value="${Order.GoodsID}" name="GoodsID">
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" id="GoodsName" th:value="${GoodsName}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="FranName">经销商名</label>
+                                            <input type="hidden" th:value="${Order.FranID}" name="FranID">
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" id="FranName" th:value="${FranName}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="State">状态</label>
+                                            <input type="hidden" th:value="${Order.State}" name="State">
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" id="State" th:value="${States[Order.State]}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="Price">价格</label>
+                                            <div class="col-sm-6">
+                                                <input type="number" class="form-control" id="Price" name="Price" th:value="${Order.Price}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="Date">创建日期</label>
+                                            <input type="hidden" th:value="${Order.Date}" name="Date">
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" id="Date" name="Date" th:value="${Order.Date}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-4 col-sm-offset-2">
+                                                <button class="btn btn-primary" type="submit">修改</button>
+                                                <button class="btn btn-white" type="button" onclick="back()">取消</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div>
+                <strong>Copyright</strong> 版权所有 &copy; 2014-2015
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script src="/js/jquery-2.1.1.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="/js/inspinia.js"></script>
+<script src="/js/plugins/pace/pace.min.js"></script>
+
+<!-- Data picker -->
+<script src="/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+
+<!-- FooTable -->
+<script src="/js/plugins/footable/footable.all.min.js"></script>
+
+<!-- Page-Level Scripts -->
+<script language="JavaScript">
+    $(document).ready(function() {
+
+        $('.footable').footable();
+
+        $('#date_added').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true
+        });
+
+        $('#date_modified').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true
+        });
+
+    });
+    function back() {
+        document.add.action="/Franchise/Order";
+        document.add.submit();
+    }
+
+</script>
+
+
+</body>
+
+</html>

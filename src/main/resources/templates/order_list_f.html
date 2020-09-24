@@ -30,7 +30,7 @@
                          </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear"> <span class="block m-t-xs">
-                            <table class="table"><tr><td th:text="${Info.Name}"></td></tr></table>
+                            <table class="table"><tr><td th:text="${Info.FranName}"></td></tr></table>
                          </span> <span class="text-muted text-xs block">经销商 <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <!--<li><a href="profile.html">个人信息</a></li>
@@ -324,9 +324,8 @@
                                     </td>
                                     <td class="text-right">
                                         <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">查看</button>
-                                            <button class="btn-white btn btn-xs"><a href="item_update.html">修改</a></button>
-                                            <button class="btn-white btn btn-xs">删除</button>
+                                            <button class="btn-white btn btn-xs"><a th:href="@{'order/'+${View.OrderID}}">查看/修改</a></button>
+                                            <button class="btn-white btn btn-xs"><a th:href="@{'deleteOrder/'+${View.OrderID}}">删除</a></button>
                                         </div>
                                     </td>
                                 </tr>

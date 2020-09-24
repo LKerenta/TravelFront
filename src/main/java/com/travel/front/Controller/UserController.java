@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 
 @Controller
@@ -76,6 +77,31 @@ public class UserController {
         model.addAttribute("States",States);
 
         return "order_list_t";
+    }
+
+    @GetMapping("/remark/{GoodsID}")
+    public String remark(@PathVariable("GoodsID") Integer GoodsID,Model model){
+        Login login = loginService.getLoginUser();
+        User user = touristService.findUserByID(login.getID());
+        Comment comment = commentService.getCommentByUserIDAndGoodsID(GoodsID,user.getUserID());
+        Goods goods = goodsService.getGoodsByID(GoodsID);
+        if(comment == null){
+            comment.setGoodsID(GoodsID);
+            comment.setUserID(user.getUserID());
+            comment.setCText("");
+            Integer i = commentService.writeComment(comment);
+        }
+        model.addAttribute("Comment",comment);
+        model.addAttribute("GoodsName",goods.getGoodsName());
+        model.addAttribute("Goods",goods);
+        model.addAttribute("User",user);
+        return "tourist_comment";
+    }
+
+    @PostMapping("/remark")
+    public String remark(Comment comment){
+        Integer i = commentService.updateComment(comment);
+        return "redirect:/Tourist_T/order";
     }
 
     @GetMapping("/user_info")

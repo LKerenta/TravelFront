@@ -5,6 +5,7 @@ import com.travel.front.Entity.*;
 import com.travel.front.Service.FranchiseService;
 import com.travel.front.Service.GoodsService;
 import com.travel.front.Service.LoginService;
+import com.travel.front.Service.TouristService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,11 +28,30 @@ public class LoginController {
     @Autowired
     private FranchiseService franchiseService;
 
+    @Autowired
+    private TouristService touristService;
+
     @GetMapping("/login")
     public String userLogin(){
         loginService.logOut();
         return "login";
     }
+
+    @GetMapping("/forget_password")
+    public String forget(){
+        return "forget_password";
+    }
+
+    @PostMapping("/forget_password")
+    public String forgetPassword(User user){
+        User user1 = touristService.findUserByID(user.getUserID());
+        if(user.getPhone().equals(user1.getPhone())){
+            user1.setPassword(user.getPassword());
+        }
+        Integer i = touristService.updateUserByID(user1);
+        return "redirect:/Tourist/login";
+    }
+
     @PostMapping("/index")
     public String userLoginPressed(UserType userType, Model model){
 
@@ -80,6 +100,11 @@ public class LoginController {
             franchise.setPassword(register.getPassword());
             franchise.setPhone(register.getPhone());
             loginService.Registry(franchise);
+            UserType userType = new UserType();
+            userType.setID(franchise.getFranID());
+            userType.setPassword(register.getPassword());
+            userType.setType(i);
+            Integer j = loginService.userTypeInsert(userType);
             return "login";
         }
         if(i == 2){
@@ -88,6 +113,11 @@ public class LoginController {
             user.setPassword(register.getPassword());
             user.setPhone(register.getPhone());
             loginService.Registry(user);
+            UserType userType = new UserType();
+            userType.setID(user.getUserID());
+            userType.setPassword(register.getPassword());
+            userType.setType(i);
+            Integer j = loginService.userTypeInsert(userType);
             return "login";
         }
         return null;

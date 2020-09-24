@@ -38,4 +38,5 @@ public interface CommentService {
     Comment findCommentByID(Integer CID);
     String findUserNameByID(Integer CID);
     String findGoodsNameByID(Integer CID);
+    Comment getCommentByUserIDAndGoodsID(Integer GoodsID,Integer UserID);
 }

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!--[if IE 7 ]><html class="ie ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
+<head>
+    <meta charset="UTF-8">
+    <title>发表评论</title>
+    <link rel="icon" type="image/x-icon" href="index_T.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="/css/style_front.css" rel="stylesheet" >
+    <link href="/css/responsive.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+    <style type="text/css">
+        html,body{
+            background: url(/img/moscow2.jpg) no-repeat center top;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="blog">
+<div id="wrapper">
+    <div id="container">
+
+        <!--start header -->
+        <header id="header">
+            <div id="logo">
+                <a href="index"><strong>Travel.</strong>旅游网站</a>
+                <label id="session"></label>
+            </div>
+            <div id="searchbox">
+                <strong class="font-bold" th:text="${User.UserName}">Tourist</strong>
+            </div>
+            <div id="navigation">
+                <ul id="nav">
+                    <li class="selected"><a href="/Tourist_T/index">首页</a></li>
+                    <li><a href="/Tourist_T/spots">景点</a>
+                        <!-- <ul>
+                            <li><a href="browse-result.html">Browse Result</a></li>
+                            <li><a href="browse-detail.html">Browse Detail</a></li>
+                        </ul> -->
+                    </li>
+                    <!--<li><a href="hotel.html">酒店</a></li>-->
+                    <!-- <li><a href="plane.html">航班</a></li> -->
+                    <li><a href="/Tourist_T/order">我的订单</a></li>
+                    <li><a href="/Tourist_T/user_info">个人中心</a></li>
+                    <li><a href="/Tourist_T/logout">登出</a></li>
+                    <!-- <li><a href="#">关于我们</a></li> -->
+                </ul>
+            </div>
+        </header>
+        <!--end header -->
+        <div class="subheader">
+            <div class="left">
+                <span class="page-title">发表评论</span>
+                <!--<span class="page-desc">网罗天下美景，助您直达完美之旅。</span>-->
+            </div>
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight ecommerce">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1"  style="border: 1px solid #a7aaab;background-color: #FFFFFF">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <br/>
+                            <br/>
+                            <form method="post" action="/Tourist_T/remark" class="form-horizontal">
+                                <div class="col-md-12">
+                                    <input type="hidden" th:value="${User.UserID}" name="UserID">
+                                    <input type="hidden" th:value="${Goods.GoodsID}" name="GoodsID">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="GoodsName">商品名</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="GoodsName" th:value="${GoodsName}" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="CText">评论内容</label>
+                                        <div class="col-sm-6">
+                                            <textarea type="text" class="form-control" id="CText" rows="3" name="CText" th:text="${Comment.CText}"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-4 col-sm-offset-2">
+                                            <button class="btn btn-info" type="submit">发表</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.24.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery.mobile.customized.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/camera.min.js"></script>
+<script type="text/javascript" src="js/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="js/selectnav.min.js"></script>
+<!--<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=AIzaSyB3tShW1hLlV2lYW8_sCVln6TLF2bWvgU8"></script>-->
+<script type="text/javascript" src="js/jquery.googlemaps.1.01.min.js"></script>
+<script type="text/javascript" src="js/theme.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="js/jquerysession.js"></script>
+<script type="text/javascript" src="js/include.js"></script>
+
+<script>
+    $(function() {
+        var userId = $.session.get('userSession');
+        var obj = {};
+        obj.id = userId;
+        var reqData = JSON.stringify(obj);
+        $.ajax({
+            type: 'post',
+            async: false,
+            url: base_url + '/user/getSession',
+            contentType: 'application/json;chart=utf-8',
+            dataType: 'json',
+            data: reqData,
+            success: function (result) {
+                if (result.status == 1) {
+                    $("#session").text("-欢迎您：" + result.data.userInfo.userName);
+                    $(".user-offline-title").hide();
+                    $(".user-online-title").show();
+                    $.session.set('userSession', result.data.id);
+                    $.session.set('userName', result.data.userName);
+                    $("#session").show();
+                } else {
+                    $("#session").val("");
+                    $("#session").hide();
+                    //$(".user-offline-title").show();
+                    //$(".user-online-title").hide();
+                    $.session.remove('userSession');
+                    $.session.remove('userName');
+                    window.location.href = "login.html";
+                }
+            }
+        })
+    });
+</script>
+</body>
+</html>

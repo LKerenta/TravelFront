@@ -118,12 +118,12 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public Integer writeComment(Comment comment) {
-        return null;
+        return commentMapper.writeComment(comment);
     }
 
     @Override
     public Integer updateComment(Comment comment) {
-        return null;
+        return commentMapper.updateComment(comment);
     }
 
 
@@ -145,5 +145,10 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public String findGoodsNameByID(Integer CID) {
         return commentMapper.findGoodsNameByID(CID);
+    }
+
+    @Override
+    public Comment getCommentByUserIDAndGoodsID(Integer GoodsID, Integer UserID) {
+        return commentMapper.getCommentByUserIDAndGoodsID(GoodsID,UserID);
     }
 }

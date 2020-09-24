@@ -67,9 +67,6 @@
                                 <div class="form-group"><label class="col-sm-2 control-label">商品名:</label>
                                     <div class="col-sm-10"><p class="form-control-static" name="GoodsName" th:text="${Goods.GoodsName}"></p></div>
                                 </div>
-                                <div class="form-group"><label class="col-sm-2 control-label">价格:</label>
-                                    <div class="col-sm-10"><p class="form-control-static" name="Price" th:text="${Goods.Price}"></p></div>
-                                </div>
                                 <div class="form-group"><label class="col-sm-2 control-label">描述:</label>
                                     <div class="col-sm-10"><p class="form-control-static" name="IntroduceG" th:text="${Goods.IntroduceG}"></p></div>
                                 </div>
@@ -101,6 +98,9 @@
                                 <div class="form-group"><label class="col-sm-2 control-label">计划参团人数:</label>
                                     <div class="col-sm-10"><p class="form-control-static" name="Number" th:text="${Goods.Number}"></p></div>
                                 </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">价格:</label>
+                                    <div class="col-sm-10"><h3 style="color: #AF2018" class="form-control-static" name="Price" th:text="${Goods.Price}"></h3></div>
+                                </div>
                                 <div class="form-group"><label class="col-sm-2 control-label">景点风光展示</label>
                                     <div class="col-sm-10"><img id="imageShow1" th:src="@{'http://localhost:8080/src/pic/'+${Scenic.SSImage_1}}" width="600" height="480"></div>
                                 </div>
@@ -111,17 +111,13 @@
                                     <div class="col-sm-10 col-sm-offset-2"><img id="imageShow3" th:src="@{'http://localhost:8080/src/pic/'+${Scenic.SSImage_3}}" width="600" height="480"></div>
                                 </div>
                                 <div class="ibox">
-                                    <div class="ibox-title">
-                                        评论列表
+                                    <div class="ibox-title col-md-2">
+                                        <strong>评论列表</strong>
                                     </div>
-                                    <div class="ibox-content">
+                                    <div class="ibox-content col-md-10">
                                         <table class="table table-stripped toggle-arrow-tiny">
-                                            <tr>
-                                                <th>用户名</th>
-                                                <th>评论</th>
-                                            </tr>
                                             <tr th:each="Comment,commentStat:${comments}">
-                                                <td th:text="${UserNameList[commentStat.index]}">
+                                                <td style="color: #0d8ddb" th:text="@{'@+'${UserNameList[commentStat.index]}}">
                                                     user001
                                                 </td>
                                                 <td th:text="${Comment.CText}">
@@ -135,6 +131,7 @@
                                 <button class="btn btn-success btn-w-m"><a th:href="@{'/Tourist_T/view_order/'+${Goods.GoodsID}}">下单</a></button>
                                 <button class="btn btn-default btn-w-m" onclick="back()">返回</button>
                             </div>
+                            <br/><br/>
                         </div>
                     </div>
                 </div>

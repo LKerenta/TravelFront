@@ -551,6 +551,11 @@ public class MaController {
         franchise.setBalance(0);
 
         Integer i = franchiseService.addFran(franchise);
+        UserType userType = new UserType();
+        userType.setID(franchise.getFranID());
+        userType.setPassword(franchise.getPassword());
+        userType.setType(1);
+        Integer j = loginService.userTypeInsert(userType);
 
         return "redirect:/Tourist_Backstage/seller_list";
     }
@@ -877,6 +882,11 @@ public class MaController {
         user.setBalance(0);
 
         Integer i = touristService.addUser(user);
+        UserType userType = new UserType();
+        userType.setID(user.getUserID());
+        userType.setPassword(user.getPassword());
+        userType.setType(2);
+        Integer j = loginService.userTypeInsert(userType);
 
         return "redirect:/Tourist_Backstage/user_list";
     }

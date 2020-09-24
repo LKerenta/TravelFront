@@ -114,26 +114,6 @@
 			</div>
 		</header>
 		<!--end header -->
-		<div style="background-color: #FFFFFF">
-		<div class="hr"><hr /></div>
-
-		<div class="one-third">
-			<h3 class="icon32 icon-tick thin">技术领先</h3>
-			<p>我们一直将技术创新视为企业的活力源泉，在提升研发能力方面不遗余力。我们建立了一整套现代化服务系统，包括：国际机票、酒店预订平台、客户管理系统、房量管理系统、呼叫排队系统、订单处理系统、服务质量监控系统等。依靠这些先进的服务和管理系统，我们为会员提供更加便捷和高效的服务。</p>
-		</div>
-
-		<div class="one-third">
-			<h3 class="icon32 icon-tick thin">规模经营</h3>
-			<p>服务规模化和资源规模化是我们的核心优势之一。我们在全球200个国家和地区与近80万家酒店建立了长期稳定的合作关系，其机票预订网络已覆盖国际国内绝大多数航线。规模化的运营不仅可以为会员提供更多优质的旅行选择，还保障了服务的标准化，确保服务质量，并降低运营成本。</p>
-		</div>
-
-		<div class="one-third last">
-			<h3 class="icon32 icon-tick thin">体系规范</h3>
-			<p>先进的管理和控制体系是我们的又一核心优势。我们将服务过程分割成多个环节，以细化的指标控制不同环节，并建立起一套精益服务体系。同时，我们还将制造业的质量管理方法——六西格玛体系成功运用于旅行业。目前，我们各项服务指标均已接近国际领先水平，服务质量和客户满意度也随之大幅提升。</p>
-		</div>
-
-		<div class="hr"><hr /></div>
-		</div>
 
 		<!--newsection -->
 		<div class="section-title col-md-10 col-md-offset-1"  style="background-color: #FFFFFF">
@@ -143,16 +123,20 @@
 			<table class="footable table table-stripped toggle-arrow-tiny" data-page-size="7">
 				<tbody>
 				<tr th:each="View,SSstat:${SS}">
-					<td th:text="${View.SSID}">SSID</td>
-					<td th:text="${View.SSName}">
-						ssname
+					<td th:text="${View.SSID}" hidden>SSID</td>
+					<td>
+						<img alt="image" width="300" height="240" class="img-thumbnail" th:src="@{'http://localhost:8080/src/pic/'+${View.SSImage_1}}">
 					</td>
-					<td><img alt="image" width="50" height="50" class="img-circle" th:src="@{'http://localhost:8080/src/pic/'+${View.SSImage_1}}"></td>
-
-					<td th:text="${View.Introduce}">
-						Price
+					<td>
+						<br/>
+						<br/>
+						<h3 th:text="${View.SSName}"></h3>
+						<p th:text="${View.Introduce}"></p>
 					</td>
 					<td class="text-right">
+						<br/>
+						<br/>
+						<br/>
 						<button class="btn-white btn btn-xs"><a th:href="@{'/Tourist_T/spots/'+${View.SSID}}">详情</a></button>
 					</td>
 
@@ -170,11 +154,70 @@
 		</div>
 
 
+		<div style="background-color: #FFFFFF">
+			<div class="hr"><hr /></div>
+<!--
+			<div class="one-third">
+				<h3 class="icon32 icon-tick thin">技术领先</h3>
+				<p>我们一直将技术创新视为企业的活力源泉，在提升研发能力方面不遗余力。我们建立了一整套现代化服务系统，包括：国际机票、酒店预订平台、客户管理系统、房量管理系统、呼叫排队系统、订单处理系统、服务质量监控系统等。依靠这些先进的服务和管理系统，我们为会员提供更加便捷和高效的服务。</p>
+			</div>
+
+			<div class="one-third">
+				<h3 class="icon32 icon-tick thin">规模经营</h3>
+				<p>服务规模化和资源规模化是我们的核心优势之一。我们在全球200个国家和地区与近80万家酒店建立了长期稳定的合作关系，其机票预订网络已覆盖国际国内绝大多数航线。规模化的运营不仅可以为会员提供更多优质的旅行选择，还保障了服务的标准化，确保服务质量，并降低运营成本。</p>
+			</div>
+
+			<div class="one-third last">
+				<h3 class="icon32 icon-tick thin">体系规范</h3>
+				<p>先进的管理和控制体系是我们的又一核心优势。我们将服务过程分割成多个环节，以细化的指标控制不同环节，并建立起一套精益服务体系。同时，我们还将制造业的质量管理方法——六西格玛体系成功运用于旅行业。目前，我们各项服务指标均已接近国际领先水平，服务质量和客户满意度也随之大幅提升。</p>
+			</div>-->
+
+			<div class="hr"><hr /></div>
+		</div>
+
+
 	
 	</div>
 	<!--container -->
-	
-	<include src="common-footer.html"></include>
+
+	<footer id="footer">
+		<div class="wrap">
+			<div class="one-third">
+				<div class="theme-logo"><strong>旅游网站</strong>Travel</div>
+				<p>我们以“让旅游更简单”为使命，为消费者提供由北京、天津、上海、广州、深圳、南京等64个城市出发的旅游产品预订服务，产品全面，价格透明，全年365天24小时400电话预订，并提供丰富的后续服务和保障。.</p>
+			</div>
+
+			<div class="one-third">
+				<h3>我们的办公室</h3>
+				<ul>
+					<li class="glyph-home">中国·武汉<br>华中科技大学<br>软件学院</li>
+					<li class="glyph-briefcase">电话：+621 760 4020</li>
+					<li class="glyph-envelope">电子邮件 : 824247231@qq.com</li>
+				</ul>
+			</div>
+
+			<div class="one-third last">
+				<h3>合作对象</h3>
+				<!-- Start of Flickr Badge -->
+				<div id="flickr_badge_uber_wrapper">
+					<div id="flickr_badge_wrapper">
+						<ul style="color: #5f5f5f">
+							<li class="glyph-home">途牛旅游网-让旅游更简单</li>
+							<li class="glyph-briefcase">马蜂窝-靠谱的旅游攻略</li>
+							<li class="glyph-envelope">携程-中国领先的在线旅行服务公司</li>
+							<li class="glyph-envelope">去哪儿-安全优质的服务</li>
+							<li class="glyph-envelope">武汉凡诺软件技术有限公司</li>
+						</ul>
+					</div>
+				</div>
+				<!-- End of Flickr Badge -->
+			</div>
+
+			<br class="clear" />
+		</div>
+		<!--footer wrap -->
+	</footer>
+	<!--end footer -->
 
 </div>
 

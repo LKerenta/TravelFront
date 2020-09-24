@@ -13,4 +13,5 @@ public interface LoginService {
     Integer Registry(Manager manager);
     Login getLoginUser();
     Integer logOut();
+    Integer userTypeInsert(UserType userType);
 }

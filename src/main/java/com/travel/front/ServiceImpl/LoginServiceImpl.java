@@ -84,5 +84,10 @@ public class LoginServiceImpl implements LoginService {
         return loginMapper.LogOut();
     }
 
+    @Override
+    public Integer userTypeInsert(UserType userType) {
+        return loginMapper.userTypeInsert(userType);
+    }
+
 
 }

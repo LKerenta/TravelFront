@@ -88,6 +88,10 @@ public interface CommentMapper {
     @Update("update comment set CText=#{CText} where UserID=#{UserID} and GoodsID=#{GoodsID}")
     Integer updateComment(Comment comment);
 
+    @Select("select * from comment where GoodsID=#{GoodsID} AND UserID=#{UserID}")
+    Comment getCommentByUserIDAndGoodsID(Integer GoodsID,Integer UserID);
+
+
 
 //    Delete
 

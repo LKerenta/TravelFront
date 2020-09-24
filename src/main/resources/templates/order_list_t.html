@@ -96,6 +96,7 @@
                                     </td>
                                     <td class="text-right">
                                         <div class="btn-group">
+                                            <button class="btn-white btn btn-xs"><a th:href="@{'remark/'+${Order.GoodsID}}">评论</a></button>
                                             <button class="btn-white btn btn-xs"><a th:href="@{'order_details/'+${Order.OrderID}}">修改</a></button>
                                             <button class="btn-white btn btn-xs"><a th:href="@{'drawback/'+${Order.OrderID}}">退款</a></button>
                                             <button class="btn-white btn btn-xs"><a th:href="@{'delete_order/'+${Order.OrderID}}">删除</a></button>

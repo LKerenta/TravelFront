@@ -98,25 +98,29 @@
 								<table class="footable table table-stripped toggle-arrow-tiny" data-page-size="7">
 									<thead>
 									<tr>
-										<th>景点ID</th>
-										<th>景点名称</th>
-										<th data-hide="phone">景点图片</th>
-										<th data-hide="phone">景点介绍</th>
-
+										<th hidden>景点ID</th>
+										<th data-hide="phone" hidden>景点图片</th>
+										<th hidden>景点名称</th>
+										<th data-hide="phone" hidden>景点介绍</th>
 									</tr>
 									</thead>
 									<tbody>
 									<tr th:each="View,SSstat:${SS}">
-										<td th:text="${View.SSID}">SSID</td>
-										<td th:text="${View.SSName}">
-											ssname
+										<td th:text="${View.SSID}" hidden>SSID</td>
+                        				<td>
+											<img alt="image" width="300" height="240" class="img-thumbnail" th:src="@{'http://localhost:8080/src/pic/'+${View.SSImage_1}}">
 										</td>
-                        				<td><img alt="image" width="50" height="50" class="img-circle" th:src="@{'http://localhost:8080/src/pic/'+${View.SSImage_1}}"></td>
-
-										<td th:text="${View.Introduce}">
-											Price
+										<td>
+											<br/>
+											<br/>
+											<br/>
+											<h3 th:text="${View.SSName}"></h3>
+											<p th:text="${View.Introduce}"></p>
 										</td>
 										<td class="text-right">
+											<br/>
+											<br/>
+											<br/>
 											<button class="btn-white btn btn-xs"><a th:href="@{'/Tourist_T/spots/'+${View.SSID}}">详情</a></button>
 										</td>
 										

@@ -34,14 +34,14 @@
                          </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear"> <span class="block m-t-xs">
-                            <table class="table"><tr><td th:text="${Info.Name}"></td></tr></table>
+                            <table class="table"><tr><td th:text="${Info.FranName}"></td></tr></table>
                          </span> <span class="text-muted text-xs block">经销商 <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <!--<li><a href="profile.html">个人信息</a></li>
                             <li><a href="contacts.html">联系方式</a></li>
                             <li><a href="mailbox.html">邮箱</a></li>-->
                             <li class="divider"></li>
-                            <li><a href="login.html">退出登录</a></li>
+                            <li><a href="login">退出登录</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
@@ -186,7 +186,7 @@
 
 
                 <li>
-                    <a href="login.html">
+                    <a href="login">
                         <i class="fa fa-sign-out"></i> 退出登录
                     </a>
                 </li>
@@ -199,10 +199,10 @@
                 <h2>产品编辑</h2>
                 <ol class="breadcrumb">
                     <li>
-                        <a href="index.html">首页</a>
+                        <a href="index">首页</a>
                     </li>
                     <li>
-                        <a href="item_list.html">商品管理</a>
+                        <a href="item">商品管理</a>
                     </li>
                     <li class="active">
                         <strong>产品添加</strong>
@@ -248,7 +248,7 @@
                             <div class="form-group">
                                 <label for="fran" class="col-lg-2">
                                     <div class="col-lg-6">
-                                        <input type="number" id="fran" name="FranID" th:value="${Info.ID}" class="form-control hidden">
+                                        <input type="number" id="fran" name="FranID" th:value="${Info.FranID}" class="form-control hidden">
                                     </div>
                                 </label>
                             </div>

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -140,42 +141,120 @@ public class FranchiseController {
         return "index_F";
     }
 
-    @GetMapping("/Order")
+    @RequestMapping("/Order")
     public String getOrdersByFran(Model model){
         Login userType = loginService.getLoginUser();
+        Franchise franchise=franchiseService.findFranByID(userType.getID());
         List<Order> orders=franchiseService.getOrdersByFran(userType.getID());
-        model.addAttribute("Info",userType);
+        model.addAttribute("Info",franchise);
         model.addAttribute("Order",orders);
         return "order_list_f";
     }
 
-    @GetMapping("/item")
+    @GetMapping("/order/{ID}")
+    public String orderDetail(@PathVariable("ID")Integer OrderID,Model model){
+        Login userType = loginService.getLoginUser();
+        Franchise franchise=franchiseService.findFranByID(userType.getID());
+        model.addAttribute("Info",franchise);
+
+
+        Order order = orderService.findOrderByID(OrderID);
+        String GoodsName = orderService.findGoodNameByID(OrderID);
+        String UserName = orderService.findUserNameByID(OrderID);
+        String FranName = orderService.findFranNameByID(OrderID);
+
+        ArrayList<String> states = new ArrayList<String>();
+        states.add("未付款");
+        states.add("已付款");
+        states.add("出行中");
+        states.add("出行完毕");
+        states.add("退款中");
+        states.add("已退款");
+        states.add("已结束");
+        states.add("退款拒绝");
+
+        model.addAttribute("UserName",UserName);
+        model.addAttribute("FranName",FranName);
+        model.addAttribute("GoodsName",GoodsName);
+        model.addAttribute("States",states);
+        model.addAttribute("Order",order);
+        return "order_details_f";
+
+    }
+
+    @PostMapping("update_order")
+    public String updateOrder(Order order,Model model){
+        Login userType = loginService.getLoginUser();
+        Franchise franchise=franchiseService.findFranByID(userType.getID());
+        model.addAttribute("Info",franchise);
+        Integer i = franchiseService.updateOrderState(order);
+        return "redirect:/Franchise/Order";
+    }
+
+    @GetMapping("deleteOrder/{ID}")
+    public String deleteOrder(@PathVariable("ID")Integer ID){
+        Integer i = orderService.deleteOrderByID(ID);
+        return "redirect:/Franchise/Order";
+    }
+
+    @RequestMapping("/item")
     public String getAllItem(Model model){
         Login userType = loginService.getLoginUser();
         model.addAttribute("Info",userType);
         List<Goods> items = goodsService.getGoodsByFranID(userType.getID());
         model.addAttribute("items",items);
+
+
+
         return "item_list_f";
     }
-    @GetMapping("/updateItem")
-    public String updateItem(Model model){
+    @GetMapping("/item_update/{GoodsID}")
+    public String updateItem(@PathVariable("GoodsID")Integer GoodsID,Model model){
+        Goods goods = goodsService.getGoodsByID(GoodsID);
+        ScenicSpot scenicSpot = goodsService.getScenicByID(goods.getSSID());
+        String FranName = goodsService.getFranName(GoodsID);
+
+        model.addAttribute("Goods",goods);
+        model.addAttribute("Scenic",scenicSpot);
+        model.addAttribute("FranName",FranName);
         Login userType = loginService.getLoginUser();
-        model.addAttribute("Info",userType);
+        Franchise franchise = franchiseService.findFranByID(userType.getID());
+        model.addAttribute("Info",franchise);
         return "item_update_f";
+    }
+
+    @PostMapping("/item_update")
+    public String update(Goods goods,Model model){
+        Login login=loginService.getLoginUser();
+        Franchise franchise=franchiseService.findFranByID(login.getID());
+        goodsService.updateGood(goods);
+        model.addAttribute("Info",franchise);
+        return "redirect:/Franchise/item";
     }
 
     @GetMapping("/AddItem")
     public String addItemPage(Model model){
         Login login = loginService.getLoginUser();
-        model.addAttribute("Info",login);
+        Franchise franchise = franchiseService.findFranByID(login.getID());
+        model.addAttribute("Info",franchise);
         return "item_add_f";
     }
 
     @PostMapping("/AddItem")
     public String addItem(Goods goods,Model model){
-        Login login=loginService.getLoginUser();
         goodsService.CreateGoods(goods);
-        model.addAttribute("Info",login);
+        Login login = loginService.getLoginUser();
+        Franchise franchise = franchiseService.findFranByID(login.getID());
+        model.addAttribute("Info",franchise);
+        return "redirect:/Franchise/item";
+    }
+
+    @GetMapping("/item_delete/{GoodsID}")
+    public String deleteGoods(@PathVariable("GoodsID") Integer GoodsID, Model model){
+        Integer i = goodsService.deleteGoodsByGoodsID(GoodsID);
+        Login login = loginService.getLoginUser();
+        Franchise franchise = franchiseService.findFranByID(login.getID());
+        model.addAttribute("Info",franchise);
         return "redirect:/Franchise/item";
     }
 
@@ -347,7 +426,7 @@ public class FranchiseController {
     @GetMapping("/delete_comment/{CID}")
     public String deleteComment(@PathVariable("CID") Integer CID){
         Integer i = commentService.deleteComment(CID);
-        return "redirect:/Tourist_Backstage/comment_list";
+        return "redirect:/Franchise/comment";
     }
 
 

@@ -300,9 +300,8 @@
                                         </td>
                                         <td class="text-right">
                                             <div class="btn-group">
-                                                <button class="btn-white btn btn-xs">查看</button>
-                                                <button class="btn-white btn btn-xs"><a href="@{'/Franchise/item_update/'+${item.GoodsID}}">修改</a></button>
-                                                <button class="btn-white btn btn-xs">删除</button>
+                                                <button class="btn-white btn btn-xs"><a th:href="@{'item_update/'+${item.GoodsID}}">查看/修改</a></button>
+                                                <button class="btn-white btn btn-xs"><a th:href="@{'item_delete/'+${item.GoodsID}}">删除</a></button>
                                             </div>
                                         </td>
                                     </tr>
